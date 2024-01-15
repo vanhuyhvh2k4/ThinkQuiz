@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj": {}
+  },
+  "projects": {
+    "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj",
+        "projectName": "ThinkQuiz.Application",
+        "projectPath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj",
+        "packagesPath": "/Users/test/.nuget/packages/",
+        "outputPath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/test/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

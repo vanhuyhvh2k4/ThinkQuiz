@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jPKuHD5XcPnpFVD9SfZF/kWsUXy3mZXWFHYGO7gfumQ=",
+  "Source": "ThinkQuiz.Api",
+  "BasePath": "_content/ThinkQuiz.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

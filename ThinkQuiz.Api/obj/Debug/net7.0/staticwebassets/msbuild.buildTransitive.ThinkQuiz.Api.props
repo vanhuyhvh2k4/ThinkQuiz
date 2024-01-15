@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/ThinkQuiz.Api.props" />
+</Project>
