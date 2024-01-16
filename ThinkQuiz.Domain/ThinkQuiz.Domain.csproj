@@ -9,9 +9,13 @@
   <ItemGroup>
     <None Remove="Common\" />
     <None Remove="Common\Models\" />
+    <None Remove="UserAggregate\" />
+    <None Remove="UserAggregate\ValueObjects\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="Common\Models\" />
+    <Folder Include="UserAggregate\" />
+    <Folder Include="UserAggregate\ValueObjects\" />
   </ItemGroup>
 </Project>

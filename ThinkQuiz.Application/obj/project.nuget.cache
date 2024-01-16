@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "XMAnQtV+WQrlhp7oCUHt8gFe6vRh6M9MxoNXeMtvps6FLob3CwM5RJTT7qcKRaw4Dm7PAWktW6ZeITgrw6Q3XA==",
+  "dgSpecHash": "RrRcYqTEYO4byGgkJG81kke8gR6WbXk/TofryJAh6FEN/0eXivERFK9HlvrA5LaYZ/FNkmkC/ha1cHS/gjQNjQ==",
   "success": true,
   "projectFilePath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

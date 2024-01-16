@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "MFEBBkx8SGB4qPTeGCdoothsD+Dc2ak0Spc2hOIlIMOfloHrTfWWn0bb9m1om6ZQg+dXP8eNejm+e+m6dK0ySQ==",
+  "dgSpecHash": "0DSzI4Q6x+3bZpHzyQ/gpRJ9mcgfYfckE5yqLFtoUw4cBpKtSf5TTGtNRFl8Q0zaSItPghLZapNzF31TvbWtsQ==",
   "success": true,
   "projectFilePath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/ThinkQuiz.Api.csproj",
   "expectedPackageFiles": [
+    "/Users/test/.nuget/packages/microsoft.aspnetcore.mvc.versioning/5.1.0/microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.aspnetcore.mvc.versioning.apiexplorer/5.1.0/microsoft.aspnetcore.mvc.versioning.apiexplorer.5.1.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.aspnetcore.openapi/7.0.15/microsoft.aspnetcore.openapi.7.0.15.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
     "/Users/test/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/test/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",

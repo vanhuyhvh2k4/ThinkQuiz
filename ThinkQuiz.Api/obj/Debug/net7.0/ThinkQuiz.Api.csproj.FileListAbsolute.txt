@@ -31,3 +31,13 @@
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/obj/Debug/net7.0/ThinkQuiz.Api.pdb
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/obj/Debug/net7.0/ThinkQuiz.Api.genruntimeconfig.cache
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/obj/Debug/net7.0/ref/ThinkQuiz.Api.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.AspNetCore.Mvc.Versioning.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Application.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Contracts.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Domain.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Contracts.pdb
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Application.pdb
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Domain.pdb
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.DependencyInjection.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll

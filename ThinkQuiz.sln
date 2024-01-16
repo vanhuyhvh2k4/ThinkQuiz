@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkQuiz.Domain", "ThinkQu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkQuiz.Infrashstructure", "ThinkQuiz.Infrashstructure\ThinkQuiz.Infrashstructure.csproj", "{37FE4512-379B-409B-838E-AF849E15FCFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkQuiz.Contracts", "ThinkQuiz.Contracts\ThinkQuiz.Contracts.csproj", "{EB965228-C935-40B7-A6CB-05319B599FF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{37FE4512-379B-409B-838E-AF849E15FCFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37FE4512-379B-409B-838E-AF849E15FCFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37FE4512-379B-409B-838E-AF849E15FCFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB965228-C935-40B7-A6CB-05319B599FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB965228-C935-40B7-A6CB-05319B599FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB965228-C935-40B7-A6CB-05319B599FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB965228-C935-40B7-A6CB-05319B599FF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

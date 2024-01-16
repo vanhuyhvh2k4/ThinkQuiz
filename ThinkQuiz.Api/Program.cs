@@ -1,6 +1,11 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using ThinkQuiz.Api;
+using ThinkQuiz.Application;
+
+var builder = WebApplication.CreateBuilder(args);
 {
-    builder.Services.AddControllers();
+    builder.Services
+        .AddPresentation()
+        .AddApplication();
 }
 
 
