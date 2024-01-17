@@ -356,6 +356,20 @@
         "runtime": {
           "bin/placeholder/ThinkQuiz.Domain.dll": {}
         }
+      },
+      "ThinkQuiz.Infrashstructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "ThinkQuiz.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ThinkQuiz.Infrashstructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ThinkQuiz.Infrashstructure.dll": {}
+        }
       }
     }
   },
@@ -996,6 +1010,11 @@
       "type": "project",
       "path": "../ThinkQuiz.Domain/ThinkQuiz.Domain.csproj",
       "msbuildProject": "../ThinkQuiz.Domain/ThinkQuiz.Domain.csproj"
+    },
+    "ThinkQuiz.Infrashstructure/1.0.0": {
+      "type": "project",
+      "path": "../ThinkQuiz.Infrashstructure/ThinkQuiz.Infrashstructure.csproj",
+      "msbuildProject": "../ThinkQuiz.Infrashstructure/ThinkQuiz.Infrashstructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1008,7 +1027,8 @@
       "Microsoft.AspNetCore.OpenApi >= 7.0.15",
       "Swashbuckle.AspNetCore >= 6.5.0",
       "ThinkQuiz.Application >= 1.0.0",
-      "ThinkQuiz.Contracts >= 1.0.0"
+      "ThinkQuiz.Contracts >= 1.0.0",
+      "ThinkQuiz.Infrashstructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1042,6 +1062,9 @@
             },
             "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Contracts/ThinkQuiz.Contracts.csproj": {
               "projectPath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Contracts/ThinkQuiz.Contracts.csproj"
+            },
+            "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Infrashstructure/ThinkQuiz.Infrashstructure.csproj": {
+              "projectPath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Infrashstructure/ThinkQuiz.Infrashstructure.csproj"
             }
           }
         }

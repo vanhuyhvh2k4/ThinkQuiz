@@ -28,9 +28,6 @@ namespace ThinkQuiz.Domain.UserAggregate
             string fullName,
             string email,
             string password,
-            bool? gender,
-            DateTime? dateOfBirth,
-            string? phone,
             DateTime lastLogin,
             DateTime createdAt,
             DateTime updatedAt) : base(id)
@@ -38,9 +35,6 @@ namespace ThinkQuiz.Domain.UserAggregate
             FullName = fullName;
             Email = email;
             Password = password;
-            Gender = gender;
-            DateOfBirth = dateOfBirth;
-            Phone = phone;
             LastLogin = lastLogin;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
@@ -50,10 +44,7 @@ namespace ThinkQuiz.Domain.UserAggregate
         public static User Create(
             string fullName,
             string email,
-            string password,
-            bool? gender,
-            DateTime? dateOfBirth,
-            string? phone
+            string password
             )
         {
             return new(
@@ -61,9 +52,6 @@ namespace ThinkQuiz.Domain.UserAggregate
                 fullName,
                 email,
                 password,
-                gender,
-                dateOfBirth,
-                phone,
                 DateTime.UtcNow,
                 DateTime.UtcNow,
                 DateTime.UtcNow);

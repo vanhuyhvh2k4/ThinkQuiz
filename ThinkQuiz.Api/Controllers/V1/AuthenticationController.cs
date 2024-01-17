@@ -9,9 +9,8 @@ using ThinkQuiz.Contracts.Authentication;
 namespace ThinkQuiz.Api.Controllers.V1
 {
     [ApiVersion("1.0")]
-    [ApiController]
     [Route("/v1/api/")]
-    public class AuthenticationController : Controller
+    public class AuthenticationController : ApiController
     {
         private readonly IMapper _mapper;
         private readonly ISender _sender;
@@ -29,7 +28,10 @@ namespace ThinkQuiz.Api.Controllers.V1
 
             var registerResult = await _sender.Send(command);
 
-            return Ok(registerResult);
+            return registerResult.Match(
+               registerResult => Ok(_mapper.Map<AuthenticationResponse>(registerResult)),
+               errors => Problem(errors)
+               );
         }
     }
 }

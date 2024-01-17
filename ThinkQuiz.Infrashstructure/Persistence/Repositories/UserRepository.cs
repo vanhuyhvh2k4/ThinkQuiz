@@ -6,7 +6,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
 {
 	public class UserRepository : IUserRepository
 	{
-        private readonly List<User> _users = new();
+        private static readonly List<User> _users = new();
 
         public void Add(User user)
         {

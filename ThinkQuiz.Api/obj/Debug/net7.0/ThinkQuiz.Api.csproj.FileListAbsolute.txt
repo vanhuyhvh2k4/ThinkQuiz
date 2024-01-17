@@ -48,3 +48,8 @@
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/MediatR.dll
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/MediatR.Contracts.dll
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/FluentValidation.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/FluentValidation.AspNetCore.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/FluentValidation.DependencyInjectionExtensions.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Infrashstructure.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Infrashstructure.pdb

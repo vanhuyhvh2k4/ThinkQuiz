@@ -1,13 +1,14 @@
 ﻿using ThinkQuiz.Api;
 using ThinkQuiz.Application;
+using ThinkQuiz.Infrashstructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
         .AddPresentation()
-        .AddApplication();
+        .AddApplication()
+        .AddInfrashstructure();
 }
-
 
 var app = builder.Build();
 {

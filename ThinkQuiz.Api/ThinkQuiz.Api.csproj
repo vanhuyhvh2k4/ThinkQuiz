@@ -39,5 +39,8 @@
     <ProjectReference Include="..\ThinkQuiz.Application\ThinkQuiz.Application.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\ThinkQuiz.Infrashstructure\ThinkQuiz.Infrashstructure.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>
