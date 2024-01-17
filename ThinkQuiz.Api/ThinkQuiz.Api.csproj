@@ -13,6 +13,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+    <PackageReference Include="Mapster.Core" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,12 +23,14 @@
     <None Remove="Controllers\V1\" />
     <None Remove="Common\" />
     <None Remove="Common\Errors\" />
+    <None Remove="Common\Mapping\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Controllers\V1\" />
     <Folder Include="Common\" />
     <Folder Include="Common\Errors\" />
+    <Folder Include="Common\Mapping\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThinkQuiz.Contracts\ThinkQuiz.Contracts.csproj">
