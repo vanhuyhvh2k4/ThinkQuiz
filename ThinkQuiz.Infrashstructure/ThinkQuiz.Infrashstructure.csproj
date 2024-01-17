@@ -7,9 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" />
+    <ProjectReference Include="..\ThinkQuiz.Application\ThinkQuiz.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThinkQuiz.Application\ThinkQuiz.Application.csproj" />
+    <None Remove="..\.editorconfig" />
+    <None Remove="Persistence\" />
+    <None Remove="Persistence\Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Persistence\" />
+    <Folder Include="Persistence\Repositories\" />
   </ItemGroup>
 </Project>
