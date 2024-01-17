@@ -11,11 +11,18 @@
     <None Remove="Common\Models\" />
     <None Remove="UserAggregate\" />
     <None Remove="UserAggregate\ValueObjects\" />
+    <None Remove="Common\Errors\" />
+    <None Remove="Common\Errors\User\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="Common\Models\" />
     <Folder Include="UserAggregate\" />
     <Folder Include="UserAggregate\ValueObjects\" />
+    <Folder Include="Common\Errors\" />
+    <Folder Include="Common\Errors\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ErrorOr" Version="1.9.0" />
   </ItemGroup>
 </Project>
