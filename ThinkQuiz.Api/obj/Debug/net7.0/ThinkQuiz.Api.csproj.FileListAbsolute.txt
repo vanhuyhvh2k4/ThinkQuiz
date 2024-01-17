@@ -41,3 +41,10 @@
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Domain.pdb
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.DependencyInjection.dll
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ErrorOr.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Mapster.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Mapster.Core.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Mapster.DependencyInjection.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/MediatR.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/MediatR.Contracts.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
