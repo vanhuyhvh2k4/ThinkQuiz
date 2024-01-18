@@ -57,6 +57,10 @@ namespace ThinkQuiz.Domain.UserAggregate
                 DateTime.UtcNow);
         }
 
+        public void UpdateLastLogin()
+        {
+            LastLogin = DateTime.UtcNow;
+        }
 #pragma warning disable CS8618
         private User() { }
 #pragma warning restore CS8618

@@ -13,6 +13,7 @@
     <None Remove="UserAggregate\ValueObjects\" />
     <None Remove="Common\Errors\User\" />
     <None Remove="Common\Exceptions\" />
+    <None Remove="Common\Exceptions\Authentication\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -21,6 +22,7 @@
     <Folder Include="UserAggregate\ValueObjects\" />
     <Folder Include="Common\Exceptions\User\" />
     <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Exceptions\Authentication\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.9.0" />

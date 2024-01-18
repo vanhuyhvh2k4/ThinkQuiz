@@ -20,6 +20,7 @@
     <None Remove="Authentication\Common\" />
     <None Remove="Common\Behaviors\" />
     <None Remove="Common\Interfaces\Jwt\" />
+    <None Remove="Authentication\Commands\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -32,6 +33,7 @@
     <Folder Include="Authentication\Common\" />
     <Folder Include="Common\Behaviors\" />
     <Folder Include="Common\Interfaces\Jwt\" />
+    <Folder Include="Authentication\Commands\Login\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />

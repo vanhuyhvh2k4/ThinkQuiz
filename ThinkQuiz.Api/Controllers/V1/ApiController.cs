@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace ThinkQuiz.Api.Controllers.V1
 {
     [ApiController]
+    [Route("/v1/api/")]
+    [ApiVersion("1.0")]
     public class ApiController : Controller
     {
         protected IActionResult Problem(List<Error> errors)

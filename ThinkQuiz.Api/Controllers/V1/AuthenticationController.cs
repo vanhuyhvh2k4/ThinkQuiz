@@ -1,6 +1,7 @@
 ﻿using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ThinkQuiz.Application.Authentication.Commands.Login;
 using ThinkQuiz.Application.Authentication.Commands.Register;
 using ThinkQuiz.Contracts.Authentication;
 
@@ -8,8 +9,6 @@ using ThinkQuiz.Contracts.Authentication;
 
 namespace ThinkQuiz.Api.Controllers.V1
 {
-    [ApiVersion("1.0")]
-    [Route("/v1/api/")]
     public class AuthenticationController : ApiController
     {
         private readonly IMapper _mapper;
@@ -30,6 +29,19 @@ namespace ThinkQuiz.Api.Controllers.V1
 
             return registerResult.Match(
                registerResult => Ok(_mapper.Map<AuthenticationResponse>(registerResult)),
+               errors => Problem(errors)
+               );
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginRequest request)
+        {
+            var command = _mapper.Map<LoginCommand>(request);
+
+            var loginResult = await _sender.Send(command);
+
+            return loginResult.Match(
+               loginResult => Ok(_mapper.Map<AuthenticationResponse>(loginResult)),
                errors => Problem(errors)
                );
         }
