@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8NqiWUjDwYJOpZT0qOCaChyW+Tb7DsImDF8XHSTVp7eAo997T+XnUUnOaofe+Jm2hVlH4YbELatfvfYrTCUydQ==",
+  "dgSpecHash": "YG7aWatLF/H+UjT5dxN7dy/c8eYsIu3pwPt/bqs1PayxAvfTueExxLtPoh307+zMDGBZLi1oLs+rlsRcxFI5/A==",
   "success": true,
   "projectFilePath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Infrashstructure/ThinkQuiz.Infrashstructure.csproj",
   "expectedPackageFiles": [
@@ -12,8 +12,14 @@
     "/Users/test/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
     "/Users/test/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.15/microsoft.aspnetcore.authentication.jwtbearer.7.0.15.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.configuration/8.0.0/microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.configuration.binder/8.0.0/microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.options.configurationextensions/8.0.0/microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.identitymodel.abstractions/7.2.0/microsoft.identitymodel.abstractions.7.2.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.2.0/microsoft.identitymodel.jsonwebtokens.7.2.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.identitymodel.logging/7.2.0/microsoft.identitymodel.logging.7.2.0.nupkg.sha512",

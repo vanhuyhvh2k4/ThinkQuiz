@@ -61,3 +61,9 @@
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.Configuration.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Binder.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.Options.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.Extensions.Primitives.dll

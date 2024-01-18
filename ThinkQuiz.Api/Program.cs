@@ -7,11 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services
         .AddPresentation()
         .AddApplication()
-        .AddInfrashstructure();
+        .AddInfrashstructure(builder.Configuration);
 }
 
 var app = builder.Build();
 {
+    app.UseAuthentication();
+
     app.UseExceptionHandler("/error");
 
     app.UseHttpsRedirection();
