@@ -7,6 +7,8 @@
         string dateOfBirth,
         string Phone,
         DateTime LastLogin,
+        DateTime CreatedAt,
+        DateTime UpdatedAt,
         bool Gender,
         string Token);
 }

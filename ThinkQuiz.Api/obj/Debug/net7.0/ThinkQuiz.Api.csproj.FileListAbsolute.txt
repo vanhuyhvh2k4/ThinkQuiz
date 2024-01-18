@@ -53,3 +53,11 @@
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/FluentValidation.DependencyInjectionExtensions.dll
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Infrashstructure.dll
 /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ThinkQuiz.Infrashstructure.pdb
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll

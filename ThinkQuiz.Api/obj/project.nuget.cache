@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AsCUvWgGvmFmFOeovaxdrnwrF7zM5pHGs1X8LbwjL78WUKsUlksfhV8I1o3CWZniR8vwOlzBSSdHsljaATI//A==",
+  "dgSpecHash": "bTs2SbNdvop22L8DF5fWYs55xk58kL2SXfV0fBVWF+x+Ru+t6KHGwMkB74TFDEsLguObb+e4rx4d072CHtZNZg==",
   "success": true,
   "projectFilePath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/ThinkQuiz.Api.csproj",
   "expectedPackageFiles": [
@@ -14,17 +14,25 @@
     "/Users/test/.nuget/packages/mediatr/11.1.0/mediatr.11.1.0.nupkg.sha512",
     "/Users/test/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
     "/Users/test/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.15/microsoft.aspnetcore.authentication.jwtbearer.7.0.15.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.aspnetcore.mvc.versioning/5.1.0/microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.aspnetcore.mvc.versioning.apiexplorer/5.1.0/microsoft.aspnetcore.mvc.versioning.apiexplorer.5.1.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.aspnetcore.openapi/7.0.15/microsoft.aspnetcore.openapi.7.0.15.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.abstractions/7.2.0/microsoft.identitymodel.abstractions.7.2.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.2.0/microsoft.identitymodel.jsonwebtokens.7.2.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.logging/7.2.0/microsoft.identitymodel.logging.7.2.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.protocols/6.35.0/microsoft.identitymodel.protocols.6.35.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.35.0/microsoft.identitymodel.protocols.openidconnect.6.35.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.tokens/7.2.0/microsoft.identitymodel.tokens.7.2.0.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
     "/Users/test/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/test/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/Users/test/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
-    "/Users/test/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+    "/Users/test/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/system.identitymodel.tokens.jwt/7.2.0/system.identitymodel.tokens.jwt.7.2.0.nupkg.sha512"
   ],
   "logs": []
 }

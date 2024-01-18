@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FXTJMpmXsg36EY2XDW56tYxg9vqQdW/7pZ5zpbrjY9dAvv2atluqdj4vo+vBEBQKe8r7bDcOZQUNvpzd0f/9yQ==",
+  "dgSpecHash": "8NqiWUjDwYJOpZT0qOCaChyW+Tb7DsImDF8XHSTVp7eAo997T+XnUUnOaofe+Jm2hVlH4YbELatfvfYrTCUydQ==",
   "success": true,
   "projectFilePath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Infrashstructure/ThinkQuiz.Infrashstructure.csproj",
   "expectedPackageFiles": [
@@ -11,8 +11,16 @@
     "/Users/test/.nuget/packages/mediatr/11.1.0/mediatr.11.1.0.nupkg.sha512",
     "/Users/test/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
     "/Users/test/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.15/microsoft.aspnetcore.authentication.jwtbearer.7.0.15.nupkg.sha512",
     "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
-    "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+    "/Users/test/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.abstractions/7.2.0/microsoft.identitymodel.abstractions.7.2.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.2.0/microsoft.identitymodel.jsonwebtokens.7.2.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.logging/7.2.0/microsoft.identitymodel.logging.7.2.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.protocols/6.35.0/microsoft.identitymodel.protocols.6.35.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.35.0/microsoft.identitymodel.protocols.openidconnect.6.35.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/microsoft.identitymodel.tokens/7.2.0/microsoft.identitymodel.tokens.7.2.0.nupkg.sha512",
+    "/Users/test/.nuget/packages/system.identitymodel.tokens.jwt/7.2.0/system.identitymodel.tokens.jwt.7.2.0.nupkg.sha512"
   ],
   "logs": []
 }
