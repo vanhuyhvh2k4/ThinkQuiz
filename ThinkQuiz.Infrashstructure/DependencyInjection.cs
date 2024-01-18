@@ -8,6 +8,8 @@ using ThinkQuiz.Application.Common.Interfaces.Jwt;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Infrashstructure.Jwt;
 using ThinkQuiz.Infrashstructure.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
+using ThinkQuiz.Infrashstructure.Persistence;
 
 namespace ThinkQuiz.Infrashstructure
 {
@@ -15,7 +17,9 @@ namespace ThinkQuiz.Infrashstructure
 	{
 		public static IServiceCollection AddInfrashstructure(this IServiceCollection services, ConfigurationManager configuration)
 		{
-			services.AddAuth(configuration);
+            services.AddDbContext<ThinkQuizDbContext>(options => options.UseMySql(configuration.GetConnectionString("Default"), new MySqlServerVersion(new Version(10, 4, 25))));
+
+            services.AddAuth(configuration);
 
 			services.AddScoped<IUserRepository, UserRepository>();
 

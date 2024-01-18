@@ -366,11 +366,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj",
+      "projectUniqueName": "/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj",
       "projectName": "ThinkQuiz.Application",
-      "projectPath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj",
+      "projectPath": "/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/ThinkQuiz.Application.csproj",
       "packagesPath": "/Users/test/.nuget/packages/",
-      "outputPath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/obj/",
+      "outputPath": "/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/test/.nuget/NuGet/NuGet.Config"
@@ -385,8 +385,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Domain/ThinkQuiz.Domain.csproj": {
-              "projectPath": "/Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Domain/ThinkQuiz.Domain.csproj"
+            "/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Domain/ThinkQuiz.Domain.csproj": {
+              "projectPath": "/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Domain/ThinkQuiz.Domain.csproj"
             }
           }
         }
@@ -446,7 +446,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

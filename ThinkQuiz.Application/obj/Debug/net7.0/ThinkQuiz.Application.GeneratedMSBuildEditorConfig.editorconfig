@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ThinkQuiz.Application
-build_property.ProjectDir = /Volumes/Usb/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/
+build_property.ProjectDir = /Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Application/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
