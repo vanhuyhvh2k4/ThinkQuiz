@@ -38,6 +38,8 @@ namespace ThinkQuiz.Application.Authentication.Commands.Login
 
             user.UpdateLastLogin();
 
+            _userRepository.UpdateUser(user);
+
             return new AuthenticationResult(user, token);
         }
     }

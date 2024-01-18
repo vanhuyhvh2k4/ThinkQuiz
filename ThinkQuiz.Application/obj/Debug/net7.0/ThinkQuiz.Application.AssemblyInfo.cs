@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThinkQuiz.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9dfc5e7752e90cfc0716345124e6239a6abf2d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThinkQuiz.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThinkQuiz.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

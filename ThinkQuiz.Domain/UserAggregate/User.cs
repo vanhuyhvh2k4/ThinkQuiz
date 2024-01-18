@@ -4,24 +4,24 @@ using ThinkQuiz.Domain.UserAggregate.ValueObjects;
 namespace ThinkQuiz.Domain.UserAggregate
 {
     public class User : AggregateRoot<UserId, Guid>
-	{
-		public string FullName { get; private set; }
+    {
+        public string FullName { get; private set; }
 
-		public string Email { get; private set; }
+        public string Email { get; private set; }
 
-		public string Password { get; private set; }
+        public string Password { get; private set; }
 
-		public bool? Gender { get; private set; }
+        public bool? Gender { get; private set; }
 
-		public DateTime? DateOfBirth { get; private set; }
+        public DateTime? DateOfBirth { get; private set; }
 
-		public string? Phone { get; private set; }
+        public string? Phone { get; private set; }
 
-		public DateTime LastLogin { get; private set; }
+        public DateTime LastLogin { get; private set; }
 
-		public DateTime CreatedAt { get; private set; }
+        public DateTime CreatedAt { get; private set; }
 
-		public DateTime UpdatedAt { get; private set; }
+        public DateTime UpdatedAt { get; private set; }
 
         private User(
             UserId id,
@@ -60,6 +60,22 @@ namespace ThinkQuiz.Domain.UserAggregate
         public void UpdateLastLogin()
         {
             LastLogin = DateTime.UtcNow;
+        }
+
+        public void Update(
+            string? fullName = null,
+            string? email = null,
+            string? password = null,
+            bool? gender = null,
+            DateTime? dateOfBirth = null,
+            string? phone = null)
+        {
+            FullName = fullName ?? FullName;
+            Email = email ?? Email;
+            Password = password ?? Password;
+            Gender = gender ?? Gender;
+            DateOfBirth = dateOfBirth;
+            Phone = phone ?? Phone;
         }
 #pragma warning disable CS8618
         private User() { }
