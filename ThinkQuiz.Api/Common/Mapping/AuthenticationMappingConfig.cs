@@ -15,8 +15,9 @@ namespace ThinkQuiz.Api.Common.Mapping
             config.NewConfig<LoginRequest, LoginCommand>();
 
             config.NewConfig<AuthenticationResult, AuthenticationResponse>()
-                .Map(dest => dest, src => src.User)
-                .Map(dest => dest.Id, src => src.User.Id.Value.ToString());
+                .Map(dest => dest.Data, src => src.User)
+                .Map(dest => dest.Data.Token, src => src.Token)
+                .Map(dest => dest.Data.Id, src => src.User.Id.Value.ToString());
         }
     }
 }

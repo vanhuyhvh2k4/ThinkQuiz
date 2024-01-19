@@ -14,7 +14,8 @@ namespace ThinkQuiz.Api.Common.Mapping
                 .Map(dest => dest, src => src.Request);
 
             config.NewConfig<User, UpdateUserResponse>()
-                .Map(dest => dest.Id, src => src.Id.Value.ToString());
+                .Map(dest => dest.Data.Id, src => src.Id.Value.ToString())
+                .Map(dest => dest.Data, src => src);
         }
     }
 }
