@@ -11,7 +11,7 @@ using ThinkQuiz.Infrashstructure.Persistence;
 namespace ThinkQuiz.Infrashstructure.Migrations
 {
     [DbContext(typeof(ThinkQuizDbContext))]
-    [Migration("20240118145256_UserCreate")]
+    [Migration("20240119130318_UserCreate")]
     partial class UserCreate
     {
         /// <inheritdoc />
@@ -30,18 +30,18 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("datetime(6)");
+                    b.Property<DateOnly?>("DateOfBirth")
+                        .HasColumnType("date");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<bool?>("Gender")
                         .HasColumnType("tinyint(1)");
@@ -55,7 +55,8 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");

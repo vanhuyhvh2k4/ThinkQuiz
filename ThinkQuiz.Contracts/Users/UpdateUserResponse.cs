@@ -1,15 +1,15 @@
-﻿namespace ThinkQuiz.Contracts.Authentication
+﻿namespace ThinkQuiz.Contracts.Users
 {
-    public record AuthenticationResponse(
+    public record UpdateUserResponse(
         Guid Id,
         string FullName,
         string Email,
-        string DateOfBirth,
+        DateOnly DateOfBirth,
         string Phone,
         DateTime LastLogin,
         DateTime CreatedAt,
         DateTime UpdatedAt,
-        bool Gender,
-        string Token);
+        bool Gender);
+	
 }
 

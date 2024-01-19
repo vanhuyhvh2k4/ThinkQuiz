@@ -21,21 +21,26 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
                 .HasConversion(id => id.Value, value => UserId.Create(value));
 
             builder.Property(ub => ub.FullName)
-                .HasMaxLength(200);
+                .HasMaxLength(100);
 
             builder.Property(ub => ub.Email)
-                .HasMaxLength(200);
+                .HasMaxLength(100);
 
             builder.Property(ub => ub.Password)
                 .HasMaxLength(50);
 
-            builder.Property(ub => ub.DateOfBirth);
+            builder.Property(ub => ub.DateOfBirth)
+                .IsRequired(false);
 
-            builder.Property(ub => ub.Phone);
+            builder.Property(ub => ub.Phone)
+                .IsRequired(false)
+                .HasMaxLength(10);
 
             builder.Property(ub => ub.LastLogin);
 
-            builder.Property(ub => ub.Gender);
+            builder.Property(ub => ub.Gender)
+                .IsRequired(false);
+
         }
     }
 }

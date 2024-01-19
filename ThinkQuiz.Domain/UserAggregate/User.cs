@@ -13,7 +13,7 @@ namespace ThinkQuiz.Domain.UserAggregate
 
         public bool? Gender { get; private set; }
 
-        public DateTime? DateOfBirth { get; private set; }
+        public DateOnly? DateOfBirth { get; private set; }
 
         public string? Phone { get; private set; }
 
@@ -67,7 +67,7 @@ namespace ThinkQuiz.Domain.UserAggregate
             string? email = null,
             string? password = null,
             bool? gender = null,
-            DateTime? dateOfBirth = null,
+            DateOnly? dateOfBirth = null,
             string? phone = null)
         {
             FullName = fullName ?? FullName;
@@ -76,6 +76,7 @@ namespace ThinkQuiz.Domain.UserAggregate
             Gender = gender ?? Gender;
             DateOfBirth = dateOfBirth;
             Phone = phone ?? Phone;
+            UpdatedAt = DateTime.UtcNow;
         }
 #pragma warning disable CS8618
         private User() { }

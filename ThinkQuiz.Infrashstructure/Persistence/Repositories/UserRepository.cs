@@ -27,6 +27,11 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
             return _context.Users.SingleOrDefault(u => u.Email == email);
         }
 
+        public User? GetUserById(Guid id)
+        {
+            return _context.Users.AsEnumerable().SingleOrDefault(u => u.Id.Value == id);
+        }
+
         public void UpdateUser(User user)
         {
             _context.Users.Update(user);

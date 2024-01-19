@@ -6,6 +6,8 @@ namespace ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories
 	{
 		User? GetUserByEmail(string email);
 
+		User? GetUserById(Guid id);
+
 		void Add(User user);
 
 		void UpdateUser(User user);
