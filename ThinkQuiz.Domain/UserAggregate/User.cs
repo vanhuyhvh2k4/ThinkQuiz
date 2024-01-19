@@ -52,14 +52,14 @@ namespace ThinkQuiz.Domain.UserAggregate
                 fullName,
                 email,
                 password,
-                DateTime.UtcNow,
-                DateTime.UtcNow,
-                DateTime.UtcNow);
+                DateTime.Now,
+                DateTime.Now,
+                DateTime.Now);
         }
 
         public void UpdateLastLogin()
         {
-            LastLogin = DateTime.UtcNow;
+            LastLogin = DateTime.Now;
         }
 
         public void Update(
@@ -76,7 +76,7 @@ namespace ThinkQuiz.Domain.UserAggregate
             Gender = gender ?? Gender;
             DateOfBirth = dateOfBirth;
             Phone = phone ?? Phone;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
 #pragma warning disable CS8618
         private User() { }

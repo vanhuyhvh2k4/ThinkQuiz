@@ -28,13 +28,13 @@ namespace ThinkQuiz.Contracts.Users
         public string? Phone { get; init; }
 
         [JsonPropertyName("lastLogin")]
-        public DateTime LastLogin { get; init; }
+        public string? LastLogin { get; init; }
 
         [JsonPropertyName("createdAt")]
-        public DateTime CreatedAt { get; init; }
+        public string? CreatedAt { get; init; }
 
         [JsonPropertyName("updatedAt")]
-        public DateTime UpdatedAt { get; init; }
+        public string? UpdatedAt { get; init; }
 
         [JsonPropertyName("gender")]
         public bool Gender { get; init; }

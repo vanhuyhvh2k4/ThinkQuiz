@@ -15,6 +15,9 @@ namespace ThinkQuiz.Api.Common.Mapping
 
             config.NewConfig<User, UpdateUserResponse>()
                 .Map(dest => dest.Data.Id, src => src.Id.Value.ToString())
+                .Map(dest => dest.Data.CreatedAt, src => src.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"))
+                .Map(dest => dest.Data.UpdatedAt, src => src.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"))
+                .Map(dest => dest.Data.LastLogin, src => src.LastLogin.ToString("yyyy-MM-dd HH:mm:ss"))
                 .Map(dest => dest.Data, src => src);
         }
     }

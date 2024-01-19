@@ -1,9 +1,8 @@
-﻿using System;
-using ThinkQuiz.Domain.Common.Models;
+﻿using ThinkQuiz.Domain.Common.Models;
 
 namespace ThinkQuiz.Domain.UserAggregate.ValueObjects
 {
-	public class UserId : AggregateRootId<Guid>
+    public class UserId : AggregateRootId<Guid>
 	{
         public override Guid Value { get; protected set; }
 
