@@ -1,8 +1,9 @@
 ﻿using System;
-namespace ThinkQuiz.Infrashstructure.Jwt
+
+namespace ThinkQuiz.Infrashstructure.Services.Jwt
 {
-	public class JwtSettings
-	{
+    public class JwtSettings
+    {
         public const string SectionName = "JwtSettings";
 
         public string Secret { get; init; } = null!;

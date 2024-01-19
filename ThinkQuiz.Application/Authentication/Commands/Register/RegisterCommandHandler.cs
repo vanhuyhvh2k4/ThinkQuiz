@@ -1,8 +1,9 @@
 ﻿using ErrorOr;
 using MediatR;
 using ThinkQuiz.Application.Authentication.Common;
-using ThinkQuiz.Application.Common.Interfaces.Jwt;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
+using ThinkQuiz.Application.Common.Interfaces.Services.Bcrypt;
+using ThinkQuiz.Application.Common.Interfaces.Services.Jwt;
 using ThinkQuiz.Domain.Common.Exceptions.User;
 using ThinkQuiz.Domain.UserAggregate;
 
@@ -12,11 +13,13 @@ namespace ThinkQuiz.Application.Authentication.Commands.Register
 	{
         private readonly IUserRepository _userRepository;
         private readonly IJwtTokenGenerator _tokenGenerator;
+        private readonly IBcryptHashPassword _hashPassword;
 
-        public RegisterCommandHandler(IUserRepository userRepository, IJwtTokenGenerator tokenGenerator)
+        public RegisterCommandHandler(IUserRepository userRepository, IJwtTokenGenerator tokenGenerator, IBcryptHashPassword hashPassword)
         {
             _userRepository = userRepository;
             _tokenGenerator = tokenGenerator;
+            _hashPassword = hashPassword;
         }
 
         public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
@@ -29,7 +32,7 @@ namespace ThinkQuiz.Application.Authentication.Commands.Register
             }
 
             // 2. create new user
-            var user = User.Create(command.FullName, command.Email, command.Password);
+            var user = User.Create(command.FullName, command.Email, _hashPassword.HashPassword(command.Password));
             var token = _tokenGenerator.GenerateToken(user);
 
             // 3. persist user

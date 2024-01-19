@@ -26,8 +26,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
             builder.Property(ub => ub.Email)
                 .HasMaxLength(100);
 
-            builder.Property(ub => ub.Password)
-                .HasMaxLength(50);
+            builder.Property(ub => ub.Password);
 
             builder.Property(ub => ub.DateOfBirth)
                 .IsRequired(false);

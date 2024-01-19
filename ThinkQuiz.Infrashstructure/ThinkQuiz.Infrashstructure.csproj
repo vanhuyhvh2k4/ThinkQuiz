@@ -13,14 +13,18 @@
     <None Remove="..\.editorconfig" />
     <None Remove="Persistence\" />
     <None Remove="Persistence\Repositories\" />
-    <None Remove="Jwt\" />
     <None Remove="Persistence\Configurations\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Jwt\" />
+    <None Remove="Services\Bcrypt\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Persistence\" />
     <Folder Include="Persistence\Repositories\" />
-    <Folder Include="Jwt\" />
     <Folder Include="Persistence\Configurations\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Jwt\" />
+    <Folder Include="Services\Bcrypt\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
@@ -30,5 +34,6 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.15" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
   </ItemGroup>
 </Project>

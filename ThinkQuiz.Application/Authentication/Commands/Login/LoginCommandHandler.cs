@@ -1,8 +1,9 @@
 ﻿using ErrorOr;
 using MediatR;
 using ThinkQuiz.Application.Authentication.Common;
-using ThinkQuiz.Application.Common.Interfaces.Jwt;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
+using ThinkQuiz.Application.Common.Interfaces.Services.Bcrypt;
+using ThinkQuiz.Application.Common.Interfaces.Services.Jwt;
 using ThinkQuiz.Domain.Common.Exceptions.Authentication;
 using ThinkQuiz.Domain.UserAggregate;
 
@@ -12,11 +13,13 @@ namespace ThinkQuiz.Application.Authentication.Commands.Login
 	{
         private readonly IUserRepository _userRepository;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
+        private readonly IBcryptHashPassword _hashPassword;
 
-        public LoginCommandHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator)
+        public LoginCommandHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator, IBcryptHashPassword hashPassword)
         {
             _userRepository = userRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
+            _hashPassword = hashPassword;
         }
 
         public async Task<ErrorOr<AuthenticationResult>> Handle(LoginCommand command, CancellationToken cancellationToken)
@@ -28,7 +31,7 @@ namespace ThinkQuiz.Application.Authentication.Commands.Login
                 return Exceptions.InvalidCredentials;
             }
             // 2. Check credentials
-            if (user.Password != command.Password)
+            if (!_hashPassword.VerifyPassword(command.Password, user.Password))
             {
                 return Exceptions.InvalidCredentials;
             }

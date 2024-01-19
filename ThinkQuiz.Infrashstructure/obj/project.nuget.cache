@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "glzEMawKCF6iyXCvpz2Ias3lL9KnaTZwVKKIudhoB+Fk5TAnXp4biFIn8UOGF+qQHfQ8Yfh1e67eJRmrht5ITg==",
+  "dgSpecHash": "e/fc1QrM+e2wg7zMNloPZdv6CXKvSjlywQ1KGjvbpIPB9iKS0W7NL3iJnniV9NQhAcI4yljo+S3JT20TN7vcfQ==",
   "success": true,
   "projectFilePath": "/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Infrashstructure/ThinkQuiz.Infrashstructure.csproj",
   "expectedPackageFiles": [
+    "/Users/test/.nuget/packages/bcrypt.net-core/1.6.0/bcrypt.net-core.1.6.0.nupkg.sha512",
     "/Users/test/.nuget/packages/erroror/1.9.0/erroror.1.9.0.nupkg.sha512",
     "/Users/test/.nuget/packages/fluentvalidation/11.9.0/fluentvalidation.11.9.0.nupkg.sha512",
     "/Users/test/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",

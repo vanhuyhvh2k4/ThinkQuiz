@@ -11,7 +11,7 @@ using ThinkQuiz.Infrashstructure.Persistence;
 namespace ThinkQuiz.Infrashstructure.Migrations
 {
     [DbContext(typeof(ThinkQuizDbContext))]
-    [Migration("20240119130318_UserCreate")]
+    [Migration("20240119163750_UserCreate")]
     partial class UserCreate
     {
         /// <inheritdoc />
@@ -51,8 +51,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Phone")
                         .HasMaxLength(10)

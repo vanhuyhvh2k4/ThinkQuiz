@@ -4,12 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using ThinkQuiz.Application.Common.Interfaces.Jwt;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
-using ThinkQuiz.Infrashstructure.Jwt;
 using ThinkQuiz.Infrashstructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using ThinkQuiz.Infrashstructure.Persistence;
+using ThinkQuiz.Infrashstructure.Services.Jwt;
+using ThinkQuiz.Application.Common.Interfaces.Services.Jwt;
+using ThinkQuiz.Application.Common.Interfaces.Services.Bcrypt;
+using ThinkQuiz.Infrashstructure.Services.Bcrypt;
 
 namespace ThinkQuiz.Infrashstructure
 {
@@ -23,6 +25,7 @@ namespace ThinkQuiz.Infrashstructure
 
 			services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddSingleton<IBcryptHashPassword, BcryptHashPassword>();
 
 			return services;
 		}

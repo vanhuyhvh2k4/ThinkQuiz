@@ -3,13 +3,13 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using ThinkQuiz.Application.Common.Interfaces.Jwt;
+using ThinkQuiz.Application.Common.Interfaces.Services.Jwt;
 using ThinkQuiz.Domain.UserAggregate;
 
-namespace ThinkQuiz.Infrashstructure.Jwt
+namespace ThinkQuiz.Infrashstructure.Services.Jwt
 {
     public class JwtTokenGenerator : IJwtTokenGenerator
-	{
+    {
         private readonly JwtSettings _jwtSettings;
 
         public JwtTokenGenerator(IOptions<JwtSettings> jwtOptions)
