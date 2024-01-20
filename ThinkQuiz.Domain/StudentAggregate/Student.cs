@@ -1,12 +1,37 @@
-﻿using ThinkQuiz.Domain.Common.Models;
+﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
+using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
+using ThinkQuiz.Domain.Common.Models;
+using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
 using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
+using ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects;
+using ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects;
 using ThinkQuiz.Domain.UserAggregate.ValueObjects;
 
 namespace ThinkQuiz.Domain.StudentAggregate
 {
     public class Student : AggregateRoot<StudentId, Guid>
     {
+        private readonly List<ClassId> _classIds = new();
+
+        private readonly List<AssignmentId> _assignmentIds = new();
+
+        private readonly List<ExamId> _examIds = new();
+
+        private readonly List<SubmittionAssignmentId> _submittionAssignmentIds = new();
+
+        private readonly List<SubmittionExamId> _submittionExamIds = new();
+
         public UserId UserId { get; private set; }
+
+        public IReadOnlyList<ClassId> ClassIds => _classIds.AsReadOnly();
+
+        public IReadOnlyList<AssignmentId> AssignmentIds => _assignmentIds.AsReadOnly();
+
+        public IReadOnlyList<ExamId> ExamIds => _examIds.AsReadOnly();
+
+        public IReadOnlyList<SubmittionAssignmentId> SubmittionAssignmentIds => _submittionAssignmentIds.AsReadOnly();
+
+        public IReadOnlyList<SubmittionExamId> SubmittionExamIds => _submittionExamIds.AsReadOnly();
 
         public DateTime CreatedAt { get; private set; }
 
