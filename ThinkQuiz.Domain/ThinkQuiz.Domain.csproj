@@ -20,6 +20,8 @@
     <None Remove="StudentAggregate\ValueObjects\" />
     <None Remove="ClassAggregate\" />
     <None Remove="ClassAggregate\ValueObjects\" />
+    <None Remove="AssignmentAggregate\" />
+    <None Remove="AssignmentAggregate\ValueObjects\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -35,6 +37,8 @@
     <Folder Include="StudentAggregate\ValueObjects\" />
     <Folder Include="ClassAggregate\" />
     <Folder Include="ClassAggregate\ValueObjects\" />
+    <Folder Include="AssignmentAggregate\" />
+    <Folder Include="AssignmentAggregate\ValueObjects\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.9.0" />
