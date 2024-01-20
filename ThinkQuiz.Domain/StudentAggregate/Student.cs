@@ -13,10 +13,6 @@ namespace ThinkQuiz.Domain.StudentAggregate
     {
         private readonly List<ClassId> _classIds = new();
 
-        private readonly List<AssignmentId> _assignmentIds = new();
-
-        private readonly List<ExamId> _examIds = new();
-
         private readonly List<SubmittionAssignmentId> _submittionAssignmentIds = new();
 
         private readonly List<SubmittionExamId> _submittionExamIds = new();
@@ -24,10 +20,6 @@ namespace ThinkQuiz.Domain.StudentAggregate
         public UserId UserId { get; private set; }
 
         public IReadOnlyList<ClassId> ClassIds => _classIds.AsReadOnly();
-
-        public IReadOnlyList<AssignmentId> AssignmentIds => _assignmentIds.AsReadOnly();
-
-        public IReadOnlyList<ExamId> ExamIds => _examIds.AsReadOnly();
 
         public IReadOnlyList<SubmittionAssignmentId> SubmittionAssignmentIds => _submittionAssignmentIds.AsReadOnly();
 

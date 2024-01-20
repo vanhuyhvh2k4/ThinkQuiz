@@ -1,11 +1,20 @@
-﻿using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
+﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
+using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
 using ThinkQuiz.Domain.Common.Models;
+using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
+using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
 using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
 
 namespace ThinkQuiz.Domain.ClassAggregate
 {
     public class Class : AggregateRoot<ClassId, Guid>
 	{
+        private readonly List<StudentId> _studentIds = new();
+
+        private readonly List<AssignmentId> _assignmentIds = new();
+
+        private readonly List<ExamId> _examIds = new();
+
         public TeacherId TeacherId { get; private set; }
 
         public string Name { get; private set; }
@@ -15,6 +24,12 @@ namespace ThinkQuiz.Domain.ClassAggregate
         public double StudentQuantity { get; private set; } = 0;
 
         public bool IsDeleted { get; private set; } = false;
+
+        public IReadOnlyList<StudentId> StudentIds => _studentIds.AsReadOnly();
+
+        public IReadOnlyList<AssignmentId> AssignmentIds => _assignmentIds.AsReadOnly();
+
+        public IReadOnlyList<ExamId> ExamIds => _examIds.AsReadOnly();
 
         public DateTime CreatedAt { get; private set; }
 
