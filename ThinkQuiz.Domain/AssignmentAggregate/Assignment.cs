@@ -1,11 +1,17 @@
 ﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
+using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
 using ThinkQuiz.Domain.Common.Models;
+using ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects;
 using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
 
 namespace ThinkQuiz.Domain.AssignmentAggregate
 {
     public class Assignment : AggregateRoot<AssignmentId, Guid>
 	{
+        private readonly List<ClassId> _classIds = new();
+
+        private readonly List<SubmittionAssignmentId> _submittionAssignmentIds = new();
+
         public TeacherId AuthorId { get; private set; }
 
         public string Name { get; private set; }
@@ -19,6 +25,10 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
         public string FileUrl { get; private set; }
 
         public bool IsDeleted { get; private set; } = false;
+
+        public IReadOnlyList<ClassId> ClassIds => _classIds.AsReadOnly();
+
+        public IReadOnlyList<SubmittionAssignmentId> SubmittionAssignmentIds => _submittionAssignmentIds.AsReadOnly();
 
         public DateTime CreatedAt { get; private set; }
 
