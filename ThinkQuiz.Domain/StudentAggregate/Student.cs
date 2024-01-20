@@ -1,7 +1,5 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
+﻿using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
 using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
 using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects;
 using ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects;

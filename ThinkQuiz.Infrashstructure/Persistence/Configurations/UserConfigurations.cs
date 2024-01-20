@@ -14,6 +14,8 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
         private void ConfigUserTable(EntityTypeBuilder<User> builder)
         {
+            builder.ToTable("Users");
+
             builder.HasKey(ub => ub.Id);
 
             builder.Property(ub => ub.Id)
