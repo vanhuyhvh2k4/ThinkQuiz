@@ -1,11 +1,10 @@
-﻿using System;
-using ThinkQuiz.Domain.Common.Models;
+﻿using ThinkQuiz.Domain.Common.Models;
 using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
 using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
 
 namespace ThinkQuiz.Domain.ExamAggregate
 {
-	public class Exam : AggregateRoot<ExamId, Guid>
+    public class Exam : AggregateRoot<ExamId, Guid>
 	{
         public TeacherId AuthorId { get; private set; }
 
@@ -13,7 +12,7 @@ namespace ThinkQuiz.Domain.ExamAggregate
 
         public string? Password{ get; private set; }
 
-        public bool IsPublish { get; private set; } = true;
+        public bool IsPublish { get; private set; } = false;
 
         public bool IsWrap { get; private set; } = false;
 

@@ -50,6 +50,10 @@ namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
                 answerUrl,
                 DateTime.Now);
         }
+
+#pragma warning disable CS8618
+        private SubmittionAssignment() { }
+#pragma warning restore CS8618
     }
 }
 
