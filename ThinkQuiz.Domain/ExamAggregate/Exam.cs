@@ -1,11 +1,20 @@
-﻿using ThinkQuiz.Domain.Common.Models;
+﻿using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
+using ThinkQuiz.Domain.Common.Models;
+using ThinkQuiz.Domain.ExamAggregate.Entities;
 using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
+using ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects;
 using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
 
 namespace ThinkQuiz.Domain.ExamAggregate
 {
     public class Exam : AggregateRoot<ExamId, Guid>
 	{
+        private readonly List<Question> _questions = new();
+
+        private readonly List<ClassId> _classIds = new();
+
+        private readonly List<SubmittionExamId> _submittionExamIds = new();
+
         public TeacherId AuthorId { get; private set; }
 
         public string Name { get; private set; }
@@ -29,6 +38,12 @@ namespace ThinkQuiz.Domain.ExamAggregate
         public DateTime EndTime { get; private set; }
 
         public int Duration { get; private set; }
+
+        public IReadOnlyList<Question> Questions => _questions.AsReadOnly();
+
+        public IReadOnlyList<ClassId> ClassIds => _classIds.AsReadOnly();
+
+        public IReadOnlyList<SubmittionExamId> SubmittionExamIds => _submittionExamIds.AsReadOnly();
 
         public DateTime CreatedAt { get; private set; }
 
