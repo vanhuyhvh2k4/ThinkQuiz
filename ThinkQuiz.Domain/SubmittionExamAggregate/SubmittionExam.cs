@@ -1,15 +1,12 @@
-﻿using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
-using ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.SubmittionExamAggregate
+﻿namespace ThinkQuiz.Domain.SubmittionExamAggregate
 {
-    public class SubmittionExam : AggregateRoot<SubmittionExamId, Guid>
+    public class SubmittionExam
 	{
-        public StudentId StudentId { get; private set; }
+        public Guid Id { get; private set; }
 
-        public ExamId ExamId { get; private set; }
+        public Guid StudentId { get; private set; }
+
+        public Guid ExamId { get; private set; }
 
         public double? Point { get; private set; }
 
@@ -18,24 +15,23 @@ namespace ThinkQuiz.Domain.SubmittionExamAggregate
         public DateTime? UpdatedAt { get; private set; }
 
         private SubmittionExam(
-            SubmittionExamId id,
-            StudentId studentId,
-            ExamId examId,
-            DateTime createdAt) : base(id)
+            Guid id,
+            Guid studentId,
+            Guid examId,
+            DateTime createdAt)
         {
+            Id = id;
             StudentId = studentId;
             ExamId = examId;
             CreatedAt = createdAt;
         }
 
         public static SubmittionExam Create(
-            SubmittionExamId id,
-            StudentId studentId,
-            ExamId examId,
-            DateTime createdAt)
+            Guid studentId,
+            Guid examId)
         {
             return new(
-                SubmittionExamId.CreateUnique(),
+                Guid.NewGuid(),
                 studentId,
                 examId,
                 DateTime.Now);

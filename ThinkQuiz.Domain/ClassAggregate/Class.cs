@@ -1,21 +1,10 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
-using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
-using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.ClassAggregate
+﻿namespace ThinkQuiz.Domain.ClassAggregate
 {
-    public class Class : AggregateRoot<ClassId, Guid>
+    public class Class
 	{
-        private readonly List<StudentId> _studentIds = new();
+        public Guid Id { get; private set; }
 
-        private readonly List<AssignmentId> _assignmentIds = new();
-
-        private readonly List<ExamId> _examIds = new();
-
-        public TeacherId TeacherId { get; private set; }
+        public Guid TeacherId { get; private set; }
 
         public string Name { get; private set; }
 
@@ -25,24 +14,19 @@ namespace ThinkQuiz.Domain.ClassAggregate
 
         public bool IsDeleted { get; private set; } = false;
 
-        public IReadOnlyList<StudentId> StudentIds => _studentIds.AsReadOnly();
-
-        public IReadOnlyList<AssignmentId> AssignmentIds => _assignmentIds.AsReadOnly();
-
-        public IReadOnlyList<ExamId> ExamIds => _examIds.AsReadOnly();
-
         public DateTime CreatedAt { get; private set; }
 
         public DateTime? UpdatedAt { get; private set; }
 
         private Class(
-            ClassId id,
-            TeacherId teacherId,
+            Guid id,
+            Guid teacherId,
             string name,
             string schoolYear,
             DateTime createdAt
-            ) : base(id)
+            )
         {
+            Id = id;
             TeacherId = teacherId;
             Name = name;
             SchoolYear = schoolYear;
@@ -50,12 +34,12 @@ namespace ThinkQuiz.Domain.ClassAggregate
         }
 
         public static Class Create(
-            TeacherId teacherId,
+            Guid teacherId,
             string name,
             string schoolYear)
         {
             return new(
-                ClassId.CreateUnique(),
+                Guid.NewGuid(),
                 teacherId,
                 name,
                 schoolYear,

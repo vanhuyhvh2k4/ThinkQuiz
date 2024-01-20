@@ -1,21 +1,10 @@
-﻿using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
-using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.Entities;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-using ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects;
-using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.ExamAggregate
+﻿namespace ThinkQuiz.Domain.ExamAggregate
 {
-    public class Exam : AggregateRoot<ExamId, Guid>
+    public class Exam
 	{
-        private readonly List<Question> _questions = new();
+        public Guid Id { get; private set; }
 
-        private readonly List<ClassId> _classIds = new();
-
-        private readonly List<SubmittionExamId> _submittionExamIds = new();
-
-        public TeacherId AuthorId { get; private set; }
+        public Guid TeacherId { get; private set; }
 
         public string Name { get; private set; }
 
@@ -39,19 +28,13 @@ namespace ThinkQuiz.Domain.ExamAggregate
 
         public int Duration { get; private set; }
 
-        public IReadOnlyList<Question> Questions => _questions.AsReadOnly();
-
-        public IReadOnlyList<ClassId> ClassIds => _classIds.AsReadOnly();
-
-        public IReadOnlyList<SubmittionExamId> SubmittionExamIds => _submittionExamIds.AsReadOnly();
-
         public DateTime CreatedAt { get; private set; }
 
         public DateTime? UpdatedAt { get; private set; }
 
         private Exam(
-            ExamId id,
-            TeacherId authorId,
+            Guid id,
+            Guid teacherId,
             string name,
             string password,
             bool isPublish,
@@ -62,9 +45,10 @@ namespace ThinkQuiz.Domain.ExamAggregate
             DateTime startTime,
             DateTime endTime,
             int duration,
-            DateTime createdAt) : base(id)
+            DateTime createdAt)
         {
-            AuthorId = authorId;
+            Id = id;
+            TeacherId = teacherId;
             Name = name;
             Password = password;
             IsPublish = isPublish;
@@ -79,7 +63,7 @@ namespace ThinkQuiz.Domain.ExamAggregate
         }
 
         public static Exam Create(
-            TeacherId authorId,
+            Guid authorId,
             string name,
             string password,
             bool isPublish,
@@ -92,7 +76,7 @@ namespace ThinkQuiz.Domain.ExamAggregate
             int duration)
         {
             return new(
-                ExamId.CreateUnique(),
+                Guid.NewGuid(),
                 authorId,
                 name,
                 password,

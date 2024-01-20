@@ -1,11 +1,10 @@
-﻿using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.ExamAggregate.Entities
+﻿namespace ThinkQuiz.Domain.ExamAggregate.Entities
 {
-    public class Question : Entity<QuestionId>
+    public class Question
 	{
-        private readonly List<Choice> _choices = new();
+        public Guid Id { get; private set; }
+
+        public Guid ExamId { get; private set; }
 
         public int Number { get; private set; }
 
@@ -13,30 +12,33 @@ namespace ThinkQuiz.Domain.ExamAggregate.Entities
 
         public double Point { get; private set; }
 
-        public ChoiceId CorrectAnswer { get; private set; }
+        public Guid CorrectAnswer { get; private set; }
 
         public bool IsDeleted { get; private set; } = false;
 
-        public IReadOnlyList<Choice> Choices => _choices.AsReadOnly();
-
         private Question(
-            QuestionId id,
+            Guid id,
+            Guid examId,
             int number,
             string title,
-            double point) : base(id)
+            double point)
         {
+            Id = id;
+            ExamId = examId;
             Number = number;
             Title = title;
             Point = point;
         }
 
         public static Question Create(
+            Guid examId,
             int number,
             string title,
             double point)
         {
             return new(
-                QuestionId.CreateUnique(),
+                Guid.NewGuid(),
+                examId,
                 number,
                 title,
                 point);

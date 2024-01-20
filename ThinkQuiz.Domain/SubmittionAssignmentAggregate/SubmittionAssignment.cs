@@ -1,15 +1,12 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
-using ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
+﻿namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
 {
-    public class SubmittionAssignment : AggregateRoot<SubmittionAssignmentId, Guid>
+    public class SubmittionAssignment
 	{
-        public StudentId StudentId { get; private set; }
+        public Guid Id { get; private set; }
 
-        public AssignmentId AssignmentId { get; private set; }
+        public Guid StudentId { get; private set; }
+
+        public Guid AssignmentId { get; private set; }
 
         public string AnswerUrl { get; private set; }
 
@@ -26,12 +23,13 @@ namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
         public DateTime? UpdatedAt { get; private set; }
 
         private SubmittionAssignment(
-            SubmittionAssignmentId id,
-            StudentId studentId,
-            AssignmentId assignmentId,
+            Guid id,
+            Guid studentId,
+            Guid assignmentId,
             string answerUrl,
-            DateTime createdAt) : base(id)
+            DateTime createdAt)
         {
+            Id = id;
             StudentId = studentId;
             AssignmentId = assignmentId;
             AnswerUrl = answerUrl;
@@ -39,12 +37,12 @@ namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
         }
 
         public static SubmittionAssignment Create(
-            StudentId studentId,
-            AssignmentId assignmentId,
+            Guid studentId,
+            Guid assignmentId,
             string answerUrl)
         {
             return new(
-                SubmittionAssignmentId.CreateUnique(),
+                Guid.NewGuid(),
                 studentId,
                 assignmentId,
                 answerUrl,

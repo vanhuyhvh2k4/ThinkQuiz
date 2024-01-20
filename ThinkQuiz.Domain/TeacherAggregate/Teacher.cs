@@ -1,43 +1,27 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
-using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
-using ThinkQuiz.Domain.UserAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.TeacherAggregate
+﻿namespace ThinkQuiz.Domain.TeacherAggregate
 {
-    public class Teacher : AggregateRoot<TeacherId, Guid>
+    public class Teacher
 	{
-        private readonly List<ClassId> _classIds = new();
+        public Guid Id { get; private set; }
 
-        private readonly List<AssignmentId> _assignmentIds = new();
-
-        private readonly List<ExamId> _examIds = new();
-
-		public UserId UserId { get; private set; }
+        public Guid UserId { get; private set; }
 
 		public string Position { get; private set; }
 
 		public string SchoolInforamtion { get; private set; }
-
-        public IReadOnlyList<ClassId> ClassIds => _classIds.AsReadOnly();
-
-        public IReadOnlyList<AssignmentId> AssignmentIds => _assignmentIds.AsReadOnly();
-
-        public IReadOnlyList<ExamId> ExamIds => _examIds.AsReadOnly();
 
         public DateTime CreatedAt { get; private set; }
 
 		public DateTime? UpdatedAt { get; private set; }
 
         private Teacher(
-            TeacherId id,
-            UserId userId,
+            Guid id,
+            Guid userId,
             string position,
             string schoolInformation,
-            DateTime createdAt) : base(id)
+            DateTime createdAt)
         {
+            Id = id;
             UserId = userId;
             Position = position;
             SchoolInforamtion = schoolInformation;
@@ -45,13 +29,13 @@ namespace ThinkQuiz.Domain.TeacherAggregate
         }
 
         public static Teacher Create(
-            UserId userId,
+            Guid userId,
             string position,
             string schoolInformation
             )
         {
             return new(
-                TeacherId.CreateUnique(),
+                Guid.NewGuid(),
                 userId,
                 position,
                 schoolInformation,

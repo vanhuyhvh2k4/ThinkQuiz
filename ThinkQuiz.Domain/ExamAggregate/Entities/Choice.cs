@@ -1,10 +1,11 @@
-﻿using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.ExamAggregate.Entities
+﻿namespace ThinkQuiz.Domain.ExamAggregate.Entities
 {
-    public class Choice : Entity<ChoiceId>
+    public class Choice
 	{
+        public Guid Id { get; private set; }
+
+        public Guid QuestionId { get; private set; }
+
         public int Number { get; private set; }
 
         public string Title { get; private set; }
@@ -12,20 +13,25 @@ namespace ThinkQuiz.Domain.ExamAggregate.Entities
         public bool IsDeleted { get; private set; } = false;
 
         private Choice(
-            ChoiceId id,
+            Guid id,
+            Guid questionId,
             int number,
-            string title) : base(id)
+            string title)
         {
+            Id = id;
+            QuestionId = questionId;
             Number = number;
             Title = title;
         }
 
         public static Choice Create(
+            Guid quesiontId,
             int number,
             string title)
         {
             return new(
-                ChoiceId.CreateUnique(),
+                Guid.NewGuid(),
+                quesiontId,
                 number,
                 title);
         }
