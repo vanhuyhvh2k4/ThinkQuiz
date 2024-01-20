@@ -16,6 +16,8 @@
     <None Remove="Common\Exceptions\Authentication\" />
     <None Remove="TeacherAggregate\" />
     <None Remove="TeacherAggregate\ValueObjects\" />
+    <None Remove="StudentAggregate\" />
+    <None Remove="StudentAggregate\ValueObjects\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -27,6 +29,8 @@
     <Folder Include="Common\Exceptions\Authentication\" />
     <Folder Include="TeacherAggregate\" />
     <Folder Include="TeacherAggregate\ValueObjects\" />
+    <Folder Include="StudentAggregate\" />
+    <Folder Include="StudentAggregate\ValueObjects\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.9.0" />
