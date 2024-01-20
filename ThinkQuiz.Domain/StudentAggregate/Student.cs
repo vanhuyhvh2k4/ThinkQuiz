@@ -10,17 +10,15 @@ namespace ThinkQuiz.Domain.StudentAggregate
 
         public DateTime CreatedAt { get; private set; }
 
-        public DateTime UpdatedAt { get; private set; }
+        public DateTime? UpdatedAt { get; private set; }
 
         private Student(
             StudentId id,
             UserId userId,
-            DateTime createdAt,
-            DateTime updatedAt) : base(id)
+            DateTime createdAt) : base(id)
         {
             UserId = userId;
             CreatedAt = createdAt;
-            UpdatedAt = updatedAt;
         }
 
         public static Student Create(UserId userId)
@@ -28,7 +26,6 @@ namespace ThinkQuiz.Domain.StudentAggregate
             return new(
                 StudentId.CreateUnique(),
                 userId,
-                DateTime.Now,
                 DateTime.Now);
         }
 
