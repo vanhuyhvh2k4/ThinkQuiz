@@ -22,6 +22,9 @@
     <None Remove="ClassAggregate\ValueObjects\" />
     <None Remove="AssignmentAggregate\" />
     <None Remove="AssignmentAggregate\ValueObjects\" />
+    <None Remove="ExamAggregate\" />
+    <None Remove="ExamAggregate\ValueObjects\" />
+    <None Remove="ExamAggregate\Entities\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -39,6 +42,9 @@
     <Folder Include="ClassAggregate\ValueObjects\" />
     <Folder Include="AssignmentAggregate\" />
     <Folder Include="AssignmentAggregate\ValueObjects\" />
+    <Folder Include="ExamAggregate\" />
+    <Folder Include="ExamAggregate\ValueObjects\" />
+    <Folder Include="ExamAggregate\Entities\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.9.0" />
