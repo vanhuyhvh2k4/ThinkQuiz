@@ -157,4 +157,3 @@
 /Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/obj/Debug/net7.0/ThinkQuiz.Api.genruntimeconfig.cache
 /Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/obj/Debug/net7.0/ref/ThinkQuiz.Api.dll
 /Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/BCrypt.Net-Core.dll
-/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/obj/Debug/net7.0/ThinkQuiz.Api.sourcelink.json

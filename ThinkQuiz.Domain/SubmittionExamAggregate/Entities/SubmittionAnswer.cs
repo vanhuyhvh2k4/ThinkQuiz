@@ -1,36 +1,35 @@
-﻿using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-using ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.SubmittionExamAggregate.Entities
+﻿namespace ThinkQuiz.Domain.SubmittionExamAggregate.Entities
 {
-    public class SubmittionAnswer : Entity<SubmittionAnswerId>
+    public class SubmittionAnswer
 	{
-        public QuestionId QuestionId { get; private set; }
+        public Guid Id { get; private set; }
 
-        public ChoiceId ChoiceId { get; private set; }
+        public Guid QuestionId { get; private set; }
+
+        public Guid ChoiceId { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
         public DateTime? UpdatedAt { get; private set; }
 
         private SubmittionAnswer(
-            SubmittionAnswerId id,
-            QuestionId questionId,
-            ChoiceId choiceId,
-            DateTime createdAt) : base(id)
+            Guid id,
+            Guid questionId,
+            Guid choiceId,
+            DateTime createdAt)
         {
+            Id = id;
             QuestionId = questionId;
             ChoiceId = choiceId;
             CreatedAt = createdAt;
         }
 
         public static SubmittionAnswer Create(
-            QuestionId questionId,
-            ChoiceId choiceId)
+            Guid questionId,
+            Guid choiceId)
         {
             return new(
-                SubmittionAnswerId.CreateUnique(),
+                Guid.NewGuid(),
                 questionId,
                 choiceId,
                 DateTime.Now);
