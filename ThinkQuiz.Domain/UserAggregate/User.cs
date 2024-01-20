@@ -1,4 +1,6 @@
 ﻿using ThinkQuiz.Domain.Common.Models;
+using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
+using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
 using ThinkQuiz.Domain.UserAggregate.ValueObjects;
 
 namespace ThinkQuiz.Domain.UserAggregate
@@ -18,6 +20,10 @@ namespace ThinkQuiz.Domain.UserAggregate
         public string? Phone { get; private set; }
 
         public DateTime LastLogin { get; private set; }
+
+        public StudentId StudentId { get; private set; }
+
+        public TeacherId TeacherId { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
