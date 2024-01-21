@@ -40,7 +40,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
         {
             builder.OwnsMany(tb => tb.ClassIds, cb =>
             {
-                cb.ToTable("TeacherClasses");
+                cb.ToTable("TeacherClassIds");
 
                 cb.WithOwner().HasForeignKey("TeacherId");
 
@@ -59,7 +59,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
         {
             builder.OwnsMany(tb => tb.AssignmentIds, ab =>
             {
-                ab.ToTable("TeacherAssignments");
+                ab.ToTable("TeacherAssignmentIds");
 
                 ab.WithOwner().HasForeignKey("AuthorId");
 
@@ -78,7 +78,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
         {
             builder.OwnsMany(tb => tb.ExamIds, eb =>
             {
-                eb.ToTable("TeacherExams");
+                eb.ToTable("TeacherExamIds");
 
                 eb.WithOwner().HasForeignKey("AuthorId");
 
