@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ThinkQuiz.Domain.AssignmentAggregate;
+using ThinkQuiz.Domain.ClassAggregate;
 using ThinkQuiz.Domain.ExamAggregate;
 using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
@@ -28,6 +29,8 @@ namespace ThinkQuiz.Infrashstructure.Persistence
         public DbSet<SubmittionAssignment> SubmittionAssignments { get; set; }
 
         public DbSet<SubmittionExam> SubmittionExams { get; set; }
+
+        public DbSet<Class> Classes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
