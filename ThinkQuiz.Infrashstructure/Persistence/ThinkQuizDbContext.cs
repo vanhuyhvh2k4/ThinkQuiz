@@ -3,6 +3,7 @@ using ThinkQuiz.Domain.AssignmentAggregate;
 using ThinkQuiz.Domain.ExamAggregate;
 using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
+using ThinkQuiz.Domain.SubmittionExamAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 using ThinkQuiz.Domain.UserAggregate;
 
@@ -25,6 +26,8 @@ namespace ThinkQuiz.Infrashstructure.Persistence
         public DbSet<Assignment> Assignments { get; set; }
 
         public DbSet<SubmittionAssignment> SubmittionAssignments { get; set; }
+
+        public DbSet<SubmittionExam> SubmittionExams { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
