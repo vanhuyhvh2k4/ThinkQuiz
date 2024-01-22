@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThinkQuiz.Infrashstructure.Persistence;
 
@@ -10,9 +11,11 @@ using ThinkQuiz.Infrashstructure.Persistence;
 namespace ThinkQuiz.Infrashstructure.Migrations
 {
     [DbContext(typeof(ThinkQuizDbContext))]
-    partial class ThinkQuizDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240122052451_AssignmentCreate")]
+    partial class AssignmentCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,48 +150,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students", (string)null);
-                });
-
-            modelBuilder.Entity("ThinkQuiz.Domain.SubmittionAssignmentAggregate.SubmittionAssignment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("AnswerUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<Guid>("AssignmentId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Comment")
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsShowPoint")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsSubmitAgain")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(false);
-
-                    b.Property<double?>("Point")
-                        .HasColumnType("double");
-
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SubmittionAssignments", (string)null);
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.TeacherAggregate.Teacher", b =>
