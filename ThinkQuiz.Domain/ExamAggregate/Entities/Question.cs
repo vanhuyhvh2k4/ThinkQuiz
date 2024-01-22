@@ -13,7 +13,7 @@ namespace ThinkQuiz.Domain.ExamAggregate.Entities
 
         public double Point { get; private set; }
 
-        public ChoiceId CorrectAnswer { get; private set; }
+        public Guid CorrectAnswer { get; private set; }
 
         public bool IsDeleted { get; private set; } = false;
 

@@ -3,9 +3,9 @@ using ThinkQuiz.Domain.Common.Models;
 
 namespace ThinkQuiz.Domain.ExamAggregate.ValueObjects
 {
-    public class QuestionId : AggregateRootId<Guid>
+    public class QuestionId : ValueObject
     {
-        public override Guid Value { get; protected set; }
+        public Guid Value { get; protected set; }
 
         private QuestionId(Guid value)
         {

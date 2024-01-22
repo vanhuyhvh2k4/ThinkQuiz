@@ -106,6 +106,10 @@ namespace ThinkQuiz.Domain.ExamAggregate
                 duration,
                 DateTime.Now);
         }
+
+#pragma warning disable CS8618
+        private Exam() { }
+#pragma warning restore CS8618
     }
 }
 
