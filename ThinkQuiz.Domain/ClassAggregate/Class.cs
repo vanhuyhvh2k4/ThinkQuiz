@@ -9,7 +9,9 @@ namespace ThinkQuiz.Domain.ClassAggregate
 	{
         public Guid Id { get; private set; }
 
-        public Teacher Teacher { get; private set; }
+        public Guid TeacherId { get; private set; }
+
+        public Teacher Teacher { get; private set; } = null!;
 
         public string Name { get; private set; }
 
@@ -19,11 +21,11 @@ namespace ThinkQuiz.Domain.ClassAggregate
 
         public bool IsDeleted { get; private set; } = false;
 
-        public List<ClassStudent>? ClassStudents { get; private set; }
+        public ICollection<ClassStudent>? ClassStudents { get; private set; }
 
-        public List<ClassAssignment>? ClassAssignments { get; private set; }
+        public ICollection<ClassAssignment>? ClassAssignments { get; private set; }
 
-        public List<ClassExam>? ClassExams { get; private set; }
+        public ICollection<ClassExam>? ClassExams { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
@@ -31,27 +33,27 @@ namespace ThinkQuiz.Domain.ClassAggregate
 
         private Class(
             Guid id,
-            Teacher teacher,
+            Guid teacherId,
             string name,
             string schoolYear,
             DateTime createdAt
             )
         {
             Id = id;
-            Teacher = teacher;
+            TeacherId = teacherId;
             Name = name;
             SchoolYear = schoolYear;
             CreatedAt = createdAt;
         }
 
         public static Class Create(
-            Teacher teacher,
+            Guid teacherId,
             string name,
             string schoolYear)
         {
             return new(
                 Guid.NewGuid(),
-                teacher,
+                teacherId,
                 name,
                 schoolYear,
                 DateTime.Now);

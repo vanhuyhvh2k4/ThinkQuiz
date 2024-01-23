@@ -8,13 +8,17 @@ namespace ThinkQuiz.Domain.SubmittionExamAggregate
 	{
         public Guid Id { get; private set; }
 
-        public Student Student { get; private set; }
+        public Guid StudentId { get; private set; }
 
-        public Exam Exam { get; private set; }
+        public Student Student { get; private set; } = null!;
+
+        public Guid ExamId { get; private set; }
+
+        public Exam Exam { get; private set; } = null!;
 
         public double? Point { get; private set; }
 
-        public List<SubmittionExamAnswer> SubmittionExamAnswers { get; private set; }
+        public ICollection<SubmittionExamAnswer> SubmittionExamAnswers { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
@@ -22,27 +26,27 @@ namespace ThinkQuiz.Domain.SubmittionExamAggregate
 
         private SubmittionExam(
             Guid id,
-            Student student,
-            Exam exam,
-            List<SubmittionExamAnswer> submittionExamAnswers,
+            Guid studentId,
+            Guid examId,
+            ICollection<SubmittionExamAnswer> submittionExamAnswers,
             DateTime createdAt)
         {
             Id = id;
-            Student = student;
-            Exam = exam;
+            StudentId = studentId;
+            ExamId = examId;
             SubmittionExamAnswers = submittionExamAnswers;
             CreatedAt = createdAt;
         }
 
         public static SubmittionExam Create(
-            Student student,
-            Exam exam,
-            List<SubmittionExamAnswer> submittionExamAnswers)
+            Guid studentId,
+            Guid examId,
+            ICollection<SubmittionExamAnswer> submittionExamAnswers)
         {
             return new(
                 Guid.NewGuid(),
-                student,
-                exam,
+                studentId,
+                examId,
                 submittionExamAnswers,
                 DateTime.Now);
         }

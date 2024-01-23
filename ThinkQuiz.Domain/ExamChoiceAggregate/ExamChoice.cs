@@ -6,7 +6,9 @@ namespace ThinkQuiz.Domain.ExamChoiceAggregate
     {
         public Guid Id { get; private set; }
 
-        public ExamQuestion ExamQuestion { get; private set; }
+        public Guid QuestionId { get; private set; }
+
+        public ExamQuestion ExamQuestion { get; private set; } = null!;
 
         public int Number { get; private set; }
 
@@ -16,24 +18,24 @@ namespace ThinkQuiz.Domain.ExamChoiceAggregate
 
         private ExamChoice(
             Guid id,
-            ExamQuestion examQuestion,
+            Guid questionId,
             int number,
             string title)
         {
             Id = id;
-            ExamQuestion = examQuestion;
+            QuestionId = questionId;
             Number = number;
             Title = title;
         }
 
         public static ExamChoice Create(
-            ExamQuestion examQuestion,
+            Guid questionId,
             int number,
             string title)
         {
             return new(
                 Guid.NewGuid(),
-                examQuestion,
+                questionId,
                 number,
                 title);
         }

@@ -8,7 +8,9 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
 	{
         public Guid Id { get; private set; }
 
-        public Teacher Teacher { get; private set; }
+        public Guid TeacherId { get; private set; }
+
+        public Teacher Teacher { get; private set; } = null!;
 
         public string Name { get; private set; }
 
@@ -22,9 +24,9 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
 
         public bool IsDeleted { get; private set; } = false;
 
-        public List<ClassAssignment>? ClassAssignments { get; private set; }
+        public ICollection<ClassAssignment>? ClassAssignments { get; private set; }
 
-        public List<SubmittionAssignment>? SubmittionAssignments { get; private set; }
+        public ICollection<SubmittionAssignment>? SubmittionAssignments { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
@@ -32,7 +34,7 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
 
         private Assignment(
             Guid id,
-            Teacher teacher,
+            Guid teacherId,
             string name,
             DateTime startTime,
             DateTime endTime,
@@ -41,7 +43,7 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
             DateTime createdAt)
         {
             Id = id;
-            Teacher = teacher;
+            TeacherId = teacherId;
             Name = name;
             StartTime = startTime;
             EndTime = endTime;
@@ -51,7 +53,7 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
         }
 
         public static Assignment Create(
-            Teacher teacher,
+            Guid teacherId,
             string name,
             DateTime startTime,
             DateTime endTime,
@@ -60,7 +62,7 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
         {
             return new(
                 Guid.NewGuid(),
-                teacher,
+                teacherId,
                 name,
                 startTime,
                 endTime,

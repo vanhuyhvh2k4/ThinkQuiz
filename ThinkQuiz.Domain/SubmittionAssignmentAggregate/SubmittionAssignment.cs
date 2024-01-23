@@ -7,9 +7,13 @@ namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
 	{
         public Guid Id { get; private set; }
 
-        public Student Student { get; private set; }
+        public Guid StudentId { get; private set; }
 
-        public Assignment Assignment { get; private set; }
+        public Student Student { get; private set; } = null!;
+
+        public Guid AssignmentId { get; private set; }
+
+        public Assignment Assignment { get; private set; } = null!;
 
         public string AnswerUrl { get; private set; }
 
@@ -27,27 +31,27 @@ namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
 
         private SubmittionAssignment(
             Guid id,
-            Student student,
-            Assignment assignment,
+            Guid studentId,
+            Guid assignmentId,
             string answerUrl,
             DateTime createdAt)
         {
             Id = id;
-            Student = student;
-            Assignment = assignment;
+            StudentId = studentId;
+            AssignmentId = assignmentId;
             AnswerUrl = answerUrl;
             CreatedAt = createdAt;
         }
 
         public static SubmittionAssignment Create(
-            Student student,
-            Assignment assignment,
+            Guid studentId,
+            Guid assignmentId,
             string answerUrl)
         {
             return new(
                 Guid.NewGuid(),
-                student,
-                assignment,
+                studentId,
+                assignmentId,
                 answerUrl,
                 DateTime.Now);
         }

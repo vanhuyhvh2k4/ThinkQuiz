@@ -5,19 +5,23 @@ namespace ThinkQuiz.Domain.ClassAssignmentAggregate
 {
     public class ClassAssignment
 	{
-		public Class Class { get; private set; }
+		public Guid ClassId { get; private set; }
 
-		public Assignment Assignment { get; private set; }
+		public Guid AssignmentId { get; private set; }
 
-		private ClassAssignment(Class @class, Assignment assignment)
+		public Class Class { get; private set; } = null!;
+
+		public Assignment Assignment { get; private set; } = null!;
+
+		private ClassAssignment(Guid classId, Guid assignmentId)
 		{
-			Class = @class;
-			Assignment = assignment;
+			ClassId = classId;
+			AssignmentId = assignmentId;
 		}
 
-		public static ClassAssignment Create(Class @class, Assignment assignment)
+		public static ClassAssignment Create(Guid classId, Guid assignmentId)
 		{
-			return new(@class, assignment);
+			return new(classId, assignmentId);
 		}
 
 #pragma warning disable CS8618

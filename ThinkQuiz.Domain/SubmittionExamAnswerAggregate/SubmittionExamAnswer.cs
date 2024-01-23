@@ -1,10 +1,14 @@
-﻿namespace ThinkQuiz.Domain.SubmittionExamAnswerAggregate
+﻿using ThinkQuiz.Domain.ExamQuestionAggregate;
+
+namespace ThinkQuiz.Domain.SubmittionExamAnswerAggregate
 {
     public class SubmittionExamAnswer
     {
         public Guid Id { get; private set; }
 
         public Guid QuestionId { get; private set; }
+
+        public ExamQuestion ExamQuestion { get; private set; } = null!;
 
         public Guid ChoiceId { get; private set; }
 

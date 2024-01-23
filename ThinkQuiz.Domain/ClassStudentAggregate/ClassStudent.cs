@@ -5,24 +5,28 @@ namespace ThinkQuiz.Domain.ClassStudentAggregate
 {
     public class ClassStudent
 	{
-		public Student Student { get; private set; }
+		public Guid StudentId { get; private set; }
 
-		public Class Class { get; private set; }
+		public Guid ClassId { get; private set; }
+
+		public Student Student { get; private set; } = null!;
+
+		public Class Class { get; private set; } = null!;
 
 		public DateTime CreatedAt { get; private set; }
 
 		public DateTime? UpdatedAt { get; private set; }
 
-		private ClassStudent(Student student, Class @class, DateTime createdAt)
+		private ClassStudent(Guid studentId, Guid classId, DateTime createdAt)
 		{
-			Student = student;
-			Class = @class;
+			StudentId = studentId;
+			ClassId = classId;
 			CreatedAt = createdAt;
 		}
 
-		public static ClassStudent Create(Student student, Class @class)
+		public static ClassStudent Create(Guid studentId, Guid classId)
 		{
-			return new(student, @class, DateTime.Now);
+			return new(studentId, classId, DateTime.Now);
 		}
 
 #pragma warning disable CS8618

@@ -7,7 +7,9 @@ namespace ThinkQuiz.Domain.ExamQuestionAggregate
     {
         public Guid Id { get; private set; }
 
-        public Exam Exam { get; private set; }
+        public Guid ExamId { get; private set; }
+
+        public Exam Exam { get; private set; } = null!;
 
         public int Number { get; private set; }
 
@@ -19,18 +21,18 @@ namespace ThinkQuiz.Domain.ExamQuestionAggregate
 
         public bool IsDeleted { get; private set; } = false;
 
-        public List<ExamChoice> ExamChoices { get; private set; }
+        public ICollection<ExamChoice> ExamChoices { get; private set; }
 
         private ExamQuestion(
             Guid id,
-            Exam exam,
+            Guid examId,
             int number,
             string title,
             double point,
-            List<ExamChoice> examChoices)
+            ICollection<ExamChoice> examChoices)
         {
             Id = id;
-            Exam = exam;
+            ExamId = examId;
             Number = number;
             Title = title;
             Point = point;
@@ -38,15 +40,15 @@ namespace ThinkQuiz.Domain.ExamQuestionAggregate
         }
 
         public static ExamQuestion Create(
-            Exam exam,
+            Guid examId,
             int number,
             string title,
             double point,
-            List<ExamChoice> examChoices)
+            ICollection<ExamChoice> examChoices)
         {
             return new(
                 Guid.NewGuid(),
-                exam,
+                examId,
                 number,
                 title,
                 point,

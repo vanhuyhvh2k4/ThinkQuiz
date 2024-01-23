@@ -9,7 +9,9 @@ namespace ThinkQuiz.Domain.ExamAggregate
 	{
         public Guid Id { get; private set; }
 
-        public Teacher Teacher { get; private set; }
+        public Guid TeacherId { get; private set; }
+
+        public Teacher Teacher { get; private set; } = null!;
 
         public string Name { get; private set; }
 
@@ -33,11 +35,11 @@ namespace ThinkQuiz.Domain.ExamAggregate
 
         public int Duration { get; private set; }
 
-        public List<ClassExam>? ClassExams { get; private set; }
+        public ICollection<ClassExam>? ClassExams { get; private set; }
 
-        public List<SubmittionExam>? SubmittionExams { get; private set; }
+        public ICollection<SubmittionExam>? SubmittionExams { get; private set; }
 
-        public List<ExamQuestion> ExamQuestions { get; private set; }
+        public ICollection<ExamQuestion> ExamQuestions { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
@@ -45,7 +47,7 @@ namespace ThinkQuiz.Domain.ExamAggregate
 
         private Exam(
             Guid id,
-            Teacher teacher,
+            Guid teacherId,
             string name,
             string password,
             bool isPublish,
@@ -53,14 +55,14 @@ namespace ThinkQuiz.Domain.ExamAggregate
             bool isShowResult,
             bool isShowPoint,
             int limitAttemptNumber,
-            List<ExamQuestion> examQuestions,
+            ICollection<ExamQuestion> examQuestions,
             DateTime startTime,
             DateTime endTime,
             int duration,
             DateTime createdAt)
         {
             Id = id;
-            Teacher = teacher;
+            TeacherId = teacherId;
             Name = name;
             Password = password;
             IsPublish = isPublish;
@@ -76,7 +78,7 @@ namespace ThinkQuiz.Domain.ExamAggregate
         }
 
         public static Exam Create(
-            Teacher teacher,
+            Guid teacherId,
             string name,
             string password,
             bool isPublish,
@@ -84,14 +86,14 @@ namespace ThinkQuiz.Domain.ExamAggregate
             bool isShowResult,
             bool isShowPoint,
             int limitAttemptNumber,
-            List<ExamQuestion> examQuestions,
+            ICollection<ExamQuestion> examQuestions,
             DateTime startTime,
             DateTime endTime,
             int duration)
         {
             return new(
                 Guid.NewGuid(),
-                teacher,
+                teacherId,
                 name,
                 password,
                 isPublish,

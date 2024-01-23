@@ -9,13 +9,15 @@ namespace ThinkQuiz.Domain.StudentAggregate
     {
         public Guid Id { get; private set; }
 
-        public User User { get; private set; }
+        public Guid UserId { get; private set; }
 
-        public List<ClassStudent>? ClassStudents { get; private set; }
+        public User User { get; private set; } = null!;
 
-        public List<SubmittionExam>? SubmittionExams { get; private set; }
+        public ICollection<ClassStudent>? ClassStudents { get; private set; }
 
-        public List<SubmittionAssignment>? SubmittionAssignments { get; private set; }
+        public ICollection<SubmittionExam>? SubmittionExams { get; private set; }
+
+        public ICollection<SubmittionAssignment>? SubmittionAssignments { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
@@ -23,19 +25,19 @@ namespace ThinkQuiz.Domain.StudentAggregate
 
         private Student(
             Guid id,
-            User user,
+            Guid userId,
             DateTime createdAt)
         {
             Id = id;
-            User = user;
+            UserId = userId;
             CreatedAt = createdAt;
         }
 
-        public static Student Create(User user)
+        public static Student Create(Guid userId)
         {
             return new(
                 Guid.NewGuid(),
-                user,
+                userId,
                 DateTime.Now);
         }
 

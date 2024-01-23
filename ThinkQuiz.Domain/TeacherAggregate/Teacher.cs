@@ -6,48 +6,50 @@ using ThinkQuiz.Domain.UserAggregate;
 namespace ThinkQuiz.Domain.TeacherAggregate
 {
     public class Teacher
-	{
+    {
         public Guid Id { get; private set; }
 
-        public User User { get; private set; }
+        public Guid UserId { get; private set; }
 
-		public string Position { get; private set; }
+        public User User { get; private set; } = null!;
 
-		public string SchoolInforamtion { get; private set; }
+        public string Position { get; private set; }
 
-        public List<Class>? Classes { get; private set; }
+        public string SchoolInforamtion { get; private set; }
 
-        public List<Assignment>? Assignments { get; private set; }
+        public ICollection<Class>? Classes { get; private set; } 
 
-        public List<Exam>? Exams { get; private set; }
+        public ICollection<Assignment>? Assignments { get; private set; } 
+
+        public ICollection<Exam>? Exams { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
-		public DateTime? UpdatedAt { get; private set; }
+        public DateTime? UpdatedAt { get; private set; }
 
         private Teacher(
             Guid id,
-            User user,
+            Guid userId,
             string position,
             string schoolInformation,
             DateTime createdAt)
         {
             Id = id;
-            User = user;
+            UserId = userId;
             Position = position;
             SchoolInforamtion = schoolInformation;
             CreatedAt = createdAt;
         }
 
         public static Teacher Create(
-            User user,
+            Guid userId,
             string position,
             string schoolInformation
             )
         {
             return new(
                 Guid.NewGuid(),
-                user,
+                userId,
                 position,
                 schoolInformation,
                 DateTime.Now);

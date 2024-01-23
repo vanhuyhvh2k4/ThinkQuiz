@@ -5,19 +5,23 @@ namespace ThinkQuiz.Domain.ClassExamAggregate
 {
     public class ClassExam
 	{
-		public Class Class { get; private set; }
+		public Guid ClassId { get; private set; }
 
-		public Exam Exam { get; private set; }
+		public Guid ExamId { get; private set; }
 
-		private ClassExam(Class @class, Exam exam)
+		public Class Class { get; private set; } = null!;
+
+		public Exam Exam { get; private set; } = null!;
+
+		private ClassExam(Guid classId, Guid examId)
 		{
-			Class = @class;
-			Exam = exam;
+			ClassId = classId;
+			ExamId = examId;
 		}
 
-		public static ClassExam Create(Class @class, Exam exam)
+		public static ClassExam Create(Guid classId, Guid examId)
 		{
-			return new(@class, exam);
+			return new(classId, examId);
 		}
 
 #pragma warning disable CS8618
