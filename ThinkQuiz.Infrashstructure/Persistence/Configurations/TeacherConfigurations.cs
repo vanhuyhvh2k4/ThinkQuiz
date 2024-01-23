@@ -16,7 +16,8 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasOne<User>()
                 .WithOne(user => user.Teacher)
-                .HasForeignKey<Teacher>(teacher => teacher.UserId);
+                .HasForeignKey<Teacher>(teacher => teacher.UserId)
+                .IsRequired();
 
             builder.Property(teacher => teacher.Position)
                 .HasMaxLength(100);
