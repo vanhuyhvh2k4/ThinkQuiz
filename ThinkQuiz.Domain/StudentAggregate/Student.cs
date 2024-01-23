@@ -1,4 +1,5 @@
-﻿using ThinkQuiz.Domain.ClassStudentAggregate;
+﻿using ThinkQuiz.Domain.ClassAggregate;
+using ThinkQuiz.Domain.ClassStudentAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
 using ThinkQuiz.Domain.SubmittionExamAggregate;
 using ThinkQuiz.Domain.UserAggregate;
@@ -12,6 +13,8 @@ namespace ThinkQuiz.Domain.StudentAggregate
         public Guid UserId { get; private set; }
 
         public User User { get; private set; } = null!;
+
+        public ICollection<Class>? Classes { get; private set; }
 
         public ICollection<ClassStudent>? ClassStudents { get; private set; }
 

@@ -1,4 +1,7 @@
-﻿namespace ThinkQuiz.Domain.UserAggregate
+﻿using ThinkQuiz.Domain.StudentAggregate;
+using ThinkQuiz.Domain.TeacherAggregate;
+
+namespace ThinkQuiz.Domain.UserAggregate
 {
     public class User
     {
@@ -18,9 +21,15 @@
 
         public DateTime LastLogin { get; private set; }
 
-        public DateTime CreatedAt { get; private set; }
+        public DateTime CreatedAt { get; private set; } 
 
         public DateTime UpdatedAt { get; private set; }
+
+        // Reference navigation to dependent
+
+        public Teacher? Teacher { get; private set; }
+
+        public Student? Student { get; private set; }
 
         private User(
             Guid id,

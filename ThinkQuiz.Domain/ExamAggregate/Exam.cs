@@ -1,5 +1,6 @@
 ﻿using ThinkQuiz.Domain.ClassExamAggregate;
 using ThinkQuiz.Domain.ExamQuestionAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.SubmittionExamAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 
@@ -36,6 +37,8 @@ namespace ThinkQuiz.Domain.ExamAggregate
         public int Duration { get; private set; }
 
         public ICollection<ClassExam>? ClassExams { get; private set; }
+
+        public ICollection<Student>? Students { get; private set; }
 
         public ICollection<SubmittionExam>? SubmittionExams { get; private set; }
 

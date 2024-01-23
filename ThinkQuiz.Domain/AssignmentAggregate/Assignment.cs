@@ -1,4 +1,5 @@
 ﻿using ThinkQuiz.Domain.ClassAssignmentAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 
@@ -25,6 +26,8 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
         public bool IsDeleted { get; private set; } = false;
 
         public ICollection<ClassAssignment>? ClassAssignments { get; private set; }
+
+        public ICollection<Student>? Students { get; private set; }
 
         public ICollection<SubmittionAssignment>? SubmittionAssignments { get; private set; }
 
