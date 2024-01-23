@@ -13,7 +13,7 @@ namespace ThinkQuiz.Domain.UserAggregate
 
         public string Password { get; private set; }
 
-        public bool? Gender { get; private set; }
+        public bool Gender { get; private set; } = true;
 
         public DateOnly? DateOfBirth { get; private set; }
 
