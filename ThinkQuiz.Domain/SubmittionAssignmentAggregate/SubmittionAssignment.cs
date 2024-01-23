@@ -1,15 +1,15 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
-using ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects;
+﻿using ThinkQuiz.Domain.AssignmentAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
 
 namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
 {
-    public class SubmittionAssignment : AggregateRoot<SubmittionAssignmentId, Guid>
+    public class SubmittionAssignment
 	{
-        public StudentId StudentId { get; private set; }
+        public Guid Id { get; private set; }
 
-        public AssignmentId AssignmentId { get; private set; }
+        public Student Student { get; private set; }
+
+        public Assignment Assignment { get; private set; }
 
         public string AnswerUrl { get; private set; }
 
@@ -26,27 +26,28 @@ namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
         public DateTime? UpdatedAt { get; private set; }
 
         private SubmittionAssignment(
-            SubmittionAssignmentId id,
-            StudentId studentId,
-            AssignmentId assignmentId,
+            Guid id,
+            Student student,
+            Assignment assignment,
             string answerUrl,
-            DateTime createdAt) : base(id)
+            DateTime createdAt)
         {
-            StudentId = studentId;
-            AssignmentId = assignmentId;
+            Id = id;
+            Student = student;
+            Assignment = assignment;
             AnswerUrl = answerUrl;
             CreatedAt = createdAt;
         }
 
         public static SubmittionAssignment Create(
-            StudentId studentId,
-            AssignmentId assignmentId,
+            Student student,
+            Assignment assignment,
             string answerUrl)
         {
             return new(
-                SubmittionAssignmentId.CreateUnique(),
-                studentId,
-                assignmentId,
+                Guid.NewGuid(),
+                student,
+                assignment,
                 answerUrl,
                 DateTime.Now);
         }

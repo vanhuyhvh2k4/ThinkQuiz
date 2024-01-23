@@ -1,10 +1,9 @@
-﻿using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.UserAggregate.ValueObjects;
-
-namespace ThinkQuiz.Domain.UserAggregate
+﻿namespace ThinkQuiz.Domain.UserAggregate
 {
-    public class User : AggregateRoot<UserId, Guid>
+    public class User
     {
+        public Guid Id { get; private set; }
+
         public string FullName { get; private set; }
 
         public string Email { get; private set; }
@@ -24,14 +23,15 @@ namespace ThinkQuiz.Domain.UserAggregate
         public DateTime UpdatedAt { get; private set; }
 
         private User(
-            UserId id,
+            Guid id,
             string fullName,
             string email,
             string password,
             DateTime lastLogin,
             DateTime createdAt,
-            DateTime updatedAt) : base(id)
+            DateTime updatedAt) 
         {
+            Id = id;
             FullName = fullName;
             Email = email;
             Password = password;
@@ -48,7 +48,7 @@ namespace ThinkQuiz.Domain.UserAggregate
             )
         {
             return new(
-                UserId.CreateUnique(),
+                Guid.NewGuid(),
                 fullName,
                 email,
                 password,

@@ -1,58 +1,53 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
-using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
-using ThinkQuiz.Domain.UserAggregate.ValueObjects;
+﻿using ThinkQuiz.Domain.AssignmentAggregate;
+using ThinkQuiz.Domain.ClassAggregate;
+using ThinkQuiz.Domain.ExamAggregate;
+using ThinkQuiz.Domain.UserAggregate;
 
 namespace ThinkQuiz.Domain.TeacherAggregate
 {
-    public class Teacher : AggregateRoot<TeacherId, Guid>
+    public class Teacher
 	{
-        private readonly List<ClassId> _classIds = new();
+        public Guid Id { get; private set; }
 
-        private readonly List<AssignmentId> _assignmentIds = new();
-
-        private readonly List<ExamId> _examIds = new();
-
-		public UserId UserId { get; private set; }
+        public User User { get; private set; }
 
 		public string Position { get; private set; }
 
 		public string SchoolInforamtion { get; private set; }
 
-        public IReadOnlyList<ClassId> ClassIds => _classIds.AsReadOnly();
+        public List<Class>? Classes { get; private set; }
 
-        public IReadOnlyList<AssignmentId> AssignmentIds => _assignmentIds.AsReadOnly();
+        public List<Assignment>? Assignments { get; private set; }
 
-        public IReadOnlyList<ExamId> ExamIds => _examIds.AsReadOnly();
+        public List<Exam>? Exams { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
 		public DateTime? UpdatedAt { get; private set; }
 
         private Teacher(
-            TeacherId id,
-            UserId userId,
+            Guid id,
+            User user,
             string position,
             string schoolInformation,
-            DateTime createdAt) : base(id)
+            DateTime createdAt)
         {
-            UserId = userId;
+            Id = id;
+            User = user;
             Position = position;
             SchoolInforamtion = schoolInformation;
             CreatedAt = createdAt;
         }
 
         public static Teacher Create(
-            UserId userId,
+            User user,
             string position,
             string schoolInformation
             )
         {
             return new(
-                TeacherId.CreateUnique(),
-                userId,
+                Guid.NewGuid(),
+                user,
                 position,
                 schoolInformation,
                 DateTime.Now);
