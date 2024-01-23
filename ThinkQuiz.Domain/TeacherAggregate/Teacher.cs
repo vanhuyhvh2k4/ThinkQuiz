@@ -15,7 +15,7 @@ namespace ThinkQuiz.Domain.TeacherAggregate
 
         public string Position { get; private set; }
 
-        public string SchoolInforamtion { get; private set; }
+        public string SchoolInformation { get; private set; }
 
         public ICollection<Class>? Classes { get; private set; } 
 
@@ -37,7 +37,7 @@ namespace ThinkQuiz.Domain.TeacherAggregate
             Id = id;
             UserId = userId;
             Position = position;
-            SchoolInforamtion = schoolInformation;
+            SchoolInformation = schoolInformation;
             CreatedAt = createdAt;
         }
 
