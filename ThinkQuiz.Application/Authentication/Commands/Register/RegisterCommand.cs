@@ -8,6 +8,15 @@ namespace ThinkQuiz.Application.Authentication.Commands.Register
         string FullName,
         string Password,
         string Email,
-        string ConfirmPassword) : IRequest<ErrorOr<AuthenticationResult>>;
+        string ConfirmPassword,
+        RegisterType RegisterType,
+        string? Position,
+        string? SchoolInformation) : IRequest<ErrorOr<AuthenticationResult>>;
+
+    public enum RegisterType
+    {
+        Student = 0,
+        Teacher = 1
+    }
 }
 

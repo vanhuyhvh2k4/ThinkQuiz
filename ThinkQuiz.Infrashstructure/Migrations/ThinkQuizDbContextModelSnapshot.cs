@@ -487,8 +487,8 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("longtext");

@@ -23,7 +23,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
                 .HasMaxLength(100);
 
             builder.Property(user => user.Password)
-                .HasMaxLength(50);
+                .HasMaxLength(500);
 
             builder.Property(user => user.Gender)
                 .HasDefaultValue(true);

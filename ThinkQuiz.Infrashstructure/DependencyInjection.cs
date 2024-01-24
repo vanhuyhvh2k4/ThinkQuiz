@@ -21,14 +21,22 @@ namespace ThinkQuiz.Infrashstructure
 		{
             services.AddDbContext<ThinkQuizDbContext>(options => options.UseMySql(configuration.GetConnectionString("Default"), new MySqlServerVersion(new Version(10, 4, 25))));
 
-            services.AddAuth(configuration);
-
-			services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAuth(configuration)
+                .AddPersistence();
 
             services.AddSingleton<IBcryptHashPassword, BcryptHashPassword>();
 
 			return services;
 		}
+
+        public static IServiceCollection AddPersistence(this IServiceCollection services)
+        {
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITeacherRepository, TeacherRepository>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+
+            return services;
+        }
 
 		public static IServiceCollection AddAuth(this IServiceCollection services, ConfigurationManager configuration)
 		{

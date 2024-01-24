@@ -11,7 +11,7 @@ using ThinkQuiz.Infrashstructure.Persistence;
 namespace ThinkQuiz.Infrashstructure.Migrations
 {
     [DbContext(typeof(ThinkQuizDbContext))]
-    [Migration("20240124050130_InitialMigration")]
+    [Migration("20240124103225_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -490,8 +490,8 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("longtext");

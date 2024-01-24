@@ -5,6 +5,8 @@ using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Application.Common.Interfaces.Services.Bcrypt;
 using ThinkQuiz.Application.Common.Interfaces.Services.Jwt;
 using ThinkQuiz.Domain.Common.Exceptions.User;
+using ThinkQuiz.Domain.StudentAggregate;
+using ThinkQuiz.Domain.TeacherAggregate;
 using ThinkQuiz.Domain.UserAggregate;
 
 namespace ThinkQuiz.Application.Authentication.Commands.Register
@@ -14,12 +16,21 @@ namespace ThinkQuiz.Application.Authentication.Commands.Register
         private readonly IUserRepository _userRepository;
         private readonly IJwtTokenGenerator _tokenGenerator;
         private readonly IBcryptHashPassword _hashPassword;
+        private readonly IStudentRepository _studentRepository;
+        private readonly ITeacherRepository _teacherRepository;
 
-        public RegisterCommandHandler(IUserRepository userRepository, IJwtTokenGenerator tokenGenerator, IBcryptHashPassword hashPassword)
+        public RegisterCommandHandler(
+            IUserRepository userRepository,
+            IJwtTokenGenerator tokenGenerator,
+            IBcryptHashPassword hashPassword,
+            ITeacherRepository teacherRepository,
+            IStudentRepository studentRepository)
         {
             _userRepository = userRepository;
             _tokenGenerator = tokenGenerator;
             _hashPassword = hashPassword;
+            _teacherRepository = teacherRepository;
+            _studentRepository = studentRepository;
         }
 
         public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
@@ -33,13 +44,30 @@ namespace ThinkQuiz.Application.Authentication.Commands.Register
 
             // 2. create new user
             var user = User.Create(command.FullName, command.Email, _hashPassword.HashPassword(command.Password));
-            var token = _tokenGenerator.GenerateToken(user);
 
-            // 3. persist user
+            // 4. persist user
 
             _userRepository.Add(user);
 
-            return new AuthenticationResult(user, token); ;
+            var token = _tokenGenerator.GenerateToken(user);
+
+            if (command.RegisterType.Equals(RegisterType.Student))
+            {
+                var student = Student.Create(user.Id);
+                _studentRepository.Add(student);
+
+            }
+
+            if (command.RegisterType.Equals(RegisterType.Teacher))
+            {
+                var teacher = Teacher.Create(user.Id, command.Position!, command.SchoolInformation!);
+                _teacherRepository.Add(teacher);
+            }
+
+            return new AuthenticationResult(
+                user,
+                command.RegisterType.Equals(RegisterType.Teacher) ? true : false,
+                token); ;
         }
     }
 }

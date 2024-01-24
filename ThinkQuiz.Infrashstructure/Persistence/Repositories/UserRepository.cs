@@ -1,13 +1,10 @@
-﻿using System;
-using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
+﻿using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.UserAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
 {
-	public class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
 	{
-        private static readonly List<User> _users = new();
-
         private readonly ThinkQuizDbContext _context;
 
         public UserRepository(ThinkQuizDbContext context)

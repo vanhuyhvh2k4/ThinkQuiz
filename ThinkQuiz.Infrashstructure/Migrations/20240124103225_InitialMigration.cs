@@ -23,7 +23,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Email = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Password = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    Password = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Gender = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true),
                     DateOfBirth = table.Column<DateOnly>(type: "date", nullable: true),
