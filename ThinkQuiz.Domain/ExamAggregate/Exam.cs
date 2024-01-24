@@ -37,11 +37,7 @@ namespace ThinkQuiz.Domain.ExamAggregate
 
         public int Duration { get; private set; }
 
-        public ICollection<Class>? Classes { get; private set; }
-
         public ICollection<ClassExam>? ClassExams { get; private set; }
-
-        public ICollection<Student>? Students { get; private set; }
 
         public ICollection<SubmittionExam>? SubmittionExams { get; private set; }
 

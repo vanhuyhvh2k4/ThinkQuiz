@@ -26,11 +26,7 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
 
         public bool IsDeleted { get; private set; } = false;
 
-        public ICollection<Class>? Classes { get; private set; }
-
         public ICollection<ClassAssignment>? ClassAssignments { get; private set; }
-
-        public ICollection<Student>? Students { get; private set; }
 
         public ICollection<SubmittionAssignment>? SubmittionAssignments { get; private set; }
 

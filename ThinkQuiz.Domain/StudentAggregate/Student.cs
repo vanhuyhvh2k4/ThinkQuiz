@@ -16,15 +16,9 @@ namespace ThinkQuiz.Domain.StudentAggregate
 
         public User User { get; private set; } = null!;
 
-        public ICollection<Class>? Classes { get; private set; }
-
         public ICollection<ClassStudent>? ClassStudents { get; private set; }
 
-        public ICollection<Exam>? Exams { get; private set; }
-
         public ICollection<SubmittionExam>? SubmittionExams { get; private set; }
-
-        public ICollection<Assignment>? Assignments { get; private set; }
 
         public ICollection<SubmittionAssignment>? SubmittionAssignments { get; private set; }
 

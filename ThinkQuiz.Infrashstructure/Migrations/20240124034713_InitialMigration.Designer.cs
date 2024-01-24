@@ -11,7 +11,7 @@ using ThinkQuiz.Infrashstructure.Persistence;
 namespace ThinkQuiz.Infrashstructure.Migrations
 {
     [DbContext(typeof(ThinkQuizDbContext))]
-    [Migration("20240124031456_InitialMigration")]
+    [Migration("20240124034713_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -21,81 +21,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("AssignmentClass", b =>
-                {
-                    b.Property<Guid>("AssignmentsId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("ClassesId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("AssignmentsId", "ClassesId");
-
-                    b.HasIndex("ClassesId");
-
-                    b.ToTable("AssignmentClass");
-                });
-
-            modelBuilder.Entity("AssignmentStudent", b =>
-                {
-                    b.Property<Guid>("AssignmentsId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("StudentsId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("AssignmentsId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("AssignmentStudent");
-                });
-
-            modelBuilder.Entity("ClassExam", b =>
-                {
-                    b.Property<Guid>("ClassesId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("ExamsId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("ClassesId", "ExamsId");
-
-                    b.HasIndex("ExamsId");
-
-                    b.ToTable("ClassExam");
-                });
-
-            modelBuilder.Entity("ClassStudent", b =>
-                {
-                    b.Property<Guid>("ClassesId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("StudentsId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("ClassesId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("ClassStudent");
-                });
-
-            modelBuilder.Entity("ExamStudent", b =>
-                {
-                    b.Property<Guid>("ExamsId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("StudentsId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("ExamsId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("ExamStudent");
-                });
 
             modelBuilder.Entity("ThinkQuiz.Domain.AssignmentAggregate.Assignment", b =>
                 {
@@ -573,81 +498,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users", (string)null);
-                });
-
-            modelBuilder.Entity("AssignmentClass", b =>
-                {
-                    b.HasOne("ThinkQuiz.Domain.AssignmentAggregate.Assignment", null)
-                        .WithMany()
-                        .HasForeignKey("AssignmentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ThinkQuiz.Domain.ClassAggregate.Class", null)
-                        .WithMany()
-                        .HasForeignKey("ClassesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AssignmentStudent", b =>
-                {
-                    b.HasOne("ThinkQuiz.Domain.AssignmentAggregate.Assignment", null)
-                        .WithMany()
-                        .HasForeignKey("AssignmentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ClassExam", b =>
-                {
-                    b.HasOne("ThinkQuiz.Domain.ClassAggregate.Class", null)
-                        .WithMany()
-                        .HasForeignKey("ClassesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ThinkQuiz.Domain.ExamAggregate.Exam", null)
-                        .WithMany()
-                        .HasForeignKey("ExamsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ClassStudent", b =>
-                {
-                    b.HasOne("ThinkQuiz.Domain.ClassAggregate.Class", null)
-                        .WithMany()
-                        .HasForeignKey("ClassesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ExamStudent", b =>
-                {
-                    b.HasOne("ThinkQuiz.Domain.ExamAggregate.Exam", null)
-                        .WithMany()
-                        .HasForeignKey("ExamsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.AssignmentAggregate.Assignment", b =>

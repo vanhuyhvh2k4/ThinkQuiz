@@ -177,31 +177,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "AssignmentStudent",
-                columns: table => new
-                {
-                    AssignmentsId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    StudentsId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AssignmentStudent", x => new { x.AssignmentsId, x.StudentsId });
-                    table.ForeignKey(
-                        name: "FK_AssignmentStudent_Assignments_AssignmentsId",
-                        column: x => x.AssignmentsId,
-                        principalTable: "Assignments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AssignmentStudent_Students_StudentsId",
-                        column: x => x.StudentsId,
-                        principalTable: "Students",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "SubmittionAssignments",
                 columns: table => new
                 {
@@ -237,31 +212,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "AssignmentClass",
-                columns: table => new
-                {
-                    AssignmentsId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    ClassesId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AssignmentClass", x => new { x.AssignmentsId, x.ClassesId });
-                    table.ForeignKey(
-                        name: "FK_AssignmentClass_Assignments_AssignmentsId",
-                        column: x => x.AssignmentsId,
-                        principalTable: "Assignments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AssignmentClass_Classes_ClassesId",
-                        column: x => x.ClassesId,
-                        principalTable: "Classes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "ClassAssignments",
                 columns: table => new
                 {
@@ -281,31 +231,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         name: "FK_ClassAssignments_Classes_ClassId",
                         column: x => x.ClassId,
                         principalTable: "Classes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "ClassStudent",
-                columns: table => new
-                {
-                    ClassesId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    StudentsId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClassStudent", x => new { x.ClassesId, x.StudentsId });
-                    table.ForeignKey(
-                        name: "FK_ClassStudent_Classes_ClassesId",
-                        column: x => x.ClassesId,
-                        principalTable: "Classes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ClassStudent_Students_StudentsId",
-                        column: x => x.StudentsId,
-                        principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -333,31 +258,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         name: "FK_ClassStudents_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "ClassExam",
-                columns: table => new
-                {
-                    ClassesId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    ExamsId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClassExam", x => new { x.ClassesId, x.ExamsId });
-                    table.ForeignKey(
-                        name: "FK_ClassExam_Classes_ClassesId",
-                        column: x => x.ClassesId,
-                        principalTable: "Classes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ClassExam_Exams_ExamsId",
-                        column: x => x.ExamsId,
-                        principalTable: "Exams",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -408,31 +308,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         name: "FK_ExamQuestions_Exams_ExamId",
                         column: x => x.ExamId,
                         principalTable: "Exams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "ExamStudent",
-                columns: table => new
-                {
-                    ExamsId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    StudentsId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ExamStudent", x => new { x.ExamsId, x.StudentsId });
-                    table.ForeignKey(
-                        name: "FK_ExamStudent_Exams_ExamsId",
-                        column: x => x.ExamsId,
-                        principalTable: "Exams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ExamStudent_Students_StudentsId",
-                        column: x => x.StudentsId,
-                        principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -514,19 +389,9 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssignmentClass_ClassesId",
-                table: "AssignmentClass",
-                column: "ClassesId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Assignments_TeacherId",
                 table: "Assignments",
                 column: "TeacherId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AssignmentStudent_StudentsId",
-                table: "AssignmentStudent",
-                column: "StudentsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClassAssignments_ClassId",
@@ -539,19 +404,9 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClassExam_ExamsId",
-                table: "ClassExam",
-                column: "ExamsId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ClassExams_ExamId",
                 table: "ClassExams",
                 column: "ExamId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ClassStudent_StudentsId",
-                table: "ClassStudent",
-                column: "StudentsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClassStudents_ClassId",
@@ -572,11 +427,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 name: "IX_Exams_TeacherId",
                 table: "Exams",
                 column: "TeacherId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ExamStudent_StudentsId",
-                table: "ExamStudent",
-                column: "StudentsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_UserId",
@@ -615,31 +465,16 @@ namespace ThinkQuiz.Infrashstructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AssignmentClass");
-
-            migrationBuilder.DropTable(
-                name: "AssignmentStudent");
-
-            migrationBuilder.DropTable(
                 name: "ClassAssignments");
 
             migrationBuilder.DropTable(
-                name: "ClassExam");
-
-            migrationBuilder.DropTable(
                 name: "ClassExams");
-
-            migrationBuilder.DropTable(
-                name: "ClassStudent");
 
             migrationBuilder.DropTable(
                 name: "ClassStudents");
 
             migrationBuilder.DropTable(
                 name: "ExamChoices");
-
-            migrationBuilder.DropTable(
-                name: "ExamStudent");
 
             migrationBuilder.DropTable(
                 name: "SubmittionAssignments");
