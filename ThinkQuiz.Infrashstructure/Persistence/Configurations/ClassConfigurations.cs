@@ -1,91 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ThinkQuiz.Domain.ClassAggregate;
-using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
-using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
+using ThinkQuiz.Domain.TeacherAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
     public class ClassConfigurations : IEntityTypeConfiguration<Class>
-	{
+    {
         public void Configure(EntityTypeBuilder<Class> builder)
-        {
-            ConfigClassTable(builder);
-            ConfigClassStudentIds(builder);
-            ConfigClassAssignmentIds(builder);
-            ConfigClassExamIds(builder);
-        }
-
-        private void ConfigClassTable(EntityTypeBuilder<Class> builder)
         {
             builder.ToTable("Classes");
 
-            builder.HasKey(cb => cb.Id);
+            builder.HasKey(c => c.Id);
 
-            builder.Property(cb => cb.Id)
-                .ValueGeneratedNever()
-                .HasConversion(id => id.Value, value => ClassId.Create(value));
+            builder.HasIndex(c => new { c.TeacherId, c.Name });
 
-            builder.Property(cb => cb.TeacherId)
-                .HasConversion(id => id.Value, value => TeacherId.Create(value));
+            builder.HasOne(c => c.Teacher)
+                .WithMany(teacher => teacher.Classes)
+                .HasForeignKey(c => c.TeacherId)
+                .IsRequired();
 
-            builder.Property(cb => cb.Name)
+            builder.Property(c => c.Name)
                 .HasMaxLength(100);
 
-            builder.Property(cb => cb.StudentQuantity);
+            builder.Property(c => c.SchoolYear);
 
-            builder.Property(cb => cb.SchoolYear);
+            builder.Property(c => c.StudentQuantity)
+                .HasDefaultValue(0);
 
-            builder.Property(cb => cb.IsDeleted)
+            builder.Property(c => c.IsDeleted)
                 .HasDefaultValue(false);
-        }
 
-        private void ConfigClassStudentIds(EntityTypeBuilder<Class> builder)
-        {
-            builder.OwnsMany(cb => cb.StudentIds, sb =>
-            {
-                sb.ToTable("ClassStudentIds");
+            builder.Property(c => c.CreatedAt);
 
-                sb.WithOwner().HasForeignKey("ClassId");
-
-                sb.HasKey("Id");
-
-                sb.Property(sb => sb.Value)
-                    .HasColumnName("StudentId")
-                    .ValueGeneratedNever();
-            });
-        }
-
-        private void ConfigClassAssignmentIds(EntityTypeBuilder<Class> builder)
-        {
-            builder.OwnsMany(cb => cb.AssignmentIds, sb =>
-            {
-                sb.ToTable("ClassAssignmentIds");
-
-                sb.WithOwner().HasForeignKey("ClassId");
-
-                sb.HasKey("Id");
-
-                sb.Property(sb => sb.Value)
-                    .HasColumnName("AssignmentId")
-                    .ValueGeneratedNever();
-            });
-        }
-
-        private void ConfigClassExamIds(EntityTypeBuilder<Class> builder)
-        {
-            builder.OwnsMany(cb => cb.ExamIds, sb =>
-            {
-                sb.ToTable("ClassExamIds");
-
-                sb.WithOwner().HasForeignKey("ClassId");
-
-                sb.HasKey("Id");
-
-                sb.Property(sb => sb.Value)
-                    .HasColumnName("ExamId")
-                    .ValueGeneratedNever();
-            });
+            builder.Property(c => c.UpdatedAt);
         }
     }
 }

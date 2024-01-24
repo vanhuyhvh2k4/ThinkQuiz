@@ -1,46 +1,48 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
-using ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
-	public class SubmittionAssignmentConfigurations : IEntityTypeConfiguration<SubmittionAssignment>
+    public class SubmittionAssignmentConfigurations : IEntityTypeConfiguration<SubmittionAssignment>
 	{
         public void Configure(EntityTypeBuilder<SubmittionAssignment> builder)
         {
-            ConfigSubmittionAssignmentTable(builder);
-        }
-
-        private void ConfigSubmittionAssignmentTable(EntityTypeBuilder<SubmittionAssignment> builder)
-        {
             builder.ToTable("SubmittionAssignments");
 
-            builder.HasKey(sb => sb.Id);
+            builder.HasKey(sa => new { sa.AssignmentId, sa.StudentId, sa.Id });
 
-            builder.Property(sb => sb.Id)
-                .ValueGeneratedNever()
-                .HasConversion(id => id.Value, value => SubmittionAssignmentId.Create(value));
+            builder.HasIndex(sa => new { sa.StudentId, sa.AssignmentId });
 
-            builder.Property(sb => sb.StudentId)
-                .HasConversion(id => id.Value, value => StudentId.Create(value));
+            builder.HasOne(sa => sa.Student)
+                .WithMany(student => student.SubmittionAssignments)
+                .HasForeignKey(sa => sa.StudentId)
+                .IsRequired();
 
-            builder.Property(sb => sb.AssignmentId)
-                .HasConversion(id => id.Value, value => AssignmentId.Create(value));
+            builder.HasOne(sa => sa.Assignment)
+                .WithMany(assign => assign.SubmittionAssignments)
+                .HasForeignKey(sa => sa.AssignmentId)
+                .IsRequired();
 
-            builder.Property(sb => sb.AnswerUrl)
+            builder.Property(sa => sa.AnswerUrl)
                 .HasMaxLength(500);
 
-            builder.Property(sb => sb.Point);
+            builder.Property(sa => sa.Point)
+                .IsRequired(false);
 
-            builder.Property(sb => sb.Comment)
-                .HasMaxLength(200);
+            builder.Property(sa => sa.Comment)
+                .HasMaxLength(200)
+                .IsRequired(false);
 
-            builder.Property(sb => sb.IsSubmitAgain)
+            builder.Property(sa => sa.IsShowPoint)
                 .HasDefaultValue(false);
+
+            builder.Property(sa => sa.IsSubmitAgain)
+                .HasDefaultValue(false);
+
+            builder.Property(sa => sa.CreatedAt);
+
+            builder.Property(sa => sa.UpdatedAt);
         }
     }
 }

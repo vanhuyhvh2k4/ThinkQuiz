@@ -20,7 +20,7 @@ namespace ThinkQuiz.Api.Common.Mapping
                 .Map(dest => dest.Data.UpdatedAt, src => src.User.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"))
                 .Map(dest => dest.Data.LastLogin, src => src.User.LastLogin.ToString("yyyy-MM-dd HH:mm:ss"))
                 .Map(dest => dest.Data.Token, src => src.Token)
-                .Map(dest => dest.Data.Id, src => src.User.Id.Value.ToString());
+                .Map(dest => dest.Data.Id, src => src.User.Id.ToString());
         }
     }
 }

@@ -22,9 +22,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
             modelBuilder.Entity("ThinkQuiz.Domain.AssignmentAggregate.Assignment", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("AuthorId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Content")
@@ -55,20 +53,119 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<Guid>("TeacherId")
+                        .HasColumnType("char(36)");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TeacherId", "Name");
+
                     b.ToTable("Assignments", (string)null);
+                });
+
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassAggregate.Class", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("SchoolYear")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("StudentQuantity")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("double")
+                        .HasDefaultValue(0.0);
+
+                    b.Property<Guid>("TeacherId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId", "Name");
+
+                    b.ToTable("Classes", (string)null);
+                });
+
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassAssignmentAggregate.ClassAssignment", b =>
+                {
+                    b.Property<Guid>("AssignmentId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ClassId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("AssignmentId", "ClassId");
+
+                    b.HasIndex("ClassId", "AssignmentId");
+
+                    b.ToTable("ClassAssignments", (string)null);
+                });
+
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassExamAggregate.ClassExam", b =>
+                {
+                    b.Property<Guid>("ClassId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ExamId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("ClassId", "ExamId");
+
+                    b.HasIndex("ExamId");
+
+                    b.HasIndex("ClassId", "ExamId");
+
+                    b.ToTable("ClassExams", (string)null);
+                });
+
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassStudentAggregate.ClassStudent", b =>
+                {
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ClassId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("StudentId", "ClassId");
+
+                    b.HasIndex("ClassId");
+
+                    b.HasIndex("StudentId", "ClassId");
+
+                    b.ToTable("ClassStudents", (string)null);
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.ExamAggregate.Exam", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid>("AuthorId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -112,27 +209,96 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Password")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("TeacherId")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TeacherId", "Name");
+
                     b.ToTable("Exams", (string)null);
+                });
+
+            modelBuilder.Entity("ThinkQuiz.Domain.ExamChoiceAggregate.ExamChoice", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("QuestionId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("ExamChoices", (string)null);
+                });
+
+            modelBuilder.Entity("ThinkQuiz.Domain.ExamQuestionAggregate.ExamQuestion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CorrectAnswer")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ExamId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Point")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("ExamQuestions", (string)null);
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.StudentAggregate.Student", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -146,11 +312,20 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
                     b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.SubmittionAssignmentAggregate.SubmittionAssignment", b =>
                 {
+                    b.Property<Guid>("AssignmentId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("char(36)");
+
                     b.Property<Guid>("Id")
                         .HasColumnType("char(36)");
 
@@ -158,9 +333,6 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
-
-                    b.Property<Guid>("AssignmentId")
-                        .HasColumnType("char(36)");
 
                     b.Property<string>("Comment")
                         .HasMaxLength(200)
@@ -170,7 +342,9 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsShowPoint")
-                        .HasColumnType("tinyint(1)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("IsSubmitAgain")
                         .ValueGeneratedOnAdd()
@@ -180,13 +354,12 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.Property<double?>("Point")
                         .HasColumnType("double");
 
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("char(36)");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("Id");
+                    b.HasKey("AssignmentId", "StudentId", "Id");
+
+                    b.HasIndex("StudentId", "AssignmentId");
 
                     b.ToTable("SubmittionAssignments", (string)null);
                 });
@@ -194,6 +367,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
             modelBuilder.Entity("ThinkQuiz.Domain.SubmittionExamAggregate.SubmittionExam", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -213,12 +387,45 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExamId");
+
+                    b.HasIndex("StudentId", "ExamId");
+
                     b.ToTable("SubmittionExams", (string)null);
+                });
+
+            modelBuilder.Entity("ThinkQuiz.Domain.SubmittionExamAnswerAggregate.SubmittionExamAnswer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ChoiceId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("QuestionId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("submittionExamId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("submittionExamId", "QuestionId", "ChoiceId");
+
+                    b.ToTable("SubmittionExamAnswers", (string)null);
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.TeacherAggregate.Teacher", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -229,7 +436,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("SchoolInforamtion")
+                    b.Property<string>("SchoolInformation")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
@@ -242,12 +449,16 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
                     b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.UserAggregate.User", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -266,397 +477,276 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool?>("Gender")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<bool>("Gender")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<DateTime>("LastLogin")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Phone")
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("FullName");
+
                     b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.AssignmentAggregate.Assignment", b =>
                 {
-                    b.OwnsMany("ThinkQuiz.Domain.ClassAggregate.ValueObjects.ClassId", "ClassIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
+                    b.HasOne("ThinkQuiz.Domain.TeacherAggregate.Teacher", "Teacher")
+                        .WithMany("Assignments")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<Guid>("AssignmentId")
-                                .HasColumnType("char(36)");
+                    b.Navigation("Teacher");
+                });
 
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("ClassId");
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassAggregate.Class", b =>
+                {
+                    b.HasOne("ThinkQuiz.Domain.TeacherAggregate.Teacher", "Teacher")
+                        .WithMany("Classes")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.HasKey("Id");
+                    b.Navigation("Teacher");
+                });
 
-                            b1.HasIndex("AssignmentId");
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassAssignmentAggregate.ClassAssignment", b =>
+                {
+                    b.HasOne("ThinkQuiz.Domain.AssignmentAggregate.Assignment", "Assignment")
+                        .WithMany("ClassAssignments")
+                        .HasForeignKey("AssignmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.ToTable("AssignmentClassIds", (string)null);
+                    b.HasOne("ThinkQuiz.Domain.ClassAggregate.Class", "Class")
+                        .WithMany("ClassAssignments")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.WithOwner()
-                                .HasForeignKey("AssignmentId");
-                        });
+                    b.Navigation("Assignment");
 
-                    b.OwnsMany("ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects.SubmittionAssignmentId", "SubmittionAssignmentIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
+                    b.Navigation("Class");
+                });
 
-                            b1.Property<Guid>("AssignmentId")
-                                .HasColumnType("char(36)");
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassExamAggregate.ClassExam", b =>
+                {
+                    b.HasOne("ThinkQuiz.Domain.ClassAggregate.Class", "Class")
+                        .WithMany("ClassExams")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("SubmittionId");
+                    b.HasOne("ThinkQuiz.Domain.ExamAggregate.Exam", "Exam")
+                        .WithMany("ClassExams")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.HasKey("Id");
+                    b.Navigation("Class");
 
-                            b1.HasIndex("AssignmentId");
+                    b.Navigation("Exam");
+                });
 
-                            b1.ToTable("AssignmentSubmittionIds", (string)null);
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassStudentAggregate.ClassStudent", b =>
+                {
+                    b.HasOne("ThinkQuiz.Domain.ClassAggregate.Class", "Class")
+                        .WithMany("ClassStudents")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.WithOwner()
-                                .HasForeignKey("AssignmentId");
-                        });
+                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", "Student")
+                        .WithMany("ClassStudents")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("ClassIds");
+                    b.Navigation("Class");
 
-                    b.Navigation("SubmittionAssignmentIds");
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.ExamAggregate.Exam", b =>
                 {
-                    b.OwnsMany("ThinkQuiz.Domain.ExamAggregate.Entities.Question", "Questions", b1 =>
-                        {
-                            b1.Property<Guid>("Id")
-                                .HasColumnType("char(36)");
+                    b.HasOne("ThinkQuiz.Domain.TeacherAggregate.Teacher", "Teacher")
+                        .WithMany("Exams")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<Guid>("CorrectAnswer")
-                                .HasColumnType("char(36)");
+                    b.Navigation("Teacher");
+                });
 
-                            b1.Property<Guid>("ExamId")
-                                .HasColumnType("char(36)");
+            modelBuilder.Entity("ThinkQuiz.Domain.ExamChoiceAggregate.ExamChoice", b =>
+                {
+                    b.HasOne("ThinkQuiz.Domain.ExamQuestionAggregate.ExamQuestion", "ExamQuestion")
+                        .WithMany("ExamChoices")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<bool>("IsDeleted")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("tinyint(1)")
-                                .HasDefaultValue(false);
+                    b.Navigation("ExamQuestion");
+                });
 
-                            b1.Property<int>("Number")
-                                .HasColumnType("int");
+            modelBuilder.Entity("ThinkQuiz.Domain.ExamQuestionAggregate.ExamQuestion", b =>
+                {
+                    b.HasOne("ThinkQuiz.Domain.ExamAggregate.Exam", "Exam")
+                        .WithMany("ExamQuestions")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<double>("Point")
-                                .HasColumnType("double");
-
-                            b1.Property<string>("Title")
-                                .IsRequired()
-                                .HasMaxLength(200)
-                                .HasColumnType("varchar(200)");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("ExamId");
-
-                            b1.ToTable("ExamQuestions", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("ExamId");
-
-                            b1.OwnsMany("ThinkQuiz.Domain.ExamAggregate.Entities.Choice", "Choices", b2 =>
-                                {
-                                    b2.Property<Guid>("Id")
-                                        .HasColumnType("char(36)");
-
-                                    b2.Property<bool>("IsDeleted")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("tinyint(1)")
-                                        .HasDefaultValue(false);
-
-                                    b2.Property<int>("Number")
-                                        .HasColumnType("int");
-
-                                    b2.Property<Guid>("QuestionId")
-                                        .HasColumnType("char(36)");
-
-                                    b2.Property<string>("Title")
-                                        .IsRequired()
-                                        .HasMaxLength(200)
-                                        .HasColumnType("varchar(200)");
-
-                                    b2.HasKey("Id");
-
-                                    b2.HasIndex("QuestionId");
-
-                                    b2.ToTable("ExamChoices", (string)null);
-
-                                    b2.WithOwner()
-                                        .HasForeignKey("QuestionId");
-                                });
-
-                            b1.Navigation("Choices");
-                        });
-
-                    b.OwnsMany("ThinkQuiz.Domain.ClassAggregate.ValueObjects.ClassId", "ClassIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            b1.Property<Guid>("ExamId")
-                                .HasColumnType("char(36)");
-
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("ClassId");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("ExamId");
-
-                            b1.ToTable("ExamClassIds", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("ExamId");
-                        });
-
-                    b.OwnsMany("ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects.SubmittionExamId", "SubmittionExamIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            b1.Property<Guid>("ExamId")
-                                .HasColumnType("char(36)");
-
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("SubmittionId");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("ExamId");
-
-                            b1.ToTable("ExamSubmittionIds", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("ExamId");
-                        });
-
-                    b.Navigation("ClassIds");
-
-                    b.Navigation("Questions");
-
-                    b.Navigation("SubmittionExamIds");
+                    b.Navigation("Exam");
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.StudentAggregate.Student", b =>
                 {
-                    b.OwnsMany("ThinkQuiz.Domain.ClassAggregate.ValueObjects.ClassId", "ClassIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
+                    b.HasOne("ThinkQuiz.Domain.UserAggregate.User", "User")
+                        .WithOne("Student")
+                        .HasForeignKey("ThinkQuiz.Domain.StudentAggregate.Student", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<Guid>("StudentId")
-                                .HasColumnType("char(36)");
+                    b.Navigation("User");
+                });
 
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("ClassId");
+            modelBuilder.Entity("ThinkQuiz.Domain.SubmittionAssignmentAggregate.SubmittionAssignment", b =>
+                {
+                    b.HasOne("ThinkQuiz.Domain.AssignmentAggregate.Assignment", "Assignment")
+                        .WithMany("SubmittionAssignments")
+                        .HasForeignKey("AssignmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.HasKey("Id");
+                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", "Student")
+                        .WithMany("SubmittionAssignments")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.HasIndex("StudentId");
+                    b.Navigation("Assignment");
 
-                            b1.ToTable("StudentClasseIds", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("StudentId");
-                        });
-
-                    b.OwnsMany("ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects.SubmittionAssignmentId", "SubmittionAssignmentIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            b1.Property<Guid>("StudentId")
-                                .HasColumnType("char(36)");
-
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("SubmittionAssignmentId");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("StudentId");
-
-                            b1.ToTable("StudentSubmittionAssignmentIds", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("StudentId");
-                        });
-
-                    b.OwnsMany("ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects.SubmittionExamId", "SubmittionExamIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            b1.Property<Guid>("StudentId")
-                                .HasColumnType("char(36)");
-
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("SubmittionExamId");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("StudentId");
-
-                            b1.ToTable("StudentSubmittionExamIds", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("StudentId");
-                        });
-
-                    b.Navigation("ClassIds");
-
-                    b.Navigation("SubmittionAssignmentIds");
-
-                    b.Navigation("SubmittionExamIds");
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.SubmittionExamAggregate.SubmittionExam", b =>
                 {
-                    b.OwnsMany("ThinkQuiz.Domain.SubmittionExamAggregate.Entities.SubmittionAnswer", "SubmittionAnswers", b1 =>
-                        {
-                            b1.Property<Guid>("Id")
-                                .HasColumnType("char(36)");
+                    b.HasOne("ThinkQuiz.Domain.ExamAggregate.Exam", "Exam")
+                        .WithMany("SubmittionExams")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<Guid>("ChoiceId")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("ChoiceId");
+                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", "Student")
+                        .WithMany("SubmittionExams")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<DateTime>("CreatedAt")
-                                .HasColumnType("datetime(6)");
+                    b.Navigation("Exam");
 
-                            b1.Property<Guid>("QuestionId")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("QuestionId");
+                    b.Navigation("Student");
+                });
 
-                            b1.Property<Guid>("SubmittionExamId")
-                                .HasColumnType("char(36)");
+            modelBuilder.Entity("ThinkQuiz.Domain.SubmittionExamAnswerAggregate.SubmittionExamAnswer", b =>
+                {
+                    b.HasOne("ThinkQuiz.Domain.SubmittionExamAggregate.SubmittionExam", "SubmittionExam")
+                        .WithMany("SubmittionExamAnswers")
+                        .HasForeignKey("submittionExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<DateTime?>("UpdatedAt")
-                                .HasColumnType("datetime(6)");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("SubmittionExamId");
-
-                            b1.ToTable("SubmittionExamAnswers", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("SubmittionExamId");
-                        });
-
-                    b.Navigation("SubmittionAnswers");
+                    b.Navigation("SubmittionExam");
                 });
 
             modelBuilder.Entity("ThinkQuiz.Domain.TeacherAggregate.Teacher", b =>
                 {
-                    b.OwnsMany("ThinkQuiz.Domain.AssignmentAggregate.ValueObjects.AssignmentId", "AssignmentIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
+                    b.HasOne("ThinkQuiz.Domain.UserAggregate.User", "User")
+                        .WithOne("Teacher")
+                        .HasForeignKey("ThinkQuiz.Domain.TeacherAggregate.Teacher", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                            b1.Property<Guid>("AuthorId")
-                                .HasColumnType("char(36)");
+                    b.Navigation("User");
+                });
 
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("AssignmentId");
+            modelBuilder.Entity("ThinkQuiz.Domain.AssignmentAggregate.Assignment", b =>
+                {
+                    b.Navigation("ClassAssignments");
 
-                            b1.HasKey("Id");
+                    b.Navigation("SubmittionAssignments");
+                });
 
-                            b1.HasIndex("AuthorId");
+            modelBuilder.Entity("ThinkQuiz.Domain.ClassAggregate.Class", b =>
+                {
+                    b.Navigation("ClassAssignments");
 
-                            b1.ToTable("TeacherAssignmentIds", (string)null);
+                    b.Navigation("ClassExams");
 
-                            b1.WithOwner()
-                                .HasForeignKey("AuthorId");
-                        });
+                    b.Navigation("ClassStudents");
+                });
 
-                    b.OwnsMany("ThinkQuiz.Domain.ExamAggregate.ValueObjects.ExamId", "ExamIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
+            modelBuilder.Entity("ThinkQuiz.Domain.ExamAggregate.Exam", b =>
+                {
+                    b.Navigation("ClassExams");
 
-                            b1.Property<Guid>("AuthorId")
-                                .HasColumnType("char(36)");
+                    b.Navigation("ExamQuestions");
 
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("ExamId");
+                    b.Navigation("SubmittionExams");
+                });
 
-                            b1.HasKey("Id");
+            modelBuilder.Entity("ThinkQuiz.Domain.ExamQuestionAggregate.ExamQuestion", b =>
+                {
+                    b.Navigation("ExamChoices");
+                });
 
-                            b1.HasIndex("AuthorId");
+            modelBuilder.Entity("ThinkQuiz.Domain.StudentAggregate.Student", b =>
+                {
+                    b.Navigation("ClassStudents");
 
-                            b1.ToTable("TeacherExamIds", (string)null);
+                    b.Navigation("SubmittionAssignments");
 
-                            b1.WithOwner()
-                                .HasForeignKey("AuthorId");
-                        });
+                    b.Navigation("SubmittionExams");
+                });
 
-                    b.OwnsMany("ThinkQuiz.Domain.ClassAggregate.ValueObjects.ClassId", "ClassIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
+            modelBuilder.Entity("ThinkQuiz.Domain.SubmittionExamAggregate.SubmittionExam", b =>
+                {
+                    b.Navigation("SubmittionExamAnswers");
+                });
 
-                            b1.Property<Guid>("TeacherId")
-                                .HasColumnType("char(36)");
+            modelBuilder.Entity("ThinkQuiz.Domain.TeacherAggregate.Teacher", b =>
+                {
+                    b.Navigation("Assignments");
 
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("ClassId");
+                    b.Navigation("Classes");
 
-                            b1.HasKey("Id");
+                    b.Navigation("Exams");
+                });
 
-                            b1.HasIndex("TeacherId");
+            modelBuilder.Entity("ThinkQuiz.Domain.UserAggregate.User", b =>
+                {
+                    b.Navigation("Student");
 
-                            b1.ToTable("TeacherClassIds", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("TeacherId");
-                        });
-
-                    b.Navigation("AssignmentIds");
-
-                    b.Navigation("ClassIds");
-
-                    b.Navigation("ExamIds");
+                    b.Navigation("Teacher");
                 });
 #pragma warning restore 612, 618
         }

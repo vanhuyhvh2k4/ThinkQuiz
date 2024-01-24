@@ -1,18 +1,16 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.ClassAggregate.ValueObjects;
-using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.SubmittionAssignmentAggregate.ValueObjects;
-using ThinkQuiz.Domain.TeacherAggregate.ValueObjects;
+﻿using ThinkQuiz.Domain.ClassAssignmentAggregate;
+using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
+using ThinkQuiz.Domain.TeacherAggregate;
 
 namespace ThinkQuiz.Domain.AssignmentAggregate
 {
-    public class Assignment : AggregateRoot<AssignmentId, Guid>
+    public class Assignment
 	{
-        private readonly List<ClassId> _classIds = new();
+        public Guid Id { get; private set; }
 
-        private readonly List<SubmittionAssignmentId> _submittionAssignmentIds = new();
+        public Guid TeacherId { get; private set; }
 
-        public TeacherId AuthorId { get; private set; }
+        public Teacher Teacher { get; private set; } = null!;
 
         public string Name { get; private set; }
 
@@ -26,25 +24,26 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
 
         public bool IsDeleted { get; private set; } = false;
 
-        public IReadOnlyList<ClassId> ClassIds => _classIds.AsReadOnly();
+        public ICollection<ClassAssignment>? ClassAssignments { get; private set; }
 
-        public IReadOnlyList<SubmittionAssignmentId> SubmittionAssignmentIds => _submittionAssignmentIds.AsReadOnly();
+        public ICollection<SubmittionAssignment>? SubmittionAssignments { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
         public DateTime? UpdatedAt { get; private set; }
 
         private Assignment(
-            AssignmentId id,
-            TeacherId authorId,
+            Guid id,
+            Guid teacherId,
             string name,
             DateTime startTime,
             DateTime endTime,
             string? content,
             string fileUrl,
-            DateTime createdAt) : base(id)
+            DateTime createdAt)
         {
-            AuthorId = authorId;
+            Id = id;
+            TeacherId = teacherId;
             Name = name;
             StartTime = startTime;
             EndTime = endTime;
@@ -54,7 +53,7 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
         }
 
         public static Assignment Create(
-            TeacherId authorId,
+            Guid teacherId,
             string name,
             DateTime startTime,
             DateTime endTime,
@@ -62,8 +61,8 @@ namespace ThinkQuiz.Domain.AssignmentAggregate
             string fileUrl)
         {
             return new(
-                AssignmentId.CreateUnique(),
-                authorId,
+                Guid.NewGuid(),
+                teacherId,
                 name,
                 startTime,
                 endTime,

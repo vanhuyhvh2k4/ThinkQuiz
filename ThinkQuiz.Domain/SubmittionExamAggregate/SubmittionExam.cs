@@ -1,48 +1,53 @@
-﻿using ThinkQuiz.Domain.Common.Models;
-using ThinkQuiz.Domain.ExamAggregate.ValueObjects;
-using ThinkQuiz.Domain.StudentAggregate.ValueObjects;
-using ThinkQuiz.Domain.SubmittionExamAggregate.Entities;
-using ThinkQuiz.Domain.SubmittionExamAggregate.ValueObjects;
+﻿using ThinkQuiz.Domain.ExamAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
+using ThinkQuiz.Domain.SubmittionExamAnswerAggregate;
 
 namespace ThinkQuiz.Domain.SubmittionExamAggregate
 {
-    public class SubmittionExam : AggregateRoot<SubmittionExamId, Guid>
+    public class SubmittionExam 
 	{
-        private readonly List<SubmittionAnswer> _submittionAnswers = new();
+        public Guid Id { get; private set; }
 
-        public StudentId StudentId { get; private set; }
+        public Guid StudentId { get; private set; }
 
-        public ExamId ExamId { get; private set; }
+        public Student Student { get; private set; } = null!;
+
+        public Guid ExamId { get; private set; }
+
+        public Exam Exam { get; private set; } = null!;
 
         public double? Point { get; private set; }
 
-        public IReadOnlyList<SubmittionAnswer> SubmittionAnswers => _submittionAnswers.AsReadOnly();
+        public ICollection<SubmittionExamAnswer> SubmittionExamAnswers { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
         public DateTime? UpdatedAt { get; private set; }
 
         private SubmittionExam(
-            SubmittionExamId id,
-            StudentId studentId,
-            ExamId examId,
-            DateTime createdAt) : base(id)
+            Guid id,
+            Guid studentId,
+            Guid examId,
+            ICollection<SubmittionExamAnswer> submittionExamAnswers,
+            DateTime createdAt)
         {
+            Id = id;
             StudentId = studentId;
             ExamId = examId;
+            SubmittionExamAnswers = submittionExamAnswers;
             CreatedAt = createdAt;
         }
 
         public static SubmittionExam Create(
-            SubmittionExamId id,
-            StudentId studentId,
-            ExamId examId,
-            DateTime createdAt)
+            Guid studentId,
+            Guid examId,
+            ICollection<SubmittionExamAnswer> submittionExamAnswers)
         {
             return new(
-                SubmittionExamId.CreateUnique(),
+                Guid.NewGuid(),
                 studentId,
                 examId,
+                submittionExamAnswers,
                 DateTime.Now);
         }
 

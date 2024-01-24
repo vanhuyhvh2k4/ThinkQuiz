@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ThinkQuiz.Domain.UserAggregate;
-using ThinkQuiz.Domain.UserAggregate.ValueObjects;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
@@ -9,39 +8,37 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 	{
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            ConfigUserTable(builder);
-        }
-
-        private void ConfigUserTable(EntityTypeBuilder<User> builder)
-        {
             builder.ToTable("Users");
 
-            builder.HasKey(ub => ub.Id);
+            builder.HasKey(user => user.Id);
 
-            builder.Property(ub => ub.Id)
-                .ValueGeneratedNever()
-                .HasConversion(id => id.Value, value => UserId.Create(value));
+            builder.HasIndex(user => user.Email).IsUnique();
 
-            builder.Property(ub => ub.FullName)
+            builder.HasIndex(user => user.FullName);
+
+            builder.Property(user => user.FullName)
                 .HasMaxLength(100);
 
-            builder.Property(ub => ub.Email)
+            builder.Property(user => user.Email)
                 .HasMaxLength(100);
 
-            builder.Property(ub => ub.Password);
+            builder.Property(user => user.Password)
+                .HasMaxLength(50);
 
-            builder.Property(ub => ub.DateOfBirth)
+            builder.Property(user => user.Gender)
+                .HasDefaultValue(true);
+
+            builder.Property(user => user.DateOfBirth)
                 .IsRequired(false);
 
-            builder.Property(ub => ub.Phone)
-                .IsRequired(false)
-                .HasMaxLength(10);
-
-            builder.Property(ub => ub.LastLogin);
-
-            builder.Property(ub => ub.Gender)
+            builder.Property(user => user.Phone)
                 .IsRequired(false);
 
+            builder.Property(user => user.LastLogin);
+
+            builder.Property(user => user.CreatedAt);
+
+            builder.Property(user => user.UpdatedAt);
         }
     }
 }

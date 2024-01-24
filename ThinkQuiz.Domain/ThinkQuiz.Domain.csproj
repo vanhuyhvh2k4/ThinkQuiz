@@ -8,53 +8,43 @@
 
   <ItemGroup>
     <None Remove="Common\" />
-    <None Remove="Common\Models\" />
     <None Remove="UserAggregate\" />
-    <None Remove="UserAggregate\ValueObjects\" />
     <None Remove="Common\Errors\User\" />
     <None Remove="Common\Exceptions\" />
     <None Remove="Common\Exceptions\Authentication\" />
     <None Remove="TeacherAggregate\" />
-    <None Remove="TeacherAggregate\ValueObjects\" />
     <None Remove="StudentAggregate\" />
-    <None Remove="StudentAggregate\ValueObjects\" />
     <None Remove="ClassAggregate\" />
-    <None Remove="ClassAggregate\ValueObjects\" />
     <None Remove="AssignmentAggregate\" />
-    <None Remove="AssignmentAggregate\ValueObjects\" />
     <None Remove="ExamAggregate\" />
-    <None Remove="ExamAggregate\ValueObjects\" />
-    <None Remove="ExamAggregate\Entities\" />
     <None Remove="SubmittionAssignmentAggregate\" />
-    <None Remove="SubmittionAssignmentAggregate\ValueObjects\" />
     <None Remove="SubmittionExamAggregate\" />
-    <None Remove="SubmittionExamAggregate\ValueObjects\" />
-    <None Remove="SubmittionExamAggregate\Entities\" />
+    <None Remove="ClassStudentAggregate\" />
+    <None Remove="ClassAssignmentAggregate\" />
+    <None Remove="ClassExamAggregate\" />
+    <None Remove="ExamQuestionAggregate\" />
+    <None Remove="ExamChoiceAggregate\" />
+    <None Remove="SubmittionExamAnswerAggregate\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Common\Models\" />
     <Folder Include="UserAggregate\" />
-    <Folder Include="UserAggregate\ValueObjects\" />
     <Folder Include="Common\Exceptions\User\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Common\Exceptions\Authentication\" />
     <Folder Include="TeacherAggregate\" />
-    <Folder Include="TeacherAggregate\ValueObjects\" />
     <Folder Include="StudentAggregate\" />
-    <Folder Include="StudentAggregate\ValueObjects\" />
     <Folder Include="ClassAggregate\" />
-    <Folder Include="ClassAggregate\ValueObjects\" />
     <Folder Include="AssignmentAggregate\" />
-    <Folder Include="AssignmentAggregate\ValueObjects\" />
     <Folder Include="ExamAggregate\" />
-    <Folder Include="ExamAggregate\ValueObjects\" />
-    <Folder Include="ExamAggregate\Entities\" />
     <Folder Include="SubmittionAssignmentAggregate\" />
-    <Folder Include="SubmittionAssignmentAggregate\ValueObjects\" />
     <Folder Include="SubmittionExamAggregate\" />
-    <Folder Include="SubmittionExamAggregate\ValueObjects\" />
-    <Folder Include="SubmittionExamAggregate\Entities\" />
+    <Folder Include="ClassStudentAggregate\" />
+    <Folder Include="ClassAssignmentAggregate\" />
+    <Folder Include="ClassExamAggregate\" />
+    <Folder Include="ExamQuestionAggregate\" />
+    <Folder Include="ExamChoiceAggregate\" />
+    <Folder Include="SubmittionExamAnswerAggregate\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.9.0" />
