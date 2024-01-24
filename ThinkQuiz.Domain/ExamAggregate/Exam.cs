@@ -1,4 +1,5 @@
-﻿using ThinkQuiz.Domain.ClassExamAggregate;
+﻿using ThinkQuiz.Domain.ClassAggregate;
+using ThinkQuiz.Domain.ClassExamAggregate;
 using ThinkQuiz.Domain.ExamQuestionAggregate;
 using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.SubmittionExamAggregate;
@@ -35,6 +36,8 @@ namespace ThinkQuiz.Domain.ExamAggregate
         public DateTime EndTime { get; private set; }
 
         public int Duration { get; private set; }
+
+        public ICollection<Class>? Classes { get; private set; }
 
         public ICollection<ClassExam>? ClassExams { get; private set; }
 

@@ -1,4 +1,4 @@
-﻿using ThinkQuiz.Domain.ExamQuestionAggregate;
+﻿using ThinkQuiz.Domain.SubmittionExamAggregate;
 
 namespace ThinkQuiz.Domain.SubmittionExamAnswerAggregate
 {
@@ -6,9 +6,11 @@ namespace ThinkQuiz.Domain.SubmittionExamAnswerAggregate
     {
         public Guid Id { get; private set; }
 
-        public Guid QuestionId { get; private set; }
+        public Guid submittionExamId { get; private set; }
 
-        public ExamQuestion ExamQuestion { get; private set; } = null!;
+        public SubmittionExam SubmittionExam { get; private set; } = null!;
+
+        public Guid QuestionId { get; private set; }
 
         public Guid ChoiceId { get; private set; }
 

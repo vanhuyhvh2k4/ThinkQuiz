@@ -1,5 +1,7 @@
-﻿using ThinkQuiz.Domain.ClassAggregate;
+﻿using ThinkQuiz.Domain.AssignmentAggregate;
+using ThinkQuiz.Domain.ClassAggregate;
 using ThinkQuiz.Domain.ClassStudentAggregate;
+using ThinkQuiz.Domain.ExamAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
 using ThinkQuiz.Domain.SubmittionExamAggregate;
 using ThinkQuiz.Domain.UserAggregate;
@@ -18,7 +20,11 @@ namespace ThinkQuiz.Domain.StudentAggregate
 
         public ICollection<ClassStudent>? ClassStudents { get; private set; }
 
+        public ICollection<Exam>? Exams { get; private set; }
+
         public ICollection<SubmittionExam>? SubmittionExams { get; private set; }
+
+        public ICollection<Assignment>? Assignments { get; private set; }
 
         public ICollection<SubmittionAssignment>? SubmittionAssignments { get; private set; }
 
