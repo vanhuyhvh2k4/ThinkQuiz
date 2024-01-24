@@ -12,6 +12,8 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(ca => new { ca.AssignmentId, ca.ClassId });
 
+            builder.HasIndex(ca => new { ca.ClassId, ca.AssignmentId });
+
             builder.HasOne(ca => ca.Assignment)
                 .WithMany(assign => assign.ClassAssignments)
                 .HasForeignKey(ca => ca.AssignmentId)

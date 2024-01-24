@@ -61,7 +61,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("TeacherId", "Name");
 
                     b.ToTable("Assignments", (string)null);
                 });
@@ -102,7 +102,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("TeacherId", "Name");
 
                     b.ToTable("Classes", (string)null);
                 });
@@ -117,7 +117,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("AssignmentId", "ClassId");
 
-                    b.HasIndex("ClassId");
+                    b.HasIndex("ClassId", "AssignmentId");
 
                     b.ToTable("ClassAssignments", (string)null);
                 });
@@ -133,6 +133,8 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.HasKey("ClassId", "ExamId");
 
                     b.HasIndex("ExamId");
+
+                    b.HasIndex("ClassId", "ExamId");
 
                     b.ToTable("ClassExams", (string)null);
                 });
@@ -154,6 +156,8 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.HasKey("StudentId", "ClassId");
 
                     b.HasIndex("ClassId");
+
+                    b.HasIndex("StudentId", "ClassId");
 
                     b.ToTable("ClassStudents", (string)null);
                 });
@@ -222,7 +226,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("TeacherId", "Name");
 
                     b.ToTable("Exams", (string)null);
                 });
@@ -355,7 +359,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("AssignmentId", "StudentId", "Id");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("StudentId", "AssignmentId");
 
                     b.ToTable("SubmittionAssignments", (string)null);
                 });
@@ -385,7 +389,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasIndex("ExamId");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("StudentId", "ExamId");
 
                     b.ToTable("SubmittionExams", (string)null);
                 });
@@ -413,7 +417,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("submittionExamId");
+                    b.HasIndex("submittionExamId", "QuestionId", "ChoiceId");
 
                     b.ToTable("SubmittionExamAnswers", (string)null);
                 });
@@ -493,6 +497,11 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("FullName");
 
                     b.ToTable("Users", (string)null);
                 });

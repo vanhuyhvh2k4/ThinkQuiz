@@ -6,13 +6,15 @@ using ThinkQuiz.Domain.TeacherAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
-	public class ClassConfigurations : IEntityTypeConfiguration<Class>
-	{
+    public class ClassConfigurations : IEntityTypeConfiguration<Class>
+    {
         public void Configure(EntityTypeBuilder<Class> builder)
         {
             builder.ToTable("Classes");
 
             builder.HasKey(c => c.Id);
+
+            builder.HasIndex(c => new { c.TeacherId, c.Name });
 
             builder.HasOne(c => c.Teacher)
                 .WithMany(teacher => teacher.Classes)

@@ -12,6 +12,8 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(student => student.Id);
 
+            builder.HasIndex(student => student.UserId).IsUnique();
+
             builder.HasOne(student => student.User)
                 .WithOne(user => user.Student)
                 .HasForeignKey<Student>(student => student.UserId)

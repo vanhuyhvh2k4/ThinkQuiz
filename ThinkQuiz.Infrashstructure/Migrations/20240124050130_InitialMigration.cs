@@ -389,19 +389,24 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Assignments_TeacherId",
+                name: "IX_Assignments_TeacherId_Name",
                 table: "Assignments",
-                column: "TeacherId");
+                columns: new[] { "TeacherId", "Name" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClassAssignments_ClassId",
+                name: "IX_ClassAssignments_ClassId_AssignmentId",
                 table: "ClassAssignments",
-                column: "ClassId");
+                columns: new[] { "ClassId", "AssignmentId" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Classes_TeacherId",
+                name: "IX_Classes_TeacherId_Name",
                 table: "Classes",
-                column: "TeacherId");
+                columns: new[] { "TeacherId", "Name" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClassExams_ClassId_ExamId",
+                table: "ClassExams",
+                columns: new[] { "ClassId", "ExamId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClassExams_ExamId",
@@ -414,6 +419,11 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 column: "ClassId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ClassStudents_StudentId_ClassId",
+                table: "ClassStudents",
+                columns: new[] { "StudentId", "ClassId" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ExamChoices_QuestionId",
                 table: "ExamChoices",
                 column: "QuestionId");
@@ -424,9 +434,9 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 column: "ExamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Exams_TeacherId",
+                name: "IX_Exams_TeacherId_Name",
                 table: "Exams",
-                column: "TeacherId");
+                columns: new[] { "TeacherId", "Name" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_UserId",
@@ -435,14 +445,14 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubmittionAssignments_StudentId",
+                name: "IX_SubmittionAssignments_StudentId_AssignmentId",
                 table: "SubmittionAssignments",
-                column: "StudentId");
+                columns: new[] { "StudentId", "AssignmentId" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubmittionExamAnswers_submittionExamId",
+                name: "IX_SubmittionExamAnswers_submittionExamId_QuestionId_ChoiceId",
                 table: "SubmittionExamAnswers",
-                column: "submittionExamId");
+                columns: new[] { "submittionExamId", "QuestionId", "ChoiceId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_SubmittionExams_ExamId",
@@ -450,15 +460,26 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                 column: "ExamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubmittionExams_StudentId",
+                name: "IX_SubmittionExams_StudentId_ExamId",
                 table: "SubmittionExams",
-                column: "StudentId");
+                columns: new[] { "StudentId", "ExamId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teachers_UserId",
                 table: "Teachers",
                 column: "UserId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_FullName",
+                table: "Users",
+                column: "FullName");
         }
 
         /// <inheritdoc />

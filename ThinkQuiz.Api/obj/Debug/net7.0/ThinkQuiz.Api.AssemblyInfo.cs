@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThinkQuiz.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da0f26bde73580ab71ee3c440f5b3017a77cec2d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9eccb953b338d17be171c56b0af4ec57b98c4ec5")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThinkQuiz.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThinkQuiz.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

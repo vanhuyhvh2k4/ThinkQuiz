@@ -10,6 +10,8 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
         {
             builder.ToTable("SubmittionExamAnswers");
 
+            builder.HasIndex(sea => new { sea.submittionExamId, sea.QuestionId, sea.ChoiceId });
+
             builder.HasKey(sea => sea.Id);
 
             _ = builder.HasOne(sea => sea.SubmittionExam)

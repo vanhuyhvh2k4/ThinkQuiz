@@ -12,6 +12,10 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(user => user.Id);
 
+            builder.HasIndex(user => user.Email).IsUnique();
+
+            builder.HasIndex(user => user.FullName);
+
             builder.Property(user => user.FullName)
                 .HasMaxLength(100);
 

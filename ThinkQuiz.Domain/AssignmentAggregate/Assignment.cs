@@ -1,6 +1,4 @@
-﻿using ThinkQuiz.Domain.ClassAggregate;
-using ThinkQuiz.Domain.ClassAssignmentAggregate;
-using ThinkQuiz.Domain.StudentAggregate;
+﻿using ThinkQuiz.Domain.ClassAssignmentAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 

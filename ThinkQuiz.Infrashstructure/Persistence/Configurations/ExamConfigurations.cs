@@ -1,18 +1,18 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ThinkQuiz.Domain.ExamAggregate;
-using ThinkQuiz.Domain.TeacherAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
-	public class ExamConfigurations : IEntityTypeConfiguration<Exam>
+    public class ExamConfigurations : IEntityTypeConfiguration<Exam>
 	{
         public void Configure(EntityTypeBuilder<Exam> builder)
         {
             builder.ToTable("Exams");
 
             builder.HasKey(exam => exam.Id);
+
+            builder.HasIndex(exam => new { exam.TeacherId, exam.Name });
 
             builder.HasOne(exam => exam.Teacher)
                 .WithMany(teacher => teacher.Exams)
