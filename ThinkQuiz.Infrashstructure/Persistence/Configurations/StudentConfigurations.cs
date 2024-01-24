@@ -1,12 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ThinkQuiz.Domain.StudentAggregate;
-using ThinkQuiz.Domain.UserAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
-	public class StudentConfigurations : IEntityTypeConfiguration<Student>
+    public class StudentConfigurations : IEntityTypeConfiguration<Student>
 	{
         public void Configure(EntityTypeBuilder<Student> builder)
         {
@@ -14,7 +12,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(student => student.Id);
 
-            builder.HasOne<User>()
+            builder.HasOne(student => student.User)
                 .WithOne(user => user.Student)
                 .HasForeignKey<Student>(student => student.UserId)
                 .IsRequired();

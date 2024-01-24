@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ThinkQuiz.Domain.AssignmentAggregate;
-using ThinkQuiz.Domain.ClassAggregate;
 using ThinkQuiz.Domain.ClassAssignmentAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
@@ -14,12 +12,12 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(ca => new { ca.AssignmentId, ca.ClassId });
 
-            builder.HasOne<Assignment>()
+            builder.HasOne(ca => ca.Assignment)
                 .WithMany(assign => assign.ClassAssignments)
                 .HasForeignKey(ca => ca.AssignmentId)
                 .IsRequired();
 
-            builder.HasOne<Class>()
+            builder.HasOne(ca => ca.Class)
                 .WithMany(c => c.ClassAssignments)
                 .HasForeignKey(ca => ca.ClassId)
                 .IsRequired();

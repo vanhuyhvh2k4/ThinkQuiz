@@ -14,7 +14,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(c => c.Id);
 
-            builder.HasOne<Teacher>()
+            builder.HasOne(c => c.Teacher)
                 .WithMany(teacher => teacher.Classes)
                 .HasForeignKey(c => c.TeacherId)
                 .IsRequired();

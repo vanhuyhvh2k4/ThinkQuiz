@@ -1,12 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ThinkQuiz.Domain.ExamAggregate;
 using ThinkQuiz.Domain.ExamQuestionAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
-	public class ExamQuestionConfigurations : IEntityTypeConfiguration<ExamQuestion>
+    public class ExamQuestionConfigurations : IEntityTypeConfiguration<ExamQuestion>
 	{
         public void Configure(EntityTypeBuilder<ExamQuestion> builder)
         {
@@ -14,7 +12,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(examQuestion => examQuestion.Id);
 
-            builder.HasOne<Exam>()
+            builder.HasOne(examQuestion => examQuestion.Exam)
                 .WithMany(exam => exam.ExamQuestions)
                 .HasForeignKey(examQuestion => examQuestion.ExamId)
                 .IsRequired();

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ThinkQuiz.Domain.ExamChoiceAggregate;
-using ThinkQuiz.Domain.ExamQuestionAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
@@ -13,7 +12,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(ec => ec.Id);
 
-            builder.HasOne<ExamQuestion>()
+            builder.HasOne(ec => ec.ExamQuestion)
                 .WithMany(examQuesion => examQuesion.ExamChoices)
                 .HasForeignKey(ec => ec.QuestionId)
                 .IsRequired();

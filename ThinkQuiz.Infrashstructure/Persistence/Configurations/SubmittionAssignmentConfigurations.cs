@@ -1,13 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ThinkQuiz.Domain.AssignmentAggregate;
-using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 {
-	public class SubmittionAssignmentConfigurations : IEntityTypeConfiguration<SubmittionAssignment>
+    public class SubmittionAssignmentConfigurations : IEntityTypeConfiguration<SubmittionAssignment>
 	{
         public void Configure(EntityTypeBuilder<SubmittionAssignment> builder)
         {
@@ -15,12 +12,12 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(sa => new { sa.AssignmentId, sa.StudentId, sa.Id });
 
-            builder.HasOne<Student>()
+            builder.HasOne(sa => sa.Student)
                 .WithMany(student => student.SubmittionAssignments)
                 .HasForeignKey(sa => sa.StudentId)
                 .IsRequired();
 
-            builder.HasOne<Assignment>()
+            builder.HasOne(sa => sa.Assignment)
                 .WithMany(assign => assign.SubmittionAssignments)
                 .HasForeignKey(sa => sa.AssignmentId)
                 .IsRequired();

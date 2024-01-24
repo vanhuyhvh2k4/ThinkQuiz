@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ThinkQuiz.Domain.ExamAggregate;
-using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.SubmittionExamAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
@@ -12,14 +10,14 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
         {
             builder.ToTable("SubmittionExams");
 
-            builder.HasKey(se => new { se.Id, se.StudentId, se.ExamId });
+            builder.HasKey(se => se.Id);
 
-            builder.HasOne<Student>()
+            builder.HasOne(se => se.Student)
                 .WithMany(student => student.SubmittionExams)
                 .HasForeignKey(se => se.StudentId)
                 .IsRequired();
 
-            builder.HasOne<Exam>()
+            builder.HasOne(se => se.Exam)
                 .WithMany(exam => exam.SubmittionExams)
                 .HasForeignKey(se => se.ExamId)
                 .IsRequired();

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ThinkQuiz.Domain.SubmittionExamAggregate;
 using ThinkQuiz.Domain.SubmittionExamAnswerAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
@@ -13,7 +12,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
 
             builder.HasKey(sea => sea.Id);
 
-            builder.HasOne<SubmittionExam>()
+            _ = builder.HasOne(sea => sea.SubmittionExam)
                 .WithMany(se => se.SubmittionExamAnswers)
                 .HasForeignKey(sea => sea.submittionExamId)
                 .IsRequired();
