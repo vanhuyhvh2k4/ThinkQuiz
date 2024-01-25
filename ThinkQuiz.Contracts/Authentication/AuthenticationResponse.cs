@@ -13,13 +13,13 @@ namespace ThinkQuiz.Contracts.Authentication
     public record UserData
     {
         [JsonPropertyName("id")]
-        public string? Id { get; init; }
+        public string Id { get; init; } = null!;
 
         [JsonPropertyName("fullName")]
-        public string? FullName { get; init; }
+        public string FullName { get; init; } = null!;
 
         [JsonPropertyName("email")]
-        public string? Email { get; init; }
+        public string Email { get; init; } = null!;
 
         [JsonPropertyName("dateOfBirth")]
         public DateOnly? DateOfBirth { get; init; }
@@ -28,13 +28,13 @@ namespace ThinkQuiz.Contracts.Authentication
         public string? Phone { get; init; }
 
         [JsonPropertyName("lastLogin")]
-        public string? LastLogin { get; init; }
+        public string LastLogin { get; init; } = null!;
 
         [JsonPropertyName("createdAt")]
-        public string? CreatedAt { get; init; }
+        public string CreatedAt { get; init; } = null!;
 
         [JsonPropertyName("updatedAt")]
-        public string? UpdatedAt { get; init; }
+        public string UpdatedAt { get; init; } = null!;
 
         [JsonPropertyName("gender")]
         public bool Gender { get; init; }
@@ -43,6 +43,6 @@ namespace ThinkQuiz.Contracts.Authentication
         public bool IsTeacher { get; init; }
 
         [JsonPropertyName("token")]
-        public string? Token { get; init; }
+        public string Token { get; init; } = null!;
     }
 }

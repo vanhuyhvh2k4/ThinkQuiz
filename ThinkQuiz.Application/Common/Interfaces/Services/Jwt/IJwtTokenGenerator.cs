@@ -1,5 +1,5 @@
 ﻿using System;
-using ThinkQuiz.Domain.StudentAggregate;
+using ThinkQuiz.Domain.StudeæntAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 using ThinkQuiz.Domain.UserAggregate;
 

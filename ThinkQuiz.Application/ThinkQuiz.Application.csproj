@@ -28,6 +28,9 @@
     <None Remove="Common\Interfaces\Services\" />
     <None Remove="Common\Interfaces\Services\Jwt\" />
     <None Remove="Common\Interfaces\Services\Bcrypt\" />
+    <None Remove="Class\" />
+    <None Remove="Class\Commands\" />
+    <None Remove="Class\Commands\Create\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -48,6 +51,9 @@
     <Folder Include="Common\Interfaces\Services\" />
     <Folder Include="Common\Interfaces\Services\Jwt\" />
     <Folder Include="Common\Interfaces\Services\Bcrypt\" />
+    <Folder Include="Class\" />
+    <Folder Include="Class\Commands\" />
+    <Folder Include="Class\Commands\Create\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />

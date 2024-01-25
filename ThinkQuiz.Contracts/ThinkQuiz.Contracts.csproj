@@ -9,9 +9,13 @@
   <ItemGroup>
     <None Remove="Authentication\" />
     <None Remove="Users\" />
+    <None Remove="Class\" />
+    <None Remove="Class\Create\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Users\" />
+    <Folder Include="Class\" />
+    <Folder Include="Class\Create\" />
   </ItemGroup>
 </Project>

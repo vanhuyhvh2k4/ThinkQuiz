@@ -34,6 +34,7 @@ namespace ThinkQuiz.Infrashstructure
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IClassRepository, ClassRepository>();
 
             return services;
         }
@@ -60,6 +61,19 @@ namespace ThinkQuiz.Infrashstructure
                     ValidAudience = jwtSettings.Audience,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
                 });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Teacher", policy =>
+                {
+                    policy.RequireClaim("teacherId");
+                });
+
+                options.AddPolicy("Student", policy =>
+                {
+                    policy.RequireClaim("studentId");
+                });
+            });
 
             return services;
 		}

@@ -1,12 +1,9 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate;
-using ThinkQuiz.Domain.ClassAggregate;
-using ThinkQuiz.Domain.ClassStudentAggregate;
-using ThinkQuiz.Domain.ExamAggregate;
+﻿using ThinkQuiz.Domain.ClassStudentAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
 using ThinkQuiz.Domain.SubmittionExamAggregate;
 using ThinkQuiz.Domain.UserAggregate;
 
-namespace ThinkQuiz.Domain.StudentAggregate
+namespace ThinkQuiz.Domain.StudeæntAggregate
 {
     public class Student
     {

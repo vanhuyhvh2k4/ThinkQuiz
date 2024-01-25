@@ -1,9 +1,6 @@
-﻿using ThinkQuiz.Domain.AssignmentAggregate;
-using ThinkQuiz.Domain.ClassAssignmentAggregate;
+﻿using ThinkQuiz.Domain.ClassAssignmentAggregate;
 using ThinkQuiz.Domain.ClassExamAggregate;
 using ThinkQuiz.Domain.ClassStudentAggregate;
-using ThinkQuiz.Domain.ExamAggregate;
-using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 
 namespace ThinkQuiz.Domain.ClassAggregate
@@ -32,7 +29,7 @@ namespace ThinkQuiz.Domain.ClassAggregate
 
         public DateTime CreatedAt { get; private set; }
 
-        public DateTime? UpdatedAt { get; private set; }
+        public DateTime UpdatedAt { get; private set; }
 
         private Class(
             Guid id,
