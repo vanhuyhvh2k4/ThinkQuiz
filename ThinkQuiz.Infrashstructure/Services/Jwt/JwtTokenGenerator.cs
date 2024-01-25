@@ -4,6 +4,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using ThinkQuiz.Application.Common.Interfaces.Services.Jwt;
+using ThinkQuiz.Domain.StudentAggregate;
+using ThinkQuiz.Domain.TeacherAggregate;
 using ThinkQuiz.Domain.UserAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Services.Jwt
@@ -17,19 +19,28 @@ namespace ThinkQuiz.Infrashstructure.Services.Jwt
             _jwtSettings = jwtOptions.Value;
         }
 
-        public string GenerateToken(User user)
+        public string GenerateToken(User user, Teacher? teacher, Student? student)
         {
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
                 SecurityAlgorithms.HmacSha256);
 
-            var claims = new[]
+            var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()!),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.UniqueName, user.FullName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            if (teacher != null)
+            {
+                claims.Add(new Claim("teacherId", teacher.Id.ToString()));
+            }
+
+            if (student != null)
+            {
+                claims.Add(new Claim("studentId", student.Id.ToString()));
+            }
 
             var securityToken = new JwtSecurityToken(
                issuer: _jwtSettings.Issuer,

@@ -13,15 +13,17 @@ namespace ThinkQuiz.Application.Authentication.Commands.Login
 	{
         private readonly IUserRepository _userRepository;
         private readonly ITeacherRepository _teacherRepository;
+        private readonly IStudentRepository _studentRepository;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IBcryptHashPassword _hashPassword;
 
-        public LoginCommandHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator, IBcryptHashPassword hashPassword, ITeacherRepository teacherRepository)
+        public LoginCommandHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator, IBcryptHashPassword hashPassword, ITeacherRepository teacherRepository, IStudentRepository studentRepository)
         {
             _userRepository = userRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
             _hashPassword = hashPassword;
             _teacherRepository = teacherRepository;
+            _studentRepository = studentRepository;
         }
 
         public async Task<ErrorOr<AuthenticationResult>> Handle(LoginCommand command, CancellationToken cancellationToken)
@@ -39,7 +41,9 @@ namespace ThinkQuiz.Application.Authentication.Commands.Login
             }
 
             // 3. Persist db and create token
-            var token = _jwtTokenGenerator.GenerateToken(user);
+            var teacher = _teacherRepository.GetTeacherByUserId(user.Id);
+            var student = _studentRepository.GetStudentByUserId(user.Id);
+            var token = _jwtTokenGenerator.GenerateToken(user, teacher, student);
 
             bool isTeacher = _teacherRepository.GetTeacherByUserId(user.Id) is not null;
 

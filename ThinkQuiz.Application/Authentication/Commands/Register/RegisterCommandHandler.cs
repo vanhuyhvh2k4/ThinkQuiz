@@ -44,16 +44,16 @@ namespace ThinkQuiz.Application.Authentication.Commands.Register
 
             // 2. create new user
             var user = User.Create(command.FullName, command.Email, _hashPassword.HashPassword(command.Password));
+            object? registerEntity = null;
 
             // 4. persist user
 
             _userRepository.Add(user);
 
-            var token = _tokenGenerator.GenerateToken(user);
-
             if (command.RegisterType.Equals(RegisterType.Student))
             {
                 var student = Student.Create(user.Id);
+                registerEntity = student;
                 _studentRepository.Add(student);
 
             }
@@ -61,8 +61,11 @@ namespace ThinkQuiz.Application.Authentication.Commands.Register
             if (command.RegisterType.Equals(RegisterType.Teacher))
             {
                 var teacher = Teacher.Create(user.Id, command.Position!, command.SchoolInformation!);
+                registerEntity = teacher;
                 _teacherRepository.Add(teacher);
             }
+
+            var token = _tokenGenerator.GenerateToken(user, teacher: registerEntity as Teacher ?? null, student: registerEntity as Student ?? null);
 
             return new AuthenticationResult(
                 user,
