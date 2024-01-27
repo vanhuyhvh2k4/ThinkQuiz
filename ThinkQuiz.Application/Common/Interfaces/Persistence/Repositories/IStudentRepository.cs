@@ -8,6 +8,8 @@ namespace ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories
 		void Add(Student student);
 
 		Student? GetStudentByUserId(Guid userId);
+
+		Student? GetStudentById(Guid studentId);
 	}
 }
 

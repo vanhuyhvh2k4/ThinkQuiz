@@ -20,6 +20,11 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
             _context.SaveChanges();
         }
 
+        public Class? GetClassById(Guid classId)
+        {
+            return _context.Classes.SingleOrDefault(c => c.Id == classId);
+        }
+
         public List<Class> GetClassByTeacherId(Guid teacherId)
         {
             return _context.Classes.Where(c => c.TeacherId == teacherId).ToList();

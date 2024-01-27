@@ -35,6 +35,7 @@ namespace ThinkQuiz.Infrashstructure
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IClassRepository, ClassRepository>();
+            services.AddScoped<IClassStudentRepository, ClassStudentRepository>();
 
             return services;
         }

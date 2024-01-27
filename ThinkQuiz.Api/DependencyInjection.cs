@@ -3,6 +3,7 @@ using MapsterMapper;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using System.Text.Json.Serialization;
 
 namespace ThinkQuiz.Api
 {
@@ -10,6 +11,9 @@ namespace ThinkQuiz.Api
 	{
 		public static IServiceCollection AddPresentation(this IServiceCollection services)
 		{
+            // Ignore Cycles
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
             services.AddMapping();
 
             services.AddApiVersioning(config =>

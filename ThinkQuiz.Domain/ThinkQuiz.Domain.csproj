@@ -26,6 +26,8 @@
     <None Remove="ExamChoiceAggregate\" />
     <None Remove="SubmittionExamAnswerAggregate\" />
     <None Remove="Common\Exceptions\Class\" />
+    <None Remove="Common\Exceptions\ClassStudent\" />
+    <None Remove="Common\Exceptions\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -47,6 +49,8 @@
     <Folder Include="ExamChoiceAggregate\" />
     <Folder Include="SubmittionExamAnswerAggregate\" />
     <Folder Include="Common\Exceptions\Class\" />
+    <Folder Include="Common\Exceptions\ClassStudent\" />
+    <Folder Include="Common\Exceptions\Student\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.9.0" />

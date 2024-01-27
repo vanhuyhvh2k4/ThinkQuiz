@@ -13,6 +13,7 @@
     <None Remove="Class\Create\" />
     <None Remove="Class\GetClasses\" />
     <None Remove="Class\Common\" />
+    <None Remove="Class\AddStudent\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
@@ -21,5 +22,6 @@
     <Folder Include="Class\Create\" />
     <Folder Include="Class\GetClasses\" />
     <Folder Include="Class\Common\" />
+    <Folder Include="Class\AddStudent\" />
   </ItemGroup>
 </Project>

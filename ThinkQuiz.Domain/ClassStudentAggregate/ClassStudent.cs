@@ -9,24 +9,27 @@ namespace ThinkQuiz.Domain.ClassStudentAggregate
 
 		public Guid ClassId { get; private set; }
 
+		public bool Status { get; private set; } = false;
+
 		public Student Student { get; private set; } = null!;
 
 		public Class Class { get; private set; } = null!;
 
 		public DateTime CreatedAt { get; private set; }
 
-		public DateTime? UpdatedAt { get; private set; }
+		public DateTime UpdatedAt { get; private set; }
 
-		private ClassStudent(Guid studentId, Guid classId, DateTime createdAt)
+		private ClassStudent(Guid studentId, Guid classId, bool status, DateTime createdAt)
 		{
 			StudentId = studentId;
 			ClassId = classId;
+			Status = status;
 			CreatedAt = createdAt;
 		}
 
-		public static ClassStudent Create(Guid studentId, Guid classId)
+		public static ClassStudent Create(Guid studentId, Guid classId, bool status = false)
 		{
-			return new(studentId, classId, DateTime.Now);
+			return new(studentId, classId, status, DateTime.Now);
 		}
 
 #pragma warning disable CS8618

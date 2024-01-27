@@ -24,6 +24,9 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Configurations
                 .HasForeignKey(cs => cs.ClassId)
                 .IsRequired();
 
+            builder.Property(cs => cs.Status)
+                .HasDefaultValue(false);
+
             builder.Property(cs => cs.CreatedAt);
 
             builder.Property(cs => cs.UpdatedAt);

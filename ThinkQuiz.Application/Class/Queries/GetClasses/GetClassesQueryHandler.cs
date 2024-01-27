@@ -1,5 +1,4 @@
 ﻿using ErrorOr;
-using MapsterMapper;
 using MediatR;
 using ThinkQuiz.Application.Class.Common;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
@@ -10,12 +9,10 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
     public class GetClassesQueryHandler : IRequestHandler<GetClassesQuery, ErrorOr<List<ClassResult>>>
 	{
         private readonly IClassRepository _classRepository;
-        private readonly IMapper _mapper;
 
-        public GetClassesQueryHandler(IClassRepository classRepository, IMapper mapper)
+        public GetClassesQueryHandler(IClassRepository classRepository)
         {
             _classRepository = classRepository;
-            _mapper = mapper;
         }
 
         public async Task<ErrorOr<List<ClassResult>>> Handle(GetClassesQuery query, CancellationToken cancellationToken)

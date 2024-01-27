@@ -1,7 +1,9 @@
 ﻿using Mapster;
+using ThinkQuiz.Application.Class.Commands.AddStudent;
 using ThinkQuiz.Application.Class.Commands.Create;
 using ThinkQuiz.Application.Class.Common;
 using ThinkQuiz.Application.Class.Queries.GetClasses;
+using ThinkQuiz.Contracts.Class.AddStudent;
 using ThinkQuiz.Contracts.Class.Create;
 using ThinkQuiz.Contracts.Class.GetClasses;
 using ThinkQuiz.Domain.ClassAggregate;
@@ -27,6 +29,11 @@ namespace ThinkQuiz.Api.Common.Mapping
 
             config.NewConfig<List<ClassResult>, GetClassesResponse>()
                 .Map(dest => dest.Data.Classes, src => src);
+
+            config.NewConfig<AddStudentRequest, AddStudentCommand>();
+
+            config.NewConfig<AddStudentResult, AddStudentResponse>()
+                .Map(dest => dest.Data, src => src);
         }
     }
 }

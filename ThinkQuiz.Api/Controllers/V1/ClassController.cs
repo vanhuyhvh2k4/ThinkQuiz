@@ -2,8 +2,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ThinkQuiz.Application.Class.Commands.AddStudent;
 using ThinkQuiz.Application.Class.Commands.Create;
 using ThinkQuiz.Application.Class.Queries.GetClasses;
+using ThinkQuiz.Contracts.Class.AddStudent;
 using ThinkQuiz.Contracts.Class.Create;
 using ThinkQuiz.Contracts.Class.GetClasses;
 
@@ -52,6 +54,19 @@ namespace ThinkQuiz.Api.Controllers.V1
                createClassResult => StatusCode(StatusCodes.Status201Created, _mapper.Map<CreateClassResponse>(createClassResult)),
                errors => Problem(errors)
                );
+        }
+
+        [HttpPost("classes/add_student")]
+        public async Task<IActionResult> AddStudentToClass(AddStudentRequest request)
+        {
+            var command = _mapper.Map<AddStudentCommand>(request);
+
+            var addStudentResult = await _mediator.Send(command);
+
+            return addStudentResult.Match(
+              addStudentResult => StatusCode(StatusCodes.Status201Created, _mapper.Map<AddStudentResponse>(addStudentResult)),
+              errors => Problem(errors)
+              );
         }
     }
 }
