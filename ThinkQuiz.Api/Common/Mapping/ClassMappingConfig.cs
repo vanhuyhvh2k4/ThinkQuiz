@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using ThinkQuiz.Application.Class.Commands.AddStudent;
 using ThinkQuiz.Application.Class.Commands.Create;
+using ThinkQuiz.Application.Class.Commands.JoinClass;
 using ThinkQuiz.Application.Class.Common;
 using ThinkQuiz.Application.Class.Queries.GetClasses;
 using ThinkQuiz.Contracts.Class.AddStudent;
@@ -34,6 +35,10 @@ namespace ThinkQuiz.Api.Common.Mapping
 
             config.NewConfig<AddStudentResult, AddStudentResponse>()
                 .Map(dest => dest.Data, src => src);
+
+            config.NewConfig<(Guid studentId, Guid classId), JoinClassCommand>()
+                .Map(dest => dest.StudentId, src => src.studentId)
+                .Map(dest => dest.ClassId, src => src.classId);
         }
     }
 }

@@ -5,6 +5,7 @@ using ThinkQuiz.Domain.ClassStudentAggregate;
 using ClassStudentExceptions = ThinkQuiz.Domain.Common.Exceptions.ClassStudent.Exceptions;
 using StudentExceptions = ThinkQuiz.Domain.Common.Exceptions.Student.Exceptions;
 using ClassExceptions = ThinkQuiz.Domain.Common.Exceptions.Class.Exceptions;
+using ThinkQuiz.Application.Class.Common;
 
 namespace ThinkQuiz.Application.Class.Commands.AddStudent
 {
@@ -21,28 +22,28 @@ namespace ThinkQuiz.Application.Class.Commands.AddStudent
             _classRepository = classRepository;
         }
 
-        public async Task<ErrorOr<AddStudentResult>> Handle(AddStudentCommand query, CancellationToken cancellationToken)
+        public async Task<ErrorOr<AddStudentResult>> Handle(AddStudentCommand command, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
             // check classStudent exists
-            if (_classStudentRepository.Get(query.StudentId, query.ClassId) is not null)
+            if (_classStudentRepository.Get(command.StudentId, command.ClassId) is not null)
             {
                 return ClassStudentExceptions.DuplicateClassStudent;
             }
             // check student exsist
-            if (_studentRepository.GetStudentById(query.StudentId) is null)
+            if (_studentRepository.GetStudentById(command.StudentId) is null)
             {
                 return StudentExceptions.NotFoundStudent;
             }
 
             // check class exist
-            if (_classRepository.GetClassById(query.ClassId) is null)
+            if (_classRepository.GetClassById(command.ClassId) is null)
             {
                 return ClassExceptions.NotFoundClass;
             }
 
-            var classStudent = ClassStudent.Create(query.StudentId, query.ClassId);
+            var classStudent = ClassStudent.Create(command.StudentId, command.ClassId, true);
 
             _classStudentRepository.Add(classStudent);
 

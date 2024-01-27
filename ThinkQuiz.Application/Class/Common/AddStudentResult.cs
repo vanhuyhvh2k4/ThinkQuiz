@@ -1,4 +1,4 @@
-﻿namespace ThinkQuiz.Application.Class.Commands.AddStudent
+﻿namespace ThinkQuiz.Application.Class.Common
 {
     public record AddStudentResult(
         string StudentId,

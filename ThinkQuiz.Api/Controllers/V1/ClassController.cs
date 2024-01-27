@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ThinkQuiz.Application.Class.Commands.AddStudent;
 using ThinkQuiz.Application.Class.Commands.Create;
+using ThinkQuiz.Application.Class.Commands.JoinClass;
 using ThinkQuiz.Application.Class.Queries.GetClasses;
 using ThinkQuiz.Contracts.Class.AddStudent;
 using ThinkQuiz.Contracts.Class.Create;
@@ -56,6 +57,7 @@ namespace ThinkQuiz.Api.Controllers.V1
                );
         }
 
+        [Authorize(Policy = "Teacher")]
         [HttpPost("classes/add_student")]
         public async Task<IActionResult> AddStudentToClass(AddStudentRequest request)
         {
@@ -65,6 +67,22 @@ namespace ThinkQuiz.Api.Controllers.V1
 
             return addStudentResult.Match(
               addStudentResult => StatusCode(StatusCodes.Status201Created, _mapper.Map<AddStudentResponse>(addStudentResult)),
+              errors => Problem(errors)
+              );
+        }
+
+        [Authorize(Policy = "Student")]
+        [HttpPost("classes/join_class/{classId}")]
+        public async Task<IActionResult> JoinClass([FromRoute] Guid classId)
+        {
+            Guid studentId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "studentId")!.Value);
+
+            var command = _mapper.Map<JoinClassCommand>((studentId, classId));
+
+            var joinClassResult = await _mediator.Send(command);
+
+            return joinClassResult.Match(
+              joinClassResult => StatusCode(StatusCodes.Status201Created, _mapper.Map<AddStudentResponse>(joinClassResult)),
               errors => Problem(errors)
               );
         }
