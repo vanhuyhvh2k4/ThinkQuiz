@@ -22,7 +22,7 @@ namespace ThinkQuiz.Api.Common.Mapping
                 .Map(dest => dest.Data.UpdatedAt, src => src.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"));
 
             config.NewConfig<(Guid teacherId, GetClassesRequest request), GetClassesQuery>()
-                .Map(dest => dest.teacherId, src => src.teacherId)
+                .Map(dest => dest.TeacherId, src => src.teacherId)
                 .Map(dest => dest, src => src.request);
 
             config.NewConfig<List<ClassResult>, GetClassesResponse>()

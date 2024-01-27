@@ -5,7 +5,7 @@ using ThinkQuiz.Application.Class.Common;
 
 namespace ThinkQuiz.Application.Class.Queries.GetClasses
 {
-    public record GetClassesQuery(Guid teacherId, int? Page, int? PerPage, SortBy? SortBy, OrderBy OrderBy = OrderBy.Asc) : IRequest<ErrorOr<List<ClassResult>>>;
+    public record GetClassesQuery(Guid TeacherId, string? Name, int? Page, int? PerPage, SortBy? SortBy, OrderBy OrderBy = OrderBy.Asc) : IRequest<ErrorOr<List<ClassResult>>>;
 
     public enum SortBy
     {

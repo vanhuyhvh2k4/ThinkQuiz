@@ -4,7 +4,6 @@ using MediatR;
 using ThinkQuiz.Application.Class.Common;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
-using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
 
 namespace ThinkQuiz.Application.Class.Queries.GetClasses
 {
@@ -24,7 +23,15 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
             await Task.CompletedTask;
 
             // 1. get all classes 
-            var classes = _classRepository.GetClassByTeacherId(query.teacherId);
+            var classes = _classRepository.GetClassByTeacherId(query.TeacherId);
+            var classResults = new List<ClassResult>();
+
+            // Find class by name
+            if (!string.IsNullOrEmpty(query.Name))
+            {
+                classes = classes.FindAll(c => c.Name.ToLower().Contains(query.Name.ToLower().Trim()));
+            }
+
             if (classes.Count is 0)
             {
                 return Exceptions.NotFoundClass;
@@ -37,7 +44,7 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
                 int? endIndex = startIndex + query.PerPage;
 
                 if (startIndex < 0 || startIndex >= classes.Count || query.Page <= 0)
-                    return Exceptions.NotFoundClass;
+                    return classResults;
                 if (endIndex > classes.Count)
                     endIndex = classes.Count;
 
@@ -57,8 +64,6 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
                     classes = classes.OrderBy(x => x.GetType().GetProperty(query.SortBy.Value.ToString())!.GetValue(x)).ToList();
                 }
             };
-
-            var classResults = new List<ClassResult>();
 
             foreach (var item in classes)
             {

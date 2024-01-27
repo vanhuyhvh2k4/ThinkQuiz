@@ -7,6 +7,12 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
     {
         public GetClassesQueryValidator()
         {
+            When(c => !string.IsNullOrEmpty(c.Name), () =>
+            {
+                RuleFor(c => c.Name)
+                    .MaximumLength(50);
+            });
+
             When(c => c.Page.HasValue || c.PerPage.HasValue, () =>
             {
                 RuleFor(c => c.Page)
@@ -29,7 +35,7 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
                     RuleFor(c => c.OrderBy)
                         .Must(c => c == OrderBy.Asc || c == OrderBy.Desc)
                         .WithMessage("Allow to order by 'Asc' or 'Desc'");
-                });
+            }); 
         }
     }
 }
