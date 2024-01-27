@@ -20,11 +20,9 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
                     .GreaterThan(0);
             });
 
-            When(c => !string.IsNullOrEmpty(c.OrderBy.ToString()), () =>
+            When(c => c.SortBy.HasValue, () =>
                 {
                     RuleFor(c => c.SortBy)
-                    .NotNull()
-                    .WithMessage("You have to provide 'sortBy'")
                     .Must(c => c == SortBy.Name || c == SortBy.StudentQuantity)
                     .WithMessage("Allow to sort by field: 'Name' or 'StudentQuantity'");
 
