@@ -11,11 +11,13 @@
     <None Remove="Users\" />
     <None Remove="Class\" />
     <None Remove="Class\Create\" />
+    <None Remove="Class\GetClasses\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Users\" />
     <Folder Include="Class\" />
     <Folder Include="Class\Create\" />
+    <Folder Include="Class\GetClasses\" />
   </ItemGroup>
 </Project>
