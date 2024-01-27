@@ -12,6 +12,7 @@
     <None Remove="Class\" />
     <None Remove="Class\Create\" />
     <None Remove="Class\GetClasses\" />
+    <None Remove="Class\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
@@ -19,5 +20,6 @@
     <Folder Include="Class\" />
     <Folder Include="Class\Create\" />
     <Folder Include="Class\GetClasses\" />
+    <Folder Include="Class\Common\" />
   </ItemGroup>
 </Project>

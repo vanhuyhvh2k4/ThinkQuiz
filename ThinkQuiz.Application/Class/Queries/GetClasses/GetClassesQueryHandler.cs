@@ -1,21 +1,25 @@
 ﻿using ErrorOr;
+using MapsterMapper;
 using MediatR;
+using ThinkQuiz.Application.Class.Common;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
 using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
 
 namespace ThinkQuiz.Application.Class.Queries.GetClasses
 {
-    public class GetClassesHandler : IRequestHandler<GetClassesQuery, ErrorOr<List<ClassAggregate>>>
+    public class GetClassesQueryHandler : IRequestHandler<GetClassesQuery, ErrorOr<List<ClassResult>>>
 	{
         private readonly IClassRepository _classRepository;
+        private readonly IMapper _mapper;
 
-        public GetClassesHandler(IClassRepository classRepository)
+        public GetClassesQueryHandler(IClassRepository classRepository, IMapper mapper)
         {
             _classRepository = classRepository;
+            _mapper = mapper;
         }
 
-        public async Task<ErrorOr<List<ClassAggregate>>> Handle(GetClassesQuery query, CancellationToken cancellationToken)
+        public async Task<ErrorOr<List<ClassResult>>> Handle(GetClassesQuery query, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
@@ -54,7 +58,24 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
                 }
             };
 
-            return classes;
+            var classResults = new List<ClassResult>();
+
+            foreach (var item in classes)
+            {
+                var classResult = new ClassResult(
+                    Id: item.Id.ToString(),
+                    TeacherId: item.TeacherId.ToString(),
+                    Name: item.Name,
+                    SchoolYear: item.SchoolYear,
+                    StudentQuantity: item.StudentQuantity,
+                    CreatedAt: item.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                    UpdatedAt: item.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss")
+                    );
+
+                classResults.Add(classResult);
+            }
+
+            return classResults;
         }
     }
 }

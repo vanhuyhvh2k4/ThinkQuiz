@@ -1,11 +1,11 @@
 ﻿using System.Runtime.Serialization;
 using ErrorOr;
 using MediatR;
-using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
+using ThinkQuiz.Application.Class.Common;
 
 namespace ThinkQuiz.Application.Class.Queries.GetClasses
 {
-    public record GetClassesQuery(Guid teacherId, int? Page, int? PerPage, SortBy? SortBy, OrderBy OrderBy = OrderBy.Asc) : IRequest<ErrorOr<List<ClassAggregate>>>;
+    public record GetClassesQuery(Guid teacherId, int? Page, int? PerPage, SortBy? SortBy, OrderBy OrderBy = OrderBy.Asc) : IRequest<ErrorOr<List<ClassResult>>>;
 
     public enum SortBy
     {
