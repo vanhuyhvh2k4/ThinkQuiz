@@ -6,6 +6,7 @@ using ClassStudentExceptions = ThinkQuiz.Domain.Common.Exceptions.ClassStudent.E
 using StudentExceptions = ThinkQuiz.Domain.Common.Exceptions.Student.Exceptions;
 using ClassExceptions = ThinkQuiz.Domain.Common.Exceptions.Class.Exceptions;
 using ThinkQuiz.Application.Class.Common;
+using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
 
 namespace ThinkQuiz.Application.Class.Commands.AddStudent
 {
@@ -38,15 +39,21 @@ namespace ThinkQuiz.Application.Class.Commands.AddStudent
             }
 
             // check class exist
-            if (_classRepository.GetClassById(command.ClassId) is null)
+            if (_classRepository.GetClassById(command.ClassId) is not ClassAggregate @class)
             {
                 return ClassExceptions.NotFoundClass;
             }
 
+            // create new classStudent
             var classStudent = ClassStudent.Create(command.StudentId, command.ClassId, true);
 
+            // update student quantity
+            @class.AddStudentQuantity();
+
+            // persist db
             _classStudentRepository.Add(classStudent);
 
+            // mapping and return
             var addStudentResult = new AddStudentResult(
                 classStudent.StudentId.ToString(),
                 classStudent.ClassId.ToString(),

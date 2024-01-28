@@ -46,6 +46,8 @@ namespace ThinkQuiz.Domain.ClassAggregate
             CreatedAt = createdAt;
         }
 
+        // Factories method
+
         public static Class Create(
             Guid teacherId,
             string name,
@@ -57,6 +59,11 @@ namespace ThinkQuiz.Domain.ClassAggregate
                 name,
                 schoolYear,
                 DateTime.Now);
+        }
+
+        public void AddStudentQuantity()
+        {
+            StudentQuantity++;
         }
 
 #pragma warning disable CS8618
