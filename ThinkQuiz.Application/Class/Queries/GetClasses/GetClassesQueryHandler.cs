@@ -19,7 +19,7 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
         {
             await Task.CompletedTask;
 
-            // 1. get all classes 
+            // 1. get all classes of teacher
             var classes = _classRepository.GetClassByTeacherId(query.TeacherId);
             var classResults = new List<ClassResult>();
 

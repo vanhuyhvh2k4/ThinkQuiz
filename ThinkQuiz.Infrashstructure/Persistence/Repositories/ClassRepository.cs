@@ -1,10 +1,9 @@
-﻿using System;
-using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
+﻿using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.ClassAggregate;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
 {
-	public class ClassRepository : IClassRepository
+    public class ClassRepository : IClassRepository
 	{
         private readonly ThinkQuizDbContext _context;
 
@@ -27,7 +26,8 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
 
         public List<Class> GetClassByTeacherId(Guid teacherId)
         {
-            return _context.Classes.Where(c => c.TeacherId == teacherId).ToList();
+            return _context.Classes.Where(c => c.TeacherId == teacherId)
+                .ToList();
         }
     }
 }

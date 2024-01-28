@@ -3,7 +3,12 @@ using System.Runtime.Serialization;
 
 namespace ThinkQuiz.Contracts.Class.GetClasses
 {
-	public record GetClassesRequest(string? Name, int? Page, int? PerPage, SortBy? SortBy, OrderBy OrderBy = OrderBy.Asc);
+	public record GetClassesRequest(
+        string? Name,
+        int? Page,
+        int? PerPage,
+        SortBy? SortBy,
+        OrderBy OrderBy = OrderBy.Asc);
 
 	public enum SortBy
 	{

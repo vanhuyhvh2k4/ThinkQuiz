@@ -25,13 +25,11 @@ namespace ThinkQuiz.Api.Controllers.V1
             _mapper = mapper;
         }
 
-        [Authorize(Policy = "Teacher")]
-        [HttpGet("classes")]
-        public async Task<IActionResult> GetClasses([FromQuery] GetClassesRequest request)
+        [Authorize]
+        [HttpGet("classes/teacher/{teacherId}")]
+        public async Task<IActionResult> GetClassesOfTeacher([FromQuery] GetClassesRequest request, [FromRoute] Guid teacherId)
         {
-            Guid teacherId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "teacherId")!.Value);
-
-            var query = _mapper.Map<GetClassesQuery>((teacherId, request));
+            var query = _mapper.Map<GetClassesQuery>((request, teacherId));
 
             var getClassesResult = await _mediator.Send(query);
 
