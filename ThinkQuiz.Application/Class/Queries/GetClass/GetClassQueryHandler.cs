@@ -25,13 +25,20 @@ namespace ThinkQuiz.Application.Class.Queries.GetClass
                 return Exceptions.NotFoundClass;
             }
 
-            var classResult = new ClassResult(classAggregate.Id.ToString(),
-                                              classAggregate.TeacherId.ToString(),
-                                              classAggregate.Name,
-                                              classAggregate.SchoolYear,
-                                              classAggregate.StudentQuantity,
-                                              classAggregate.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
-                                              classAggregate.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"));
+            var classResult = new ClassResult(
+                                                classAggregate.Id.ToString(),
+                                                Teacher: new TeacherData(
+                                                    classAggregate.Teacher.Id.ToString(),
+                                                    classAggregate.Teacher.User.FullName,
+                                                    classAggregate.Teacher.User.Email,
+                                                    classAggregate.Teacher.User.Phone,
+                                                    classAggregate.Teacher.Position,
+                                                    classAggregate.Teacher.SchoolInformation),
+                                                  classAggregate.Name,
+                                                  classAggregate.SchoolYear,
+                                                  classAggregate.StudentQuantity,
+                                                  classAggregate.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                                                  classAggregate.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"));
 
             return classResult;
         }

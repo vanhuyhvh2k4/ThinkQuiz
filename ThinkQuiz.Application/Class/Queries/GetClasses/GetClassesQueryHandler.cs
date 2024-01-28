@@ -20,7 +20,7 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
             await Task.CompletedTask;
 
             // 1. get all classes of teacher
-            var classes = _classRepository.GetClassByTeacherId(query.TeacherId);
+            var classes = _classRepository.GetClassesByTeacherId(query.TeacherId);
             var classResults = new List<ClassResult>();
 
             // Find class by name
@@ -66,7 +66,13 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
             {
                 var classResult = new ClassResult(
                     Id: item.Id.ToString(),
-                    TeacherId: item.TeacherId.ToString(),
+                    Teacher: new TeacherData(
+                        item.Teacher.Id.ToString(),
+                        item.Teacher.User.FullName,
+                        item.Teacher.User.Email,
+                        item.Teacher.User.Phone,
+                        item.Teacher.Position,
+                        item.Teacher.SchoolInformation),
                     Name: item.Name,
                     SchoolYear: item.SchoolYear,
                     StudentQuantity: item.StudentQuantity,

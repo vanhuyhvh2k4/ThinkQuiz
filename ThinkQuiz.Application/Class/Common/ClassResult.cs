@@ -1,13 +1,20 @@
-﻿using System;
-namespace ThinkQuiz.Application.Class.Common
+﻿namespace ThinkQuiz.Application.Class.Common
 {
-	public record ClassResult(
+    public record ClassResult(
         string Id,
-        string TeacherId,
+        TeacherData Teacher,
         string Name,
         string SchoolYear,
         double StudentQuantity,
         string CreatedAt,
         string UpdatedAt);
+
+    public record TeacherData(
+        string Id,
+        string Name,
+        string Email,
+        string? Phone,
+        string Position,
+        string SchoolInformation);
 }
 

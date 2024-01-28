@@ -19,7 +19,7 @@ namespace ThinkQuiz.Application.Class.Commands.Create
         {
             await Task.CompletedTask;
             // 1. check class name exists
-            var classes = _classRepository.GetClassByTeacherId(command.teacherId);
+            var classes = _classRepository.GetClassesByTeacherId(command.teacherId);
 
             foreach (var item in classes)
             {

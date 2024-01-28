@@ -6,7 +6,7 @@ namespace ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories
 	{
 		void Create(ClassAggregate newClass);
 
-		List<ClassAggregate> GetClassByTeacherId(Guid teacherId);
+		List<ClassAggregate> GetClassesByTeacherId(Guid teacherId);
 
 		ClassAggregate? GetClassById(Guid classId);
 	}
