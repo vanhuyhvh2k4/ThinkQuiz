@@ -25,9 +25,9 @@ namespace ThinkQuiz.Api.Controllers.V1
         {
             var command = _mapper.Map<RegisterCommand>(request);
 
-            var registerResult = await _sender.Send(command);
+            var registerResults = await _sender.Send(command);
 
-            return registerResult.Match(
+            return registerResults.Match(
                registerResult => Ok(_mapper.Map<AuthenticationResponse>(registerResult)),
                errors => Problem(errors)
                );
@@ -38,9 +38,9 @@ namespace ThinkQuiz.Api.Controllers.V1
         {
             var command = _mapper.Map<LoginCommand>(request);
 
-            var loginResult = await _sender.Send(command);
+            var loginResults = await _sender.Send(command);
 
-            return loginResult.Match(
+            return loginResults.Match(
                loginResult => Ok(_mapper.Map<AuthenticationResponse>(loginResult)),
                errors => Problem(errors)
                );

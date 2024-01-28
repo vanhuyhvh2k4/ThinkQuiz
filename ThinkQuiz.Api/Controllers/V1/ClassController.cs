@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using ThinkQuiz.Application.Class.Commands.AddStudent;
 using ThinkQuiz.Application.Class.Commands.Create;
 using ThinkQuiz.Application.Class.Commands.JoinClass;
+using ThinkQuiz.Application.Class.Queries.GetClass;
 using ThinkQuiz.Application.Class.Queries.GetClasses;
 using ThinkQuiz.Contracts.Class.AddStudent;
 using ThinkQuiz.Contracts.Class.Create;
+using ThinkQuiz.Contracts.Class.GetClass;
 using ThinkQuiz.Contracts.Class.GetClasses;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -39,6 +41,20 @@ namespace ThinkQuiz.Api.Controllers.V1
                );
         }
 
+        [Authorize]
+        [HttpGet("classes/{classId}")]
+        public async Task<IActionResult> GetClassById(Guid classId)
+        {
+            var query = new GetClassQuery(classId);
+
+            var getClassResult = await _mediator.Send(query);
+
+            return getClassResult.Match(
+               classResult => Ok(_mapper.Map<GetClassResponse>(classResult)),
+               errors => Problem(errors)
+               );
+        }
+
         [Authorize(Policy = "Teacher")]
         [HttpPost("classes")]
         public async Task<IActionResult> Create(CreateClassRequest request)
@@ -47,9 +63,9 @@ namespace ThinkQuiz.Api.Controllers.V1
 
             var command = _mapper.Map<CreateClassCommand>((teacherId, request));
 
-            var createClassResult = await _mediator.Send(command);
+            var createClassResults = await _mediator.Send(command);
 
-            return createClassResult.Match(
+            return createClassResults.Match(
                createClassResult => StatusCode(StatusCodes.Status201Created, _mapper.Map<CreateClassResponse>(createClassResult)),
                errors => Problem(errors)
                );
@@ -61,9 +77,9 @@ namespace ThinkQuiz.Api.Controllers.V1
         {
             var command = _mapper.Map<AddStudentCommand>(request);
 
-            var addStudentResult = await _mediator.Send(command);
+            var addStudentResults = await _mediator.Send(command);
 
-            return addStudentResult.Match(
+            return addStudentResults.Match(
               addStudentResult => StatusCode(StatusCodes.Status201Created, _mapper.Map<AddStudentResponse>(addStudentResult)),
               errors => Problem(errors)
               );
@@ -77,9 +93,9 @@ namespace ThinkQuiz.Api.Controllers.V1
 
             var command = _mapper.Map<JoinClassCommand>((studentId, classId));
 
-            var joinClassResult = await _mediator.Send(command);
+            var joinClassResults = await _mediator.Send(command);
 
-            return joinClassResult.Match(
+            return joinClassResults.Match(
               joinClassResult => StatusCode(StatusCodes.Status201Created, _mapper.Map<AddStudentResponse>(joinClassResult)),
               errors => Problem(errors)
               );
