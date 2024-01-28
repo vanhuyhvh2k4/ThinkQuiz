@@ -36,8 +36,16 @@ namespace ThinkQuiz.Api.Common.Mapping
                 .Map(dest => dest.Data.Classes, src => src);
 
             // Get class by id
-            config.NewConfig<ClassResult, GetClassResponse>()
-                .Map(dest => dest.Class, src => src);
+            config.NewConfig<Class, GetClassResponse>()
+                .Map(dest => dest.Class, src => src)
+                .Map(dest => dest.Class.CreatedAt, src => src.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"))
+                .Map(dest => dest.Class.UpdatedAt, src => src.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"))
+                .Map(dest => dest.Class.Teacher.Id, src => src.Teacher.Id)
+                .Map(dest => dest.Class.Teacher.Name, src => src.Teacher.User.FullName)
+                .Map(dest => dest.Class.Teacher.Email, src => src.Teacher.User.Email)
+                .Map(dest => dest.Class.Teacher.Phone, src => src.Teacher.User.Phone)
+                .Map(dest => dest.Class.Teacher.Position, src => src.Teacher.Position)
+                .Map(dest => dest.Class.Teacher.SchoolInformation, src => src.Teacher.SchoolInformation);
 
             // Add student to class
             config.NewConfig<AddStudentRequest, AddStudentCommand>();

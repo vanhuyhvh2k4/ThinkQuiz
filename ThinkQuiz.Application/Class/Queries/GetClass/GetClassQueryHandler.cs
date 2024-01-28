@@ -1,13 +1,12 @@
 ﻿using ErrorOr;
 using MediatR;
-using ThinkQuiz.Application.Class.Common;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
 using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
 
 namespace ThinkQuiz.Application.Class.Queries.GetClass
 {
-    public class GetClassQueryHandler : IRequestHandler<GetClassQuery, ErrorOr<ClassResult>>
+    public class GetClassQueryHandler : IRequestHandler<GetClassQuery, ErrorOr<ClassAggregate>>
 	{
         private readonly IClassRepository _classRepository;
 
@@ -16,7 +15,7 @@ namespace ThinkQuiz.Application.Class.Queries.GetClass
             _classRepository = classRepository;
         }
 
-        public async Task<ErrorOr<ClassResult>> Handle(GetClassQuery query, CancellationToken cancellationToken)
+        public async Task<ErrorOr<ClassAggregate>> Handle(GetClassQuery query, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
@@ -25,22 +24,7 @@ namespace ThinkQuiz.Application.Class.Queries.GetClass
                 return Exceptions.NotFoundClass;
             }
 
-            var classResult = new ClassResult(
-                                                classAggregate.Id.ToString(),
-                                                Teacher: new TeacherData(
-                                                    classAggregate.Teacher.Id.ToString(),
-                                                    classAggregate.Teacher.User.FullName,
-                                                    classAggregate.Teacher.User.Email,
-                                                    classAggregate.Teacher.User.Phone,
-                                                    classAggregate.Teacher.Position,
-                                                    classAggregate.Teacher.SchoolInformation),
-                                                  classAggregate.Name,
-                                                  classAggregate.SchoolYear,
-                                                  classAggregate.StudentQuantity,
-                                                  classAggregate.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
-                                                  classAggregate.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"));
-
-            return classResult;
+            return classAggregate;
         }
     }
 }

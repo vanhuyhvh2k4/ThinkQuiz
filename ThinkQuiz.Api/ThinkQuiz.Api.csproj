@@ -28,6 +28,7 @@
     <None Remove="Common\" />
     <None Remove="Common\Errors\" />
     <None Remove="Common\Mapping\" />
+    <None Remove="Common\Mapping\Class\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -35,6 +36,7 @@
     <Folder Include="Common\" />
     <Folder Include="Common\Errors\" />
     <Folder Include="Common\Mapping\" />
+    <Folder Include="Common\Mapping\Class\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThinkQuiz.Contracts\ThinkQuiz.Contracts.csproj">
