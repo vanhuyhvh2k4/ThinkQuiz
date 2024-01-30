@@ -1,10 +1,9 @@
-﻿using System;
-using ErrorOr;
+﻿using ErrorOr;
 using MediatR;
-using ThinkQuiz.Application.Class.Common;
+using ThinkQuiz.Domain.ClassStudentAggregate;
 
 namespace ThinkQuiz.Application.Class.Commands.JoinClass
 {
-	public record JoinClassCommand(Guid StudentId, Guid ClassId) : IRequest<ErrorOr<AddStudentResult>>;
+    public record JoinClassCommand(Guid StudentId, Guid ClassId) : IRequest<ErrorOr<ClassStudent>>;
 }
 

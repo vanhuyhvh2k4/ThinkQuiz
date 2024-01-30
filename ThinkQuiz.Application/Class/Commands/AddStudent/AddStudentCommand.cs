@@ -1,9 +1,9 @@
 ﻿using ErrorOr;
 using MediatR;
-using ThinkQuiz.Application.Class.Common;
+using ThinkQuiz.Domain.ClassStudentAggregate;
 
 namespace ThinkQuiz.Application.Class.Commands.AddStudent
 {
-    public record AddStudentCommand(Guid StudentId, Guid ClassId) : IRequest<ErrorOr<AddStudentResult>>;
+    public record AddStudentCommand(Guid StudentId, Guid ClassId) : IRequest<ErrorOr<ClassStudent>>;
 }
 

@@ -1,6 +1,5 @@
 ﻿using ErrorOr;
 using MediatR;
-using ThinkQuiz.Application.Class.Common;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.ClassStudentAggregate;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
@@ -8,7 +7,7 @@ using ClassStudentExceptions = ThinkQuiz.Domain.Common.Exceptions.ClassStudent.E
 
 namespace ThinkQuiz.Application.Class.Commands.JoinClass
 {
-    public class JoinClassCommandHandler : IRequestHandler<JoinClassCommand, ErrorOr<AddStudentResult>>
+    public class JoinClassCommandHandler : IRequestHandler<JoinClassCommand, ErrorOr<ClassStudent>>
 	{
         private readonly IClassStudentRepository _classStudentRepository;
         private readonly IClassRepository _classRepository;
@@ -19,7 +18,7 @@ namespace ThinkQuiz.Application.Class.Commands.JoinClass
             _classRepository = classRepository;
         }
 
-        public async Task<ErrorOr<AddStudentResult>> Handle(JoinClassCommand command, CancellationToken cancellationToken)
+        public async Task<ErrorOr<ClassStudent>> Handle(JoinClassCommand command, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
@@ -39,14 +38,7 @@ namespace ThinkQuiz.Application.Class.Commands.JoinClass
 
             _classStudentRepository.Add(classStudent);
 
-            var addStudentResult = new AddStudentResult(
-               classStudent.StudentId.ToString(),
-               classStudent.ClassId.ToString(),
-               classStudent.Status,
-               classStudent.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
-               classStudent.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss")); ;
-
-            return addStudentResult;
+            return classStudent;
         }
     }
 }

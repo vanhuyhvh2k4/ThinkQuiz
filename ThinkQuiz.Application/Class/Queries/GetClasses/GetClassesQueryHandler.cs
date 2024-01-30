@@ -1,12 +1,12 @@
 ﻿using ErrorOr;
 using MediatR;
-using ThinkQuiz.Application.Class.Common;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
+using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
 
 namespace ThinkQuiz.Application.Class.Queries.GetClasses
 {
-    public class GetClassesQueryHandler : IRequestHandler<GetClassesQuery, ErrorOr<List<ClassResult>>>
+    public class GetClassesQueryHandler : IRequestHandler<GetClassesQuery, ErrorOr<List<ClassAggregate>>>
 	{
         private readonly IClassRepository _classRepository;
 
@@ -15,13 +15,13 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
             _classRepository = classRepository;
         }
 
-        public async Task<ErrorOr<List<ClassResult>>> Handle(GetClassesQuery query, CancellationToken cancellationToken)
+        public async Task<ErrorOr<List<ClassAggregate>>> Handle(GetClassesQuery query, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
             // 1. get all classes of teacher
             var classes = _classRepository.GetClassesByTeacherId(query.TeacherId);
-            var classResults = new List<ClassResult>();
+            var classResults = new List<ClassAggregate>();
 
             // Find class by name
             if (!string.IsNullOrEmpty(query.Name))
@@ -62,28 +62,7 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
                 }
             };
 
-            foreach (var item in classes)
-            {
-                var classResult = new ClassResult(
-                    Id: item.Id.ToString(),
-                    Teacher: new TeacherData(
-                        item.Teacher.Id.ToString(),
-                        item.Teacher.User.FullName,
-                        item.Teacher.User.Email,
-                        item.Teacher.User.Phone,
-                        item.Teacher.Position,
-                        item.Teacher.SchoolInformation),
-                    Name: item.Name,
-                    SchoolYear: item.SchoolYear,
-                    StudentQuantity: item.StudentQuantity,
-                    CreatedAt: item.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
-                    UpdatedAt: item.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss")
-                    );
-
-                classResults.Add(classResult);
-            }
-
-            return classResults;
+            return classes;
         }
     }
 }

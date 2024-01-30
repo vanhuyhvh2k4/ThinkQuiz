@@ -5,12 +5,11 @@ using ThinkQuiz.Domain.ClassStudentAggregate;
 using ClassStudentExceptions = ThinkQuiz.Domain.Common.Exceptions.ClassStudent.Exceptions;
 using StudentExceptions = ThinkQuiz.Domain.Common.Exceptions.Student.Exceptions;
 using ClassExceptions = ThinkQuiz.Domain.Common.Exceptions.Class.Exceptions;
-using ThinkQuiz.Application.Class.Common;
 using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
 
 namespace ThinkQuiz.Application.Class.Commands.AddStudent
 {
-    public class AddStudentCommandHandler : IRequestHandler<AddStudentCommand, ErrorOr<AddStudentResult>>
+    public class AddStudentCommandHandler : IRequestHandler<AddStudentCommand, ErrorOr<ClassStudent>>
 	{
         private readonly IClassStudentRepository _classStudentRepository;
         private readonly IStudentRepository _studentRepository;
@@ -23,7 +22,7 @@ namespace ThinkQuiz.Application.Class.Commands.AddStudent
             _classRepository = classRepository;
         }
 
-        public async Task<ErrorOr<AddStudentResult>> Handle(AddStudentCommand command, CancellationToken cancellationToken)
+        public async Task<ErrorOr<ClassStudent>> Handle(AddStudentCommand command, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
@@ -45,7 +44,10 @@ namespace ThinkQuiz.Application.Class.Commands.AddStudent
             }
 
             // create new classStudent
-            var classStudent = ClassStudent.Create(command.StudentId, command.ClassId, true);
+            var classStudent = ClassStudent.Create(
+                command.StudentId,
+                command.ClassId,
+                true);
 
             // update student quantity
             @class.AddStudentQuantity();
@@ -53,15 +55,7 @@ namespace ThinkQuiz.Application.Class.Commands.AddStudent
             // persist db
             _classStudentRepository.Add(classStudent);
 
-            // mapping and return
-            var addStudentResult = new AddStudentResult(
-                classStudent.StudentId.ToString(),
-                classStudent.ClassId.ToString(),
-                classStudent.Status,
-                classStudent.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
-                classStudent.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss")); ;
-
-            return addStudentResult;
+            return classStudent;
         }
     }
 }

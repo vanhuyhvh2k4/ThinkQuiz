@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using ErrorOr;
 using MediatR;
-using ThinkQuiz.Application.Class.Common;
+using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
 
 namespace ThinkQuiz.Application.Class.Queries.GetClasses
 {
@@ -11,7 +11,7 @@ namespace ThinkQuiz.Application.Class.Queries.GetClasses
         int? Page,
         int? PerPage,
         SortBy? SortBy,
-        OrderBy OrderBy = OrderBy.Asc) : IRequest<ErrorOr<List<ClassResult>>>;
+        OrderBy OrderBy = OrderBy.Asc) : IRequest<ErrorOr<List<ClassAggregate>>>;
 
     public enum SortBy
     {
