@@ -30,6 +30,7 @@
     <None Remove="Common\Interfaces\Services\Bcrypt\" />
     <None Remove="Students\" />
     <None Remove="Classes\" />
+    <None Remove="Common\Utils\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -52,6 +53,7 @@
     <Folder Include="Common\Interfaces\Services\Bcrypt\" />
     <Folder Include="Students\" />
     <Folder Include="Classes\" />
+    <Folder Include="Common\Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />

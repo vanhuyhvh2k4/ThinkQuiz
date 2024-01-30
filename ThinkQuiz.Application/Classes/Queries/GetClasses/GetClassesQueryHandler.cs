@@ -3,6 +3,7 @@ using MediatR;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
 using ThinkQuiz.Domain.ClassAggregate;
+using ThinkQuiz.Application.Common.Utils;
 
 namespace ThinkQuiz.Application.Classes.Queries.GetClasses
 {
@@ -36,15 +37,7 @@ namespace ThinkQuiz.Application.Classes.Queries.GetClasses
             // 2. pagination classes
             if (query.Page.HasValue && query.PerPage.HasValue)
             {
-                int? startIndex = (query.Page - 1) * query.PerPage;
-                int? endIndex = startIndex + query.PerPage;
-
-                if (startIndex < 0 || startIndex >= classes.Count || query.Page <= 0)
-                    return new List<Class>();
-                if (endIndex > classes.Count)
-                    endIndex = classes.Count;
-
-                classes = classes.GetRange(startIndex.Value, endIndex.Value - startIndex.Value);
+                classes = PaginationUtility.PaginateList(classes, query.Page.Value, query.PerPage.Value);
             }
 
             // 3. sort classes

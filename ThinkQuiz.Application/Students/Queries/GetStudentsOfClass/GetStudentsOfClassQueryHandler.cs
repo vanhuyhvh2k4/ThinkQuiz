@@ -5,6 +5,7 @@ using ThinkQuiz.Domain.ClassAggregate;
 using ThinkQuiz.Domain.StudentAggregate;
 using StudentExceptions = ThinkQuiz.Domain.Common.Exceptions.Student.Exceptions;
 using ClassExceptions = ThinkQuiz.Domain.Common.Exceptions.Class.Exceptions;
+using ThinkQuiz.Application.Common.Utils;
 
 namespace ThinkQuiz.Application.Students.Queries.GetStudentsOfClass
 {
@@ -57,14 +58,7 @@ namespace ThinkQuiz.Application.Students.Queries.GetStudentsOfClass
             // pagination classes
             if (query.Page.HasValue && query.PerPage.HasValue)
             {
-                int? startIndex = (query.Page - 1) * query.PerPage;
-                int? endIndex = startIndex + query.PerPage;
-
-                if (startIndex < 0 || startIndex >= students.Count || query.Page <= 0)
-                    return new List<Student>();
-                if (endIndex > students.Count)
-                    endIndex = students.Count;
-                students = students.GetRange(startIndex.Value, endIndex.Value - startIndex.Value);
+                students = PaginationUtility.PaginateList(students, query.Page.Value, query.PerPage.Value);
             }
 
             // sort students
