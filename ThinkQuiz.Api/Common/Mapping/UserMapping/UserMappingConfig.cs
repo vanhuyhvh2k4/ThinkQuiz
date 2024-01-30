@@ -3,10 +3,10 @@ using ThinkQuiz.Application.Users.Commands;
 using ThinkQuiz.Contracts.Users;
 using ThinkQuiz.Domain.UserAggregate;
 
-namespace ThinkQuiz.Api.Common.Mapping
+namespace ThinkQuiz.Api.Common.Mapping.UserMapping
 {
     public class UserMappingConfig : IRegister
-	{
+    {
         public void Register(TypeAdapterConfig config)
         {
             config.NewConfig<(UpdateUserRequest Request, Guid UserId), UpdateUserCommand>()

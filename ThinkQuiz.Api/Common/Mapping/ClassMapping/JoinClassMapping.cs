@@ -1,13 +1,13 @@
 ﻿using Mapster;
-using ThinkQuiz.Application.Class.Commands.AddStudent;
-using ThinkQuiz.Application.Class.Commands.JoinClass;
+using ThinkQuiz.Application.Classes.Commands.AddStudent;
+using ThinkQuiz.Application.Classes.Commands.JoinClass;
 using ThinkQuiz.Contracts.Class.AddStudent;
 using ThinkQuiz.Domain.ClassStudentAggregate;
 
-namespace ThinkQuiz.Api.Common.Mapping.Class
+namespace ThinkQuiz.Api.Common.Mapping.ClassMapping
 {
     public class JoinClassMapping : IRegister
-	{
+    {
         public void Register(TypeAdapterConfig config)
         {
             // Add student to class

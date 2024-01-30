@@ -2,7 +2,7 @@
 using MediatR;
 using ThinkQuiz.Domain.ClassStudentAggregate;
 
-namespace ThinkQuiz.Application.Class.Commands.AddStudent
+namespace ThinkQuiz.Application.Classes.Commands.AddStudent
 {
     public record AddStudentCommand(Guid StudentId, Guid ClassId) : IRequest<ErrorOr<ClassStudent>>;
 }

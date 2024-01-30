@@ -1,14 +1,13 @@
-﻿using System;
-using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
+﻿using ThinkQuiz.Domain.ClassAggregate;
 namespace ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories
 {
-	public interface IClassRepository
+    public interface IClassRepository
 	{
-		void Create(ClassAggregate newClass);
+		void Create(Class newClass);
 
-		List<ClassAggregate> GetClassesByTeacherId(Guid teacherId);
+		List<Class> GetClassesByTeacherId(Guid teacherId);
 
-		ClassAggregate? GetClassById(Guid classId);
+		Class? GetClassById(Guid classId);
 	}
 }
 

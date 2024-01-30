@@ -28,7 +28,9 @@
     <None Remove="Common\" />
     <None Remove="Common\Errors\" />
     <None Remove="Common\Mapping\" />
-    <None Remove="Common\Mapping\Class\" />
+    <None Remove="Common\Mapping\ClassMapping\" />
+    <None Remove="Common\Mapping\UserMapping\" />
+    <None Remove="Common\Mapping\AuthenticationMapping\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -36,7 +38,9 @@
     <Folder Include="Common\" />
     <Folder Include="Common\Errors\" />
     <Folder Include="Common\Mapping\" />
-    <Folder Include="Common\Mapping\Class\" />
+    <Folder Include="Common\Mapping\ClassMapping\" />
+    <Folder Include="Common\Mapping\UserMapping\" />
+    <Folder Include="Common\Mapping\AuthenticationMapping\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThinkQuiz.Contracts\ThinkQuiz.Contracts.csproj">

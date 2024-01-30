@@ -5,7 +5,7 @@ using ThinkQuiz.Domain.ClassStudentAggregate;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
 using ClassStudentExceptions = ThinkQuiz.Domain.Common.Exceptions.ClassStudent.Exceptions;
 
-namespace ThinkQuiz.Application.Class.Commands.JoinClass
+namespace ThinkQuiz.Application.Classes.Commands.JoinClass
 {
     public class JoinClassCommandHandler : IRequestHandler<JoinClassCommand, ErrorOr<ClassStudent>>
 	{

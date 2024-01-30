@@ -2,11 +2,11 @@
 using MediatR;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
-using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
+using ThinkQuiz.Domain.ClassAggregate;
 
-namespace ThinkQuiz.Application.Class.Commands.Create
+namespace ThinkQuiz.Application.Classes.Commands.Create
 {
-    public class CreateClassCommandHandler : IRequestHandler<CreateClassCommand, ErrorOr<ClassAggregate>>
+    public class CreateClassCommandHandler : IRequestHandler<CreateClassCommand, ErrorOr<Class>>
 	{
         private readonly IClassRepository _classRepository;
 
@@ -15,7 +15,7 @@ namespace ThinkQuiz.Application.Class.Commands.Create
             _classRepository = classRepository;
         }
 
-        public async Task<ErrorOr<ClassAggregate>> Handle(CreateClassCommand command, CancellationToken cancellationToken)
+        public async Task<ErrorOr<Class>> Handle(CreateClassCommand command, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
             // 1. check class name exists
@@ -30,7 +30,7 @@ namespace ThinkQuiz.Application.Class.Commands.Create
             }
             // 2. create class
 
-            var newClass = ClassAggregate.Create(command.teacherId, command.Name, command.SchoolYear);
+            var newClass = Class.Create(command.teacherId, command.Name, command.SchoolYear);
 
             // 3. persist db
             _classRepository.Create(newClass);

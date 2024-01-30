@@ -4,10 +4,10 @@ using ThinkQuiz.Application.Authentication.Commands.Register;
 using ThinkQuiz.Application.Authentication.Common;
 using ThinkQuiz.Contracts.Authentication;
 
-namespace ThinkQuiz.Api.Common.Mapping
+namespace ThinkQuiz.Api.Common.Mapping.AuthenticationMapping
 {
     public class AuthenticationMappingConfig : IRegister
-	{
+    {
         public void Register(TypeAdapterConfig config)
         {
             config.NewConfig<RegisterRequest, RegisterCommand>();

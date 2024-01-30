@@ -5,9 +5,9 @@ using ThinkQuiz.Domain.ClassStudentAggregate;
 using ClassStudentExceptions = ThinkQuiz.Domain.Common.Exceptions.ClassStudent.Exceptions;
 using StudentExceptions = ThinkQuiz.Domain.Common.Exceptions.Student.Exceptions;
 using ClassExceptions = ThinkQuiz.Domain.Common.Exceptions.Class.Exceptions;
-using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
+using ThinkQuiz.Domain.ClassAggregate;
 
-namespace ThinkQuiz.Application.Class.Commands.AddStudent
+namespace ThinkQuiz.Application.Classes.Commands.AddStudent
 {
     public class AddStudentCommandHandler : IRequestHandler<AddStudentCommand, ErrorOr<ClassStudent>>
 	{
@@ -38,7 +38,7 @@ namespace ThinkQuiz.Application.Class.Commands.AddStudent
             }
 
             // check class exist
-            if (_classRepository.GetClassById(command.ClassId) is not ClassAggregate @class)
+            if (_classRepository.GetClassById(command.ClassId) is not Class @class)
             {
                 return ClassExceptions.NotFoundClass;
             }

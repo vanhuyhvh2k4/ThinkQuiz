@@ -2,11 +2,11 @@
 using MediatR;
 using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
-using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
+using ThinkQuiz.Domain.ClassAggregate;
 
-namespace ThinkQuiz.Application.Class.Queries.GetClass
+namespace ThinkQuiz.Application.Classes.Queries.GetClass
 {
-    public class GetClassQueryHandler : IRequestHandler<GetClassQuery, ErrorOr<ClassAggregate>>
+    public class GetClassQueryHandler : IRequestHandler<GetClassQuery, ErrorOr<Class>>
 	{
         private readonly IClassRepository _classRepository;
 
@@ -15,11 +15,11 @@ namespace ThinkQuiz.Application.Class.Queries.GetClass
             _classRepository = classRepository;
         }
 
-        public async Task<ErrorOr<ClassAggregate>> Handle(GetClassQuery query, CancellationToken cancellationToken)
+        public async Task<ErrorOr<Class>> Handle(GetClassQuery query, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
-            if (_classRepository.GetClassById(query.ClassId) is not ClassAggregate classAggregate)
+            if (_classRepository.GetClassById(query.ClassId) is not Class classAggregate)
             {
                 return Exceptions.NotFoundClass;
             }

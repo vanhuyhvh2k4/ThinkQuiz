@@ -1,17 +1,17 @@
 ﻿using Mapster;
-using ThinkQuiz.Application.Class.Queries.GetClasses;
+using ThinkQuiz.Application.Classes.Queries.GetClasses;
 using ThinkQuiz.Contracts.Class.Common;
 using ThinkQuiz.Contracts.Class.GetClass;
 using ThinkQuiz.Contracts.Class.GetClasses;
-using ClassAggregate = ThinkQuiz.Domain.ClassAggregate.Class;
+using ThinkQuiz.Domain.ClassAggregate;
 
-namespace ThinkQuiz.Api.Common.Mapping.Class
+namespace ThinkQuiz.Api.Common.Mapping.ClassMapping
 {
     public class GetClassMapping : IRegister
     {
         public void Register(TypeAdapterConfig config)
         {
-            config.ForType<ClassAggregate, ClassResponse>()
+            config.ForType<Class, ClassResponse>()
                .Map(dest => dest.Id, src => src.Id.ToString())
                .Map(dest => dest.Teacher.Id, src => src.Teacher.Id)
                .Map(dest => dest.Teacher.Name, src => src.Teacher.User.FullName)
@@ -29,12 +29,12 @@ namespace ThinkQuiz.Api.Common.Mapping.Class
                 .Map(dest => dest.TeacherId, src => src.teacherId)
                 .Map(dest => dest, src => src.request);
 
-            config.NewConfig<List<ClassAggregate>, GetClassesResponse>()
+            config.NewConfig<List<Class>, GetClassesResponse>()
                 .Map(dest => dest.Data.Classes, src => src);
 
             // Get class by id
 
-            config.NewConfig<ClassAggregate, GetClassResponse>()
+            config.NewConfig<Class, GetClassResponse>()
                 .Map(dest => dest.Class, src => src);
         }
     }

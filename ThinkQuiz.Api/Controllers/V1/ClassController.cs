@@ -2,11 +2,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ThinkQuiz.Application.Class.Commands.AddStudent;
-using ThinkQuiz.Application.Class.Commands.Create;
-using ThinkQuiz.Application.Class.Commands.JoinClass;
-using ThinkQuiz.Application.Class.Queries.GetClass;
-using ThinkQuiz.Application.Class.Queries.GetClasses;
+using ThinkQuiz.Application.Classes.Commands.AddStudent;
+using ThinkQuiz.Application.Classes.Commands.Create;
+using ThinkQuiz.Application.Classes.Commands.JoinClass;
+using ThinkQuiz.Application.Classes.Queries.GetClass;
+using ThinkQuiz.Application.Classes.Queries.GetClasses;
 using ThinkQuiz.Contracts.Class.AddStudent;
 using ThinkQuiz.Contracts.Class.Create;
 using ThinkQuiz.Contracts.Class.GetClass;

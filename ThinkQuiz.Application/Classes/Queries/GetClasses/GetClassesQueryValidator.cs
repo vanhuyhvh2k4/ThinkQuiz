@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentValidation;
 
-namespace ThinkQuiz.Application.Class.Queries.GetClasses
+namespace ThinkQuiz.Application.Classes.Queries.GetClasses
 {
     public class GetClassesQueryValidator : AbstractValidator<GetClassesQuery>
     {

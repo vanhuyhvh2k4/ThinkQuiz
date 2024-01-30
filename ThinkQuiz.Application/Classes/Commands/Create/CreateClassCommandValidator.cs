@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace ThinkQuiz.Application.Class.Commands.Create
+namespace ThinkQuiz.Application.Classes.Commands.Create
 {
     public class CreateClassCommandValidator : AbstractValidator<CreateClassCommand>
 	{
