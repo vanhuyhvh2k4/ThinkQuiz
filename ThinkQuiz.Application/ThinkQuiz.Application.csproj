@@ -28,13 +28,6 @@
     <None Remove="Common\Interfaces\Services\" />
     <None Remove="Common\Interfaces\Services\Jwt\" />
     <None Remove="Common\Interfaces\Services\Bcrypt\" />
-    <None Remove="Class\Commands\" />
-    <None Remove="Class\Commands\Create\" />
-    <None Remove="Class\Queries\" />
-    <None Remove="Class\Queries\GetClasses\" />
-    <None Remove="Class\Commands\AddStudent\" />
-    <None Remove="Class\Commands\JoinClass\" />
-    <None Remove="Class\Queries\GetClass\" />
     <None Remove="Students\" />
     <None Remove="Classes\" />
   </ItemGroup>
@@ -57,13 +50,6 @@
     <Folder Include="Common\Interfaces\Services\" />
     <Folder Include="Common\Interfaces\Services\Jwt\" />
     <Folder Include="Common\Interfaces\Services\Bcrypt\" />
-    <Folder Include="Class\Commands\" />
-    <Folder Include="Class\Commands\Create\" />
-    <Folder Include="Class\Queries\" />
-    <Folder Include="Class\Queries\GetClasses\" />
-    <Folder Include="Class\Commands\AddStudent\" />
-    <Folder Include="Class\Commands\JoinClass\" />
-    <Folder Include="Class\Queries\GetClass\" />
     <Folder Include="Students\" />
     <Folder Include="Classes\" />
   </ItemGroup>

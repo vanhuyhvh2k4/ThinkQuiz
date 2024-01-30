@@ -21,7 +21,6 @@ namespace ThinkQuiz.Application.Classes.Queries.GetClasses
 
             // 1. get all classes of teacher
             var classes = _classRepository.GetClassesByTeacherId(query.TeacherId);
-            var classResults = new List<Class>();
 
             // Find class by name
             if (!string.IsNullOrEmpty(query.Name))
@@ -41,7 +40,7 @@ namespace ThinkQuiz.Application.Classes.Queries.GetClasses
                 int? endIndex = startIndex + query.PerPage;
 
                 if (startIndex < 0 || startIndex >= classes.Count || query.Page <= 0)
-                    return classResults;
+                    return new List<Class>();
                 if (endIndex > classes.Count)
                     endIndex = classes.Count;
 

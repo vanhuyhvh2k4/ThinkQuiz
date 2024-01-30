@@ -19,10 +19,7 @@ namespace ThinkQuiz.Api.Common.Mapping.ClassMapping
                .Map(dest => dest.Teacher.Phone, src => src.Teacher.User.Phone)
                .Map(dest => dest.Teacher.Position, src => src.Teacher.Position)
                .Map(dest => dest.Teacher.SchoolInformation, src => src.Teacher.SchoolInformation)
-               .Map(dest => dest.Teacher.Phone, src => src.Teacher.User.Phone)
-               .Map(dest => dest.CreatedAt, src => src.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"))
-               .Map(dest => dest.UpdatedAt, src => src.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"));
-
+               .Map(dest => dest.Teacher.Phone, src => src.Teacher.User.Phone);
 
             // Get classes of teacher
             config.NewConfig<(GetClassesRequest request, Guid teacherId), GetClassesQuery>()

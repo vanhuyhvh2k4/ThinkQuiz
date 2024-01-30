@@ -15,10 +15,7 @@ namespace ThinkQuiz.Api.Common.Mapping.ClassMapping
                 .Map(dest => dest, src => src.createClassRequest);
 
             config.NewConfig<Class, CreateClassResponse>()
-                .Map(dest => dest.Data, src => src)
-                .Map(dest => dest.Data.CreatedAt, src => src.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"))
-                .Map(dest => dest.Data.UpdatedAt, src => src.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"));
-
+                .Map(dest => dest.Data, src => src);
         }
     }
 }

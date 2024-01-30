@@ -30,12 +30,6 @@ namespace ThinkQuiz.Contracts.Authentication
         [JsonPropertyName("lastLogin")]
         public string LastLogin { get; init; } = null!;
 
-        [JsonPropertyName("createdAt")]
-        public string CreatedAt { get; init; } = null!;
-
-        [JsonPropertyName("updatedAt")]
-        public string UpdatedAt { get; init; } = null!;
-
         [JsonPropertyName("gender")]
         public bool Gender { get; init; }
 

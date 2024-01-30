@@ -1,5 +1,7 @@
 ﻿using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
+using ThinkQuiz.Domain.ClassStudentAggregate;
 using ThinkQuiz.Domain.StudentAggregate;
+using Microsoft.EntityFrameworkCore;
 
 namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
 {
@@ -26,6 +28,14 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
         public Student? GetStudentByUserId(Guid userId)
         {
             return _context.Students.SingleOrDefault(student => student.UserId == userId);
+        }
+
+        public List<Student> GetStudentsByClassId(Guid classId, bool status = true)
+        {
+            return _context.ClassStudents.Where(cs => cs.ClassId == classId && cs.Status == status)
+                .Include(cs => cs.Student.User)
+                .Select(cs => cs.Student)
+                .ToList();
         }
     }
 }

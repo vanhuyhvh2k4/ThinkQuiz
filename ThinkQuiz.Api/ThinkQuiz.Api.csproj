@@ -31,6 +31,7 @@
     <None Remove="Common\Mapping\ClassMapping\" />
     <None Remove="Common\Mapping\UserMapping\" />
     <None Remove="Common\Mapping\AuthenticationMapping\" />
+    <None Remove="Common\Mapping\StudentMapping\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -41,6 +42,7 @@
     <Folder Include="Common\Mapping\ClassMapping\" />
     <Folder Include="Common\Mapping\UserMapping\" />
     <Folder Include="Common\Mapping\AuthenticationMapping\" />
+    <Folder Include="Common\Mapping\StudentMapping\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThinkQuiz.Contracts\ThinkQuiz.Contracts.csproj">

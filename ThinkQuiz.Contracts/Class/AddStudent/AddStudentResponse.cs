@@ -20,12 +20,6 @@ namespace ThinkQuiz.Contracts.Class.AddStudent
 
         [JsonPropertyName("status")]
         public bool Status { get; init; }
-
-        [JsonPropertyName("createdAt")]
-        public string CreatedAt { get; init; } = null!;
-
-        [JsonPropertyName("updatedAt")]
-        public string UpdatedAt { get; init; } = null!;
     }
 }
 
