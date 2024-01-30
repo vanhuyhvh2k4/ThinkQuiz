@@ -16,7 +16,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
         {
             _context.Users.Add(user);
 
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public User? GetUserByEmail(string email)
@@ -33,7 +33,7 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
         {
             _context.Users.Update(user);
 
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }
