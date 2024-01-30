@@ -1,5 +1,5 @@
 ﻿using ThinkQuiz.Domain.AssignmentAggregate;
-using ThinkQuiz.Domain.StudeæntAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
 
 namespace ThinkQuiz.Domain.SubmittionAssignmentAggregate
 {

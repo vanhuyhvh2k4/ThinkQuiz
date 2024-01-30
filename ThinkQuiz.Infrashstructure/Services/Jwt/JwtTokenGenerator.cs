@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using ThinkQuiz.Application.Common.Interfaces.Services.Jwt;
-using ThinkQuiz.Domain.StudeæntAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 using ThinkQuiz.Domain.UserAggregate;
 

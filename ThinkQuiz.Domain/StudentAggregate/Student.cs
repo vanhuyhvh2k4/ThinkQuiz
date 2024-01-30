@@ -3,7 +3,7 @@ using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
 using ThinkQuiz.Domain.SubmittionExamAggregate;
 using ThinkQuiz.Domain.UserAggregate;
 
-namespace ThinkQuiz.Domain.StudeæntAggregate
+namespace ThinkQuiz.Domain.StudentAggregate
 {
     public class Student
     {

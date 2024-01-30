@@ -7,7 +7,7 @@ using ThinkQuiz.Domain.ClassStudentAggregate;
 using ThinkQuiz.Domain.ExamAggregate;
 using ThinkQuiz.Domain.ExamChoiceAggregate;
 using ThinkQuiz.Domain.ExamQuestionAggregate;
-using ThinkQuiz.Domain.StudeæntAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.SubmittionAssignmentAggregate;
 using ThinkQuiz.Domain.SubmittionExamAggregate;
 using ThinkQuiz.Domain.SubmittionExamAnswerAggregate;

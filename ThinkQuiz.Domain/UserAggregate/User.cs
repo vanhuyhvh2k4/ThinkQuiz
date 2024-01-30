@@ -1,4 +1,4 @@
-﻿using ThinkQuiz.Domain.StudeæntAggregate;
+﻿using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 
 namespace ThinkQuiz.Domain.UserAggregate

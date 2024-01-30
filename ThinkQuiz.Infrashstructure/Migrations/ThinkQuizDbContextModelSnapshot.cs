@@ -300,7 +300,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.ToTable("ExamQuestions", (string)null);
                 });
 
-            modelBuilder.Entity("ThinkQuiz.Domain.StudeæntAggregate.Student", b =>
+            modelBuilder.Entity("ThinkQuiz.Domain.StudentAggregate.Student", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -579,7 +579,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ThinkQuiz.Domain.StudeæntAggregate.Student", "Student")
+                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", "Student")
                         .WithMany("ClassStudents")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -623,11 +623,11 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.Navigation("Exam");
                 });
 
-            modelBuilder.Entity("ThinkQuiz.Domain.StudeæntAggregate.Student", b =>
+            modelBuilder.Entity("ThinkQuiz.Domain.StudentAggregate.Student", b =>
                 {
                     b.HasOne("ThinkQuiz.Domain.UserAggregate.User", "User")
                         .WithOne("Student")
-                        .HasForeignKey("ThinkQuiz.Domain.StudeæntAggregate.Student", "UserId")
+                        .HasForeignKey("ThinkQuiz.Domain.StudentAggregate.Student", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -642,7 +642,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ThinkQuiz.Domain.StudeæntAggregate.Student", "Student")
+                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", "Student")
                         .WithMany("SubmittionAssignments")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -661,7 +661,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ThinkQuiz.Domain.StudeæntAggregate.Student", "Student")
+                    b.HasOne("ThinkQuiz.Domain.StudentAggregate.Student", "Student")
                         .WithMany("SubmittionExams")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -724,7 +724,7 @@ namespace ThinkQuiz.Infrashstructure.Migrations
                     b.Navigation("ExamChoices");
                 });
 
-            modelBuilder.Entity("ThinkQuiz.Domain.StudeæntAggregate.Student", b =>
+            modelBuilder.Entity("ThinkQuiz.Domain.StudentAggregate.Student", b =>
                 {
                     b.Navigation("ClassStudents");
 

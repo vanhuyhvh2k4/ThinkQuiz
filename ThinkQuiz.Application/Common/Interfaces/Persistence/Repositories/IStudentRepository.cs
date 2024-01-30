@@ -1,5 +1,5 @@
 ﻿using System;
-using ThinkQuiz.Domain.StudeæntAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
 
 namespace ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories
 {

@@ -5,7 +5,7 @@ using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Application.Common.Interfaces.Services.Bcrypt;
 using ThinkQuiz.Application.Common.Interfaces.Services.Jwt;
 using ThinkQuiz.Domain.Common.Exceptions.User;
-using ThinkQuiz.Domain.StudeæntAggregate;
+using ThinkQuiz.Domain.StudentAggregate;
 using ThinkQuiz.Domain.TeacherAggregate;
 using ThinkQuiz.Domain.UserAggregate;
 
