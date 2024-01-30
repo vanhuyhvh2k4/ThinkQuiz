@@ -75,7 +75,9 @@ namespace ThinkQuiz.Api.Controllers.V1
         [HttpPost("classes/add_student")]
         public async Task<IActionResult> AddStudentToClass(AddStudentRequest request)
         {
-            var command = _mapper.Map<AddStudentCommand>(request);
+            Guid teacherId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "teacherId")!.Value);
+
+            var command = _mapper.Map<AddStudentCommand>((teacherId, request));
 
             var addStudentResults = await _mediator.Send(command);
 

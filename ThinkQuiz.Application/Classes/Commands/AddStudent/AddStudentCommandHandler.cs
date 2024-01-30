@@ -26,11 +26,6 @@ namespace ThinkQuiz.Application.Classes.Commands.AddStudent
         {
             await Task.CompletedTask;
 
-            // check classStudent exists
-            if (_classStudentRepository.Get(command.StudentId, command.ClassId) is not null)
-            {
-                return ClassStudentExceptions.DuplicateClassStudent;
-            }
             // check student exsist
             if (_studentRepository.GetStudentById(command.StudentId) is null)
             {
@@ -41,6 +36,18 @@ namespace ThinkQuiz.Application.Classes.Commands.AddStudent
             if (_classRepository.GetClassById(command.ClassId) is not Class @class)
             {
                 return ClassExceptions.NotFoundClass;
+            }
+
+            // check permisstion of teacherid
+            if (@class.TeacherId != command.TeacherId)
+            {
+                return ClassStudentExceptions.NotPermissionToAddStudent;
+            }
+
+            // check classStudent exists
+            if (_classStudentRepository.Get(command.StudentId, command.ClassId) is not null)
+            {
+                return ClassStudentExceptions.DuplicateClassStudent;
             }
 
             // create new classStudent

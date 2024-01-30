@@ -11,8 +11,9 @@ namespace ThinkQuiz.Api.Common.Mapping.ClassMapping
         public void Register(TypeAdapterConfig config)
         {
             // Add student to class
-            config.NewConfig<AddStudentRequest, AddStudentCommand>()
-                .Map(dest => dest, src => src);
+            config.NewConfig<(Guid teacherId, AddStudentRequest request), AddStudentCommand>()
+                .Map(dest => dest.TeacherId, src => src.teacherId)
+                .Map(dest => dest, src => src.request);
 
             config.NewConfig<ClassStudent, AddStudentResponse>()
                 .Map(dest => dest.Data, src => src);
