@@ -1,7 +1,9 @@
 ﻿using Mapster;
 using ThinkQuiz.Application.Classes.Commands.AddStudent;
+using ThinkQuiz.Application.Classes.Commands.GetOutClass;
 using ThinkQuiz.Application.Classes.Commands.JoinClass;
 using ThinkQuiz.Contracts.Class.AddStudent;
+using ThinkQuiz.Contracts.Class.GetOutStudent;
 using ThinkQuiz.Domain.ClassStudentAggregate;
 
 namespace ThinkQuiz.Api.Common.Mapping.ClassMapping
@@ -22,6 +24,11 @@ namespace ThinkQuiz.Api.Common.Mapping.ClassMapping
             config.NewConfig<(Guid studentId, Guid classId), JoinClassCommand>()
                 .Map(dest => dest.StudentId, src => src.studentId)
                 .Map(dest => dest.ClassId, src => src.classId);
+
+            // get out
+            config.NewConfig<(Guid teacherId, GetOutStudentRequest request), GetOutStudentToClassCommand>()
+                .Map(dest => dest.TeacherId, src => src.teacherId)
+                .Map(dest => dest, src => src.request);
         }
     }
 }

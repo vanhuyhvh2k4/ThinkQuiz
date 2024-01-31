@@ -31,6 +31,7 @@
     <None Remove="Students\" />
     <None Remove="Classes\" />
     <None Remove="Common\Utils\" />
+    <None Remove="Classes\Commands\GetOutClass\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -54,6 +55,7 @@
     <Folder Include="Students\" />
     <Folder Include="Classes\" />
     <Folder Include="Common\Utils\" />
+    <Folder Include="Classes\Commands\GetOutClass\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />

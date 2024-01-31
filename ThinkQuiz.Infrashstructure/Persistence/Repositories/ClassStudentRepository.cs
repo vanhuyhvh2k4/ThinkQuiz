@@ -22,6 +22,13 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
         {
             return _context.ClassStudents.SingleOrDefault(cs => cs.StudentId == studentId && cs.ClassId == classId);
         }
+
+        public void Remove(ClassStudent classStudent)
+        {
+            _context.ClassStudents.Remove(classStudent);
+
+            _context.SaveChanges();
+        }
     }
 }
 

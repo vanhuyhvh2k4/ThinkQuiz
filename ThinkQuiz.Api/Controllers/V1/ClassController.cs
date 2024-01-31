@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ThinkQuiz.Application.Classes.Commands.AddStudent;
 using ThinkQuiz.Application.Classes.Commands.Create;
+using ThinkQuiz.Application.Classes.Commands.GetOutClass;
 using ThinkQuiz.Application.Classes.Commands.JoinClass;
 using ThinkQuiz.Application.Classes.Queries.GetClass;
 using ThinkQuiz.Application.Classes.Queries.GetClasses;
@@ -11,6 +12,7 @@ using ThinkQuiz.Contracts.Class.AddStudent;
 using ThinkQuiz.Contracts.Class.Create;
 using ThinkQuiz.Contracts.Class.GetClass;
 using ThinkQuiz.Contracts.Class.GetClasses;
+using ThinkQuiz.Contracts.Class.GetOutStudent;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -101,6 +103,21 @@ namespace ThinkQuiz.Api.Controllers.V1
               joinClassResult => StatusCode(StatusCodes.Status201Created, _mapper.Map<AddStudentResponse>(joinClassResult)),
               errors => Problem(errors)
               );
+        }
+
+        [Authorize(Policy = "Teacher")]
+        [HttpDelete("classes/get_out")]
+        public async Task<IActionResult> GetOutStudentToClass(GetOutStudentRequest request)
+        {
+            Guid teacherId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "teacherId")!.Value);
+
+            var command = _mapper.Map<GetOutStudentToClassCommand>((teacherId, request));
+
+            var getOutResults = await _mediator.Send(command);
+
+            return getOutResults.Match(
+                getOutResult => Ok(new GetOutStudentResponse()),
+                errors => Problem(errors));
         }
     }
 }
