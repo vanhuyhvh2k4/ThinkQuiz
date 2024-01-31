@@ -40,12 +40,20 @@ namespace ThinkQuiz.Application.Authentication.Commands.Login
                 return Exceptions.InvalidCredentials;
             }
 
-            // 3. Persist db and create token
-            var teacher = _teacherRepository.GetTeacherByUserId(user.Id);
-            var student = _studentRepository.GetStudentByUserId(user.Id);
-            var token = _jwtTokenGenerator.GenerateToken(user, teacher, student);
+            string token = "";
 
-            bool isTeacher = _teacherRepository.GetTeacherByUserId(user.Id) is not null;
+            // check current role
+            if (user.CurrentRole == true)
+            {
+                var teacher = _teacherRepository.GetTeacherByUserId(user.Id);
+                token = _jwtTokenGenerator.GenerateToken(user, teacher, null);
+            }
+
+            if (user.CurrentRole == false)
+            {
+                var student = _studentRepository.GetStudentByUserId(user.Id);
+                token = _jwtTokenGenerator.GenerateToken(user, null, student);
+            }
 
             user.UpdateLastLogin();
 
@@ -53,7 +61,6 @@ namespace ThinkQuiz.Application.Authentication.Commands.Login
 
             return new AuthenticationResult(
                 user,
-                isTeacher,
                 token);
         }
     }

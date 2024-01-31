@@ -13,6 +13,8 @@ namespace ThinkQuiz.Domain.UserAggregate
 
         public string Password { get; private set; }
 
+        public bool CurrentRole { get; private set; }
+
         public bool Gender { get; private set; } = true;
 
         public DateOnly? DateOfBirth { get; private set; }
@@ -36,6 +38,7 @@ namespace ThinkQuiz.Domain.UserAggregate
             string fullName,
             string email,
             string password,
+            bool currentRole,
             DateTime lastLogin,
             DateTime createdAt,
             DateTime updatedAt) 
@@ -44,6 +47,7 @@ namespace ThinkQuiz.Domain.UserAggregate
             FullName = fullName;
             Email = email;
             Password = password;
+            CurrentRole = currentRole;
             LastLogin = lastLogin;
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
@@ -53,7 +57,8 @@ namespace ThinkQuiz.Domain.UserAggregate
         public static User Create(
             string fullName,
             string email,
-            string password
+            string password,
+            bool currentRole
             )
         {
             return new(
@@ -61,6 +66,7 @@ namespace ThinkQuiz.Domain.UserAggregate
                 fullName,
                 email,
                 password,
+                currentRole,
                 DateTime.Now,
                 DateTime.Now,
                 DateTime.Now);

@@ -33,8 +33,8 @@ namespace ThinkQuiz.Contracts.Authentication
         [JsonPropertyName("gender")]
         public bool Gender { get; init; }
 
-        [JsonPropertyName("isTeacher")]
-        public bool IsTeacher { get; init; }
+        [JsonPropertyName("currentRole")]
+        public bool CurrentRole { get; init; }
 
         [JsonPropertyName("token")]
         public string Token { get; init; } = null!;
