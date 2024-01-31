@@ -7,10 +7,10 @@ using ClassExceptions = ThinkQuiz.Domain.Common.Exceptions.Class.Exceptions;
 using StudentExceptions = ThinkQuiz.Domain.Common.Exceptions.Student.Exceptions;
 using ClassStudentExceptions = ThinkQuiz.Domain.Common.Exceptions.ClassStudent.Exceptions;
 
-namespace ThinkQuiz.Application.Classes.Commands.GetOutClass
+namespace ThinkQuiz.Application.Classes.Commands.GetOutStudentToClass
 {
     public class GetOutStudentToClassCommandHandler : IRequestHandler<GetOutStudentToClassCommand, ErrorOr<ClassStudent>>
-	{
+    {
         private readonly IClassRepository _classRepository;
         private readonly IStudentRepository _studentRepository;
         private readonly IClassStudentRepository _classStudentRepository;
@@ -31,6 +31,12 @@ namespace ThinkQuiz.Application.Classes.Commands.GetOutClass
                 return ClassExceptions.NotFoundClass;
             }
 
+            // check teacher owns class
+            if (@class.TeacherId != request.TeacherId)
+            {
+                return ClassStudentExceptions.NotPermissionToGetOutStudent;
+            }
+
             // check student exists
             if (_studentRepository.GetStudentById(request.StudentId) is null)
             {
@@ -42,12 +48,7 @@ namespace ThinkQuiz.Application.Classes.Commands.GetOutClass
             {
                 return ClassStudentExceptions.NotFoundStudentInClass;
             }
-            // check teacher owns class
-            if (@class.TeacherId != request.TeacherId)
-            {
-                return ClassStudentExceptions.NotPermissionToGetOutStudent;
-            }
-
+           
             // get out student to class
             _classStudentRepository.Remove(classStudent);
 

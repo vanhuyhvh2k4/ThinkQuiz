@@ -2,12 +2,14 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ThinkQuiz.Application.Classes.Commands.AcceptStudentToClass;
 using ThinkQuiz.Application.Classes.Commands.AddStudent;
 using ThinkQuiz.Application.Classes.Commands.Create;
-using ThinkQuiz.Application.Classes.Commands.GetOutClass;
+using ThinkQuiz.Application.Classes.Commands.GetOutStudentToClass;
 using ThinkQuiz.Application.Classes.Commands.JoinClass;
 using ThinkQuiz.Application.Classes.Queries.GetClass;
 using ThinkQuiz.Application.Classes.Queries.GetClasses;
+using ThinkQuiz.Contracts.Class.AcceptStudent;
 using ThinkQuiz.Contracts.Class.AddStudent;
 using ThinkQuiz.Contracts.Class.Create;
 using ThinkQuiz.Contracts.Class.GetClass;
@@ -117,6 +119,21 @@ namespace ThinkQuiz.Api.Controllers.V1
 
             return getOutResults.Match(
                 getOutResult => Ok(new GetOutStudentResponse()),
+                errors => Problem(errors));
+        }
+
+        [Authorize(Policy = "Teacher")]
+        [HttpPatch("classes/accept_student")]
+        public async Task<IActionResult> AcceptStudentToClass(GetOutStudentRequest request)
+        {
+            Guid teacherId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "teacherId")!.Value);
+
+            var command = _mapper.Map<AcceptStudentToClassCommand>((teacherId, request));
+
+            var acceptResults = await _mediator.Send(command);
+
+            return acceptResults.Match(
+                acceptResult => Ok(_mapper.Map<AcceptStudentResponse>(acceptResult)),
                 errors => Problem(errors));
         }
     }

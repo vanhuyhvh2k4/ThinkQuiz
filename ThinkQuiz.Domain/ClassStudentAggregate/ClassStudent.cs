@@ -32,6 +32,10 @@ namespace ThinkQuiz.Domain.ClassStudentAggregate
 			return new(studentId, classId, status, DateTime.Now);
 		}
 
+		public void UpdateStatus(bool status)
+		{
+			Status = status;
+		}
 #pragma warning disable CS8618
         private ClassStudent() { }
 #pragma warning restore CS8618

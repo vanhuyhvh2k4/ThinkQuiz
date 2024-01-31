@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using ThinkQuiz.Contracts.Class.Common;
 
 namespace ThinkQuiz.Contracts.Class.AddStudent
 {
@@ -7,19 +8,7 @@ namespace ThinkQuiz.Contracts.Class.AddStudent
         public int Status { get; } = 201;
 
         [JsonPropertyName("data")]
-        public ClassStudentData Data { get; init; } = null!;
-    }
-
-    public record ClassStudentData
-    {
-        [JsonPropertyName("studentId")]
-        public string StudentId { get; init; } = null!;
-
-        [JsonPropertyName("classId")]
-        public string ClassId { get; init; } = null!;
-
-        [JsonPropertyName("status")]
-        public bool Status { get; init; }
+        public ClassStudentResponse Data { get; init; } = null!;
     }
 }
 

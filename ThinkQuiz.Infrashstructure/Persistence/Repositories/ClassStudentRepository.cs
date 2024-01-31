@@ -29,6 +29,12 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
 
             _context.SaveChanges();
         }
+
+        public void Update(ClassStudent classStudent)
+        {
+            _context.ClassStudents.Update(classStudent);
+            _context.SaveChanges();
+        }
     }
 }
 
