@@ -66,6 +66,11 @@ namespace ThinkQuiz.Domain.ClassAggregate
             StudentQuantity++;
         }
 
+        public void ReduceStudentQuantity()
+        {
+            StudentQuantity--;
+        }
+
 #pragma warning disable CS8618
         private Class() { }
 #pragma warning restore CS8618

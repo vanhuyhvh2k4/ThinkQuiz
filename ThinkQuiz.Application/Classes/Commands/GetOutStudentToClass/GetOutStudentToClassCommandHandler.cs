@@ -52,6 +52,10 @@ namespace ThinkQuiz.Application.Classes.Commands.GetOutStudentToClass
             // get out student to class
             _classStudentRepository.Remove(classStudent);
 
+            // updatea quantity student of class
+            @class.ReduceStudentQuantity();
+            _classRepository.Update(@class);
+
             return classStudent;
         }
     }

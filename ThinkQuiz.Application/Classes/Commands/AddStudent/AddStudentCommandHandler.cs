@@ -61,6 +61,7 @@ namespace ThinkQuiz.Application.Classes.Commands.AddStudent
 
             // persist db
             _classStudentRepository.Add(classStudent);
+            _classRepository.Update(@class);
 
             return classStudent;
         }

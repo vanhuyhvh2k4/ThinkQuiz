@@ -58,7 +58,12 @@ namespace ThinkQuiz.Application.Classes.Commands.AcceptStudentToClass
             // accept student to class
             classStudent.UpdateStatus(true);
 
+            // update student quantity of class
+            @class.AddStudentQuantity();
+
+            // persist db
             _classStudentRepository.Update(classStudent);
+            _classRepository.Update(@class);
 
             return classStudent;
         }

@@ -8,6 +8,8 @@ namespace ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories
 		List<Class> GetClassesByTeacherId(Guid teacherId);
 
 		Class? GetClassById(Guid classId);
+
+		void Update(Class @class);
 	}
 }
 
