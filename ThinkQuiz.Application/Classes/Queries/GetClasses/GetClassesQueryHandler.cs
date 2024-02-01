@@ -4,21 +4,30 @@ using ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories;
 using ThinkQuiz.Domain.Common.Exceptions.Class;
 using ThinkQuiz.Domain.ClassAggregate;
 using ThinkQuiz.Application.Common.Utils;
+using TeacherExceptions = ThinkQuiz.Domain.Common.Exceptions.Teacher.Exceptions;
 
 namespace ThinkQuiz.Application.Classes.Queries.GetClasses
 {
     public class GetClassesQueryHandler : IRequestHandler<GetClassesQuery, ErrorOr<List<Class>>>
 	{
         private readonly IClassRepository _classRepository;
+        private readonly ITeacherRepository _teacherRepository;
 
-        public GetClassesQueryHandler(IClassRepository classRepository)
+        public GetClassesQueryHandler(IClassRepository classRepository, ITeacherRepository teacherRepository)
         {
             _classRepository = classRepository;
+            _teacherRepository = teacherRepository;
         }
 
         public async Task<ErrorOr<List<Class>>> Handle(GetClassesQuery query, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
+
+            // check teacher exists
+            if (_teacherRepository.GetTeacherById(query.TeacherId) is null)
+            {
+                return TeacherExceptions.NotFoundTeacher;
+            }
 
             // 1. get all classes of teacher
             var classes = _classRepository.GetClassesByTeacherId(query.TeacherId);

@@ -28,6 +28,7 @@
     <None Remove="Common\Exceptions\Class\" />
     <None Remove="Common\Exceptions\ClassStudent\" />
     <None Remove="Common\Exceptions\Student\" />
+    <None Remove="Common\Exceptions\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -51,6 +52,7 @@
     <Folder Include="Common\Exceptions\Class\" />
     <Folder Include="Common\Exceptions\ClassStudent\" />
     <Folder Include="Common\Exceptions\Student\" />
+    <Folder Include="Common\Exceptions\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.9.0" />
