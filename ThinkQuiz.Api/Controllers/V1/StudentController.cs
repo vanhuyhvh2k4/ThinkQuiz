@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ThinkQuiz.Application.Students.Queries.ExportStudentsList;
 using ThinkQuiz.Application.Students.Queries.GetStudentsOfClass;
 using ThinkQuiz.Contracts.Students.GetStudentsOfClass;
 
@@ -32,6 +33,21 @@ namespace ThinkQuiz.Api.Controllers.V1
 
             return getStudentsResults.Match(
                 getStudentsResult => Ok(_mapper.Map<GetStudentsOfClassResponse>(getStudentsResult)),
+                errors => Problem(errors));
+        }
+
+        [Authorize(Policy = "Teacher")]
+        [HttpGet("students/class/{classId}/export")]
+        public async Task<IActionResult> ExportStudentList(Guid classId)
+        {
+            Guid teacherId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "teacherId")!.Value);
+
+            var query = _mapper.Map<ExportStudentsListQuery>((teacherId, classId));
+
+            var exportStudentsResults = await _mediator.Send(query);
+
+            return exportStudentsResults.Match(
+                exportStudentsResult => File(exportStudentsResult.Content, exportStudentsResult.ContentType, exportStudentsResult.FileName),
                 errors => Problem(errors));
         }
     }

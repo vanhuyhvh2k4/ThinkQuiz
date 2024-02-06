@@ -157,3 +157,10 @@
 /Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/obj/Debug/net7.0/ThinkQuiz.Api.genruntimeconfig.cache
 /Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/obj/Debug/net7.0/ref/ThinkQuiz.Api.dll
 /Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/BCrypt.Net-Core.dll
+/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ClosedXML.dll
+/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/DocumentFormat.OpenXml.dll
+/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/ExcelNumberFormat.dll
+/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/Irony.dll
+/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/SixLabors.Fonts.dll
+/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/System.IO.Packaging.dll
+/Users/test/Documents/ASP/ThinkQuiz/ThinkQuiz/ThinkQuiz.Api/bin/Debug/net7.0/XLParser.dll
