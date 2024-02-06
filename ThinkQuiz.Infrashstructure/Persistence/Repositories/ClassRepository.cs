@@ -20,16 +20,16 @@ namespace ThinkQuiz.Infrashstructure.Persistence.Repositories
             _context.SaveChanges();
         }
 
-        public Class? GetClassById(Guid classId)
+        public Class? GetClassById(Guid classId, bool status = false)
         {
-            return _context.Classes.Where(c => c.Id == classId)
+            return _context.Classes.Where(c => c.Id == classId && c.IsDeleted == status)
                 .Include(c => c.Teacher.User)
                 .FirstOrDefault();
         }
 
-        public List<Class> GetClassesByTeacherId(Guid teacherId)
+        public List<Class> GetClassesByTeacherId(Guid teacherId, bool status = false)
         {
-            return _context.Classes.Where(c => c.TeacherId == teacherId)
+            return _context.Classes.Where(c => c.TeacherId == teacherId && c.IsDeleted == status)
                 .Include(c => c.Teacher.User)
                 .ToList();
         }

@@ -71,6 +71,11 @@ namespace ThinkQuiz.Domain.ClassAggregate
             StudentQuantity--;
         }
 
+        public void ChangeIsDeleted(bool status)
+        {
+            IsDeleted = status;
+        }
+
 #pragma warning disable CS8618
         private Class() { }
 #pragma warning restore CS8618

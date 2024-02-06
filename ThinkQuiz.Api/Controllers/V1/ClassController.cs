@@ -7,6 +7,7 @@ using ThinkQuiz.Application.Classes.Commands.AddStudent;
 using ThinkQuiz.Application.Classes.Commands.Create;
 using ThinkQuiz.Application.Classes.Commands.GetOutStudentToClass;
 using ThinkQuiz.Application.Classes.Commands.JoinClass;
+using ThinkQuiz.Application.Classes.Commands.SoftDeleteClass;
 using ThinkQuiz.Application.Classes.Queries.GetClass;
 using ThinkQuiz.Application.Classes.Queries.GetClasses;
 using ThinkQuiz.Contracts.Class.AcceptStudent;
@@ -15,6 +16,7 @@ using ThinkQuiz.Contracts.Class.Create;
 using ThinkQuiz.Contracts.Class.GetClass;
 using ThinkQuiz.Contracts.Class.GetClasses;
 using ThinkQuiz.Contracts.Class.GetOutStudent;
+using ThinkQuiz.Contracts.Common;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -118,7 +120,7 @@ namespace ThinkQuiz.Api.Controllers.V1
             var getOutResults = await _mediator.Send(command);
 
             return getOutResults.Match(
-                getOutResult => Ok(new GetOutStudentResponse()),
+                getOutResult => Ok(new DeleteResponse()),
                 errors => Problem(errors));
         }
 
@@ -134,6 +136,21 @@ namespace ThinkQuiz.Api.Controllers.V1
 
             return acceptResults.Match(
                 acceptResult => Ok(_mapper.Map<AcceptStudentResponse>(acceptResult)),
+                errors => Problem(errors));
+        }
+
+        [Authorize(Policy = "Teacher")]
+        [HttpDelete("classes/{classId}")]
+        public async Task<IActionResult> SoftDeleteClass(Guid classId)
+        {
+            Guid teacherId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "teacherId")!.Value);
+
+            var command = _mapper.Map<SoftDeleteClassCommand>((teacherId, classId));
+
+            var softDeleteClassResults = await _mediator.Send(command);
+
+            return softDeleteClassResults.Match(
+                softDeleteClassResult => Ok(new DeleteResponse()),
                 errors => Problem(errors));
         }
     }

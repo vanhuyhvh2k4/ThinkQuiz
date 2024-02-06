@@ -5,9 +5,9 @@ namespace ThinkQuiz.Application.Common.Interfaces.Persistence.Repositories
 	{
 		void Create(Class newClass);
 
-		List<Class> GetClassesByTeacherId(Guid teacherId);
+		List<Class> GetClassesByTeacherId(Guid teacherId, bool status = false);
 
-		Class? GetClassById(Guid classId);
+		Class? GetClassById(Guid classId, bool status = false);
 
 		void Update(Class @class);
 	}

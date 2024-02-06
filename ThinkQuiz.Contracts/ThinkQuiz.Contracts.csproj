@@ -20,6 +20,7 @@
     <None Remove="Students\GetStudentsOfClass\" />
     <None Remove="Class\GetOutStudent\" />
     <None Remove="Class\AcceptStudent\" />
+    <None Remove="Common\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
@@ -35,5 +36,6 @@
     <Folder Include="Students\GetStudentsOfClass\" />
     <Folder Include="Class\GetOutStudent\" />
     <Folder Include="Class\AcceptStudent\" />
+    <Folder Include="Common\" />
   </ItemGroup>
 </Project>
