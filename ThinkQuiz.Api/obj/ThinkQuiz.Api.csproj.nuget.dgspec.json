@@ -49,6 +49,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "DocX": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Mapster": {
               "target": "Package",
               "version": "[7.4.0, )"
